@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "c0a3321e-f489-4e4d-b003-da73a3d7acab",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/home/tonywang/Net_simluation/PY_NetworkSimulator/.archify/architecture-iab-topology-20261023-131337/candidate.json",
+  "output": "/home/tonywang/Net_simluation/PY_NetworkSimulator/.archify/architecture-iab-topology-20261023-131337/iab-topology.html",
+  "specification": {
+    "sha256": "3289abe73c0d0027255d86d137ebaa11c8537132025f639248813ac1311871df",
+    "bytes": 5291
+  },
+  "artifact": {
+    "sha256": "4aaf19aa170c81248bc77a675758b1f5af751750c7904fd01b4b1e9840be99e7",
+    "bytes": 821304
+  }
+}

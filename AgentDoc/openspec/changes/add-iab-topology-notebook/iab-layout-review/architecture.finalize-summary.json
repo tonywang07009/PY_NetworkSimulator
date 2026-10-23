@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "/home/tonywang/Net_simluation/PY_NetworkSimulator/AgentDoc/openspec/changes/add-iab-topology-notebook/architecture.archify.json",
+    "sha256": "a2a86ca583d751bc8d3e53b2247e4fce1b4013332430ee5ce6e225ab25aec163",
+    "bytes": 5219
+  },
+  "artifact": {
+    "path": "/home/tonywang/Net_simluation/PY_NetworkSimulator/AgentDoc/openspec/changes/add-iab-topology-notebook/architecture.html",
+    "sha256": "dd2ce4ff8e9f3e35fdcd88f5b9375b75901b46374387d055240bce894d4127eb",
+    "bytes": 821288
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/home/tonywang/Net_simluation/PY_NetworkSimulator/AgentDoc/openspec/changes/add-iab-topology-notebook/iab-layout-review/architecture.finalize.json",
+    "summaryReceipt": "/home/tonywang/Net_simluation/PY_NetworkSimulator/AgentDoc/openspec/changes/add-iab-topology-notebook/iab-layout-review/architecture.finalize-summary.json",
+    "browserCheckReceipt": "/home/tonywang/Net_simluation/PY_NetworkSimulator/AgentDoc/openspec/changes/add-iab-topology-notebook/iab-layout-review/architecture.browser-check.json"
+  },
+  "update": {
+    "status": "update_available",
+    "installedVersion": "3.1.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": "https://github.com/tt-a1i/archify/releases/tag/v3.2.0",
+    "severity": "normal",
+    "checkedAt": "2026-10-23T05:15:08.304Z",
+    "source": "cache",
+    "noticeRequired": true,
+    "noticeText": "Archify update: 3.1.0 → 3.2.0. A previous check at 2026-10-23T05:15:08.304Z found a newer release. Release notes: https://github.com/tt-a1i/archify/releases/tag/v3.2.0. The installed Skill has not changed; ask to snooze or ignore this reminder.",
+    "eventKey": "archify@sha256:70e210265c59f24dcbdf2a502ff671104b5454e7ee7d3554aecd86bad32384f5"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1815
+}

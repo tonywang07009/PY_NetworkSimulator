@@ -1,0 +1,9 @@
+{
+  "source_files": {
+    "topology.py": "08ece9b0c90aef27db447955317a6b83b8235ae40138bb99f73c727b3823eda9",
+    "contracts.py": "1bee7afda991ac6a53aafd6c215054048db0277b825299edde4d4c30bb68a379",
+    "__init__.py": "e45fa83fd1f3b11758c8d027f17b84e32bd4d3d6bfe380f0290b0d9ac65658eb",
+    "plotting.py": "7ddeb419c5d29b27de814426961746a8154f4198b747d5daf090dbb4b3f5543a"
+  },
+  "fixture_sha256": "bc8d051571bb677d98a391f28dad063a5a9d45fd28dd80d160132e05b2d8a64f"
+}

@@ -1,0 +1,112 @@
+{
+  "captured_at_utc": "2026-10-23T13:38:23.988920+00:00",
+  "git_baseline": "0a5ff65f151febb53416d67855afa9850e2b1b13",
+  "status": "working-tree-authorized-for-github-publication",
+  "files": [
+    {
+      "path": "AgentDoc/openspec/specs/iab-topology/spec.md",
+      "sha256": "ed9235dbebfdde77d85ed6822d7d029edde04e34d8820377c36ec08b3e2e788e"
+    },
+    {
+      "path": "README.md",
+      "sha256": "d058907fd753d750f6df1c589b942d376bec8787a30633363c13014cbbe77424"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/01-settings.en.md",
+      "sha256": "8982077ac70f24498461ca0ab542d0cc96d19ee385c73fe4aa6fd52aa92efbda"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/01-settings.zh-TW.md",
+      "sha256": "27b271fb0a46b508be311ce984672942195b5fbc293dc176191823ecc73a7cc5"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/02-usage.en.md",
+      "sha256": "7a7393221970a7ae11e2684ec4255eb87d2aea02c1a0a39c4077441f45064c36"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/02-usage.zh-TW.md",
+      "sha256": "635cea0c8505f1633edbd48d6d9d15fbab9b74dabeb29c7469f8a256cc4afaaf"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/03-results.en.md",
+      "sha256": "a60ebcea6b9d8cbac587a1b936ade1d2d9586e6138008cc84354aad54cae570b"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/03-results.zh-TW.md",
+      "sha256": "00de35bb61e3a32bdeff789eb4ee83b0acd78d8b33609f0f96e7aa03efc34a2d"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/04-troubleshooting.en.md",
+      "sha256": "708737c42afad073568387d592bc053dbcfc4e708eb634b738541c6bb7ba976f"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/04-troubleshooting.zh-TW.md",
+      "sha256": "1e7f83aaa7138bf9e9d2c2f766d14b8427034aa40cfa77cd421feeca162ed7d3"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/README.en.md",
+      "sha256": "12d891881d2a7713a1d84714d4d93c9b8f493e1bde3f23593c245f361a53ce09"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/README.md",
+      "sha256": "9a93c63e94f8ad05955bc563cd53c5084bd60cc57521ced5623f5323889d9025"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/draft.en.md",
+      "sha256": "e2ff2d2cb343eec0e15334c3bac547ad0edc5904839e0ff95bcc004366969b72"
+    },
+    {
+      "path": "ReferDoc/Implementation/IABTopology/draft.zh-TW.md",
+      "sha256": "85160d439a0249c9ec6d5f8094d65cd98fcbe3ff7de514c2ed7acb842bf22cf9"
+    },
+    {
+      "path": "ReferDoc/Implementation/README.md",
+      "sha256": "7ac9e99de99291ff327e724f659ffab4b1a753cdeb913bfac22b991513f88f93"
+    },
+    {
+      "path": "notebooks/01_iab_topology.ipynb",
+      "sha256": "e038d2fee144e3a744f88697f9655a2b3ef9f28571aec0c26b4a7e925d100c3c"
+    },
+    {
+      "path": "notebooks/artifacts/iab-topology/deployment.png",
+      "sha256": "bfd976c4f78ffe722cb8ec851ae1c120478008db59726928b0d14d2cc15ffba5"
+    },
+    {
+      "path": "notebooks/artifacts/iab-topology/snapshot.json",
+      "sha256": "b79d2d5b2733f1b1cba2f12ab29f470f02d03d56a547224725cdf08a1e3e29b6"
+    },
+    {
+      "path": "src/iab/__init__.py",
+      "sha256": "e45fa83fd1f3b11758c8d027f17b84e32bd4d3d6bfe380f0290b0d9ac65658eb"
+    },
+    {
+      "path": "src/iab/contracts.py",
+      "sha256": "1bee7afda991ac6a53aafd6c215054048db0277b825299edde4d4c30bb68a379"
+    },
+    {
+      "path": "src/iab/plotting.py",
+      "sha256": "7ddeb419c5d29b27de814426961746a8154f4198b747d5daf090dbb4b3f5543a"
+    },
+    {
+      "path": "src/iab/topology.py",
+      "sha256": "08ece9b0c90aef27db447955317a6b83b8235ae40138bb99f73c727b3823eda9"
+    },
+    {
+      "path": "tests/iab/execute_topology_notebook.py",
+      "sha256": "f922e8a77ea4ed8cc1ea4269c477f1e26dc7b727affefe4bb5729ac1731cd04a"
+    },
+    {
+      "path": "tests/iab/fixtures/topology-before-extraction.json",
+      "sha256": "bc8d051571bb677d98a391f28dad063a5a9d45fd28dd80d160132e05b2d8a64f"
+    },
+    {
+      "path": "tests/iab/test_topology_extraction.py",
+      "sha256": "688dda6c47072e895639adaf2ed8401e1e6875ae68760a40626a65dab61d897e"
+    },
+    {
+      "path": "tests/iab/test_topology_notebook.py",
+      "sha256": "40a0d01221e3f710c3348b28b8042efc89ae69eee69177c81b806ee0444b4c6f"
+    }
+  ],
+  "updated_from_head": "a87a2d8effcbd6986c1aaad545d529df2ae26c75"
+}

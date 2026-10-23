@@ -290,3 +290,7 @@ Influence目前3/10、Description6/10、Tradeoffs7/10。其餘兩項模型邊界
 ### 2026-10-23｜已授權開始實作
 
 使用者明確要求依workflow開始執行。已沿用全部答案建立OpenSpec change並完成Notebook、66 pytest／11 code cells乾淨kernel／8教學情境，review修正及架構／code-trace已備。現停在人工導讀，尚未取得程式接受；不新增訪談題、不提前抽離.py。
+
+### 人工導讀回饋：tuple唯一格式
+
+使用者明確選第三種：集合設定直接寫tuple，不接受list、不做__post_init__轉換，並要求README記錄。已同步規格、程式、測試與README；不增加訪談題或視為整份Notebook接受。

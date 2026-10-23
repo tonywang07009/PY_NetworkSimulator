@@ -1,0 +1,288 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Workflow｜訪談、人工 trace 與 GitHub 交付",
+    "locale": "zh-TW",
+    "quality_profile": "showcase",
+    "output": "course/workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "setup",
+      "label": "訪談與規劃"
+    },
+    {
+      "id": "delivery",
+      "label": "實作與人工接受"
+    },
+    {
+      "id": "integration",
+      "label": "PR 與手動合併"
+    },
+    {
+      "id": "knowledge",
+      "label": "原位整理與學習"
+    }
+  ],
+  "mainPath": [
+    "intent",
+    "design",
+    "context",
+    "issue"
+  ],
+  "nodes": [
+    {
+      "id": "intent",
+      "lane": "setup",
+      "col": 0,
+      "type": "external",
+      "label": "六面向訪談",
+      "sublabel": "實例、選項、備註與紀錄"
+    },
+    {
+      "id": "design",
+      "lane": "setup",
+      "col": 1,
+      "type": "backend",
+      "label": "Archify 設計圖",
+      "sublabel": "輸入、流程、輸出、技術"
+    },
+    {
+      "id": "context",
+      "lane": "setup",
+      "col": 2,
+      "type": "database",
+      "label": "OpenSpec 與工具",
+      "sublabel": "需求、驗收與實際路由"
+    },
+    {
+      "id": "issue",
+      "lane": "setup",
+      "col": 3,
+      "type": "backend",
+      "label": "一個 change 一個 Issue",
+      "sublabel": "目標、依賴、進度與阻塞"
+    },
+    {
+      "id": "apply",
+      "lane": "delivery",
+      "col": 3,
+      "type": "backend",
+      "label": "實作與測試",
+      "sublabel": "TDD、Ponytail 與逐項語意核對"
+    },
+    {
+      "id": "review",
+      "lane": "delivery",
+      "col": 2,
+      "type": "backend",
+      "label": "Review 與技術債盤點",
+      "sublabel": "規範、需求與 tech_improve"
+    },
+    {
+      "id": "human",
+      "lane": "delivery",
+      "col": 1,
+      "type": "security",
+      "label": "完整文件與人工 trace",
+      "sublabel": "先交圖與導讀，再逐段確認"
+    },
+    {
+      "id": "prepare",
+      "lane": "delivery",
+      "col": 0,
+      "type": "database",
+      "label": "準備同一份交付",
+      "sublabel": "sync、archive、README"
+    },
+    {
+      "id": "pr",
+      "lane": "integration",
+      "col": 0,
+      "type": "backend",
+      "label": "一個 change 一份 PR",
+      "sublabel": "程式、規格與歸檔一起送"
+    },
+    {
+      "id": "merge",
+      "lane": "integration",
+      "col": 1,
+      "type": "security",
+      "label": "使用者手動合併",
+      "sublabel": "回饋修正、必要檢查與確認"
+    },
+    {
+      "id": "checkpoint",
+      "lane": "integration",
+      "col": 2,
+      "type": "security",
+      "label": "核對合併與完成",
+      "sublabel": "Issue、版本及真實證據"
+    },
+    {
+      "id": "close",
+      "lane": "integration",
+      "col": 3,
+      "type": "backend",
+      "label": "全部 changes 完成",
+      "sublabel": "全案驗收與原位資料整理"
+    },
+    {
+      "id": "wiki",
+      "lane": "knowledge",
+      "col": 3,
+      "type": "database",
+      "label": "訪談與 Wiki 知識",
+      "sublabel": "來源、偏好、推測與反證"
+    },
+    {
+      "id": "assess",
+      "lane": "knowledge",
+      "col": 2,
+      "type": "backend",
+      "label": "改進資格評估",
+      "sublabel": "獨立事件及成功／失敗證據"
+    },
+    {
+      "id": "trial",
+      "lane": "knowledge",
+      "col": 1,
+      "type": "backend",
+      "label": "隔離候選比較",
+      "sublabel": "同版本、不同任務與反例"
+    },
+    {
+      "id": "promote",
+      "lane": "knowledge",
+      "col": 0,
+      "type": "security",
+      "label": "使用者決定啟用",
+      "sublabel": "指定版本、目標與回退"
+    }
+  ],
+  "edges": [
+    {
+      "id": "intent-design",
+      "from": "intent",
+      "to": "design"
+    },
+    {
+      "id": "design-context",
+      "from": "design",
+      "to": "context"
+    },
+    {
+      "id": "context-issue",
+      "from": "context",
+      "to": "issue"
+    },
+    {
+      "id": "issue-apply",
+      "from": "issue",
+      "to": "apply"
+    },
+    {
+      "id": "apply-review",
+      "from": "apply",
+      "to": "review"
+    },
+    {
+      "id": "review-human",
+      "from": "review",
+      "to": "human"
+    },
+    {
+      "id": "human-prepare",
+      "from": "human",
+      "to": "prepare",
+      "label": "人工接受"
+    },
+    {
+      "id": "prepare-pr",
+      "from": "prepare",
+      "to": "pr"
+    },
+    {
+      "id": "pr-merge",
+      "from": "pr",
+      "to": "merge"
+    },
+    {
+      "id": "merge-checkpoint",
+      "from": "merge",
+      "to": "checkpoint",
+      "label": "已合併"
+    },
+    {
+      "id": "checkpoint-close",
+      "from": "checkpoint",
+      "to": "close",
+      "label": "全部完成"
+    },
+    {
+      "id": "close-wiki",
+      "from": "close",
+      "to": "wiki"
+    },
+    {
+      "id": "wiki-assess",
+      "from": "wiki",
+      "to": "assess"
+    },
+    {
+      "id": "assess-trial",
+      "from": "assess",
+      "to": "trial",
+      "label": "符合資格"
+    },
+    {
+      "id": "trial-promote",
+      "from": "trial",
+      "to": "promote",
+      "label": "穩定後"
+    },
+    {
+      "id": "feedback",
+      "from": "human",
+      "to": "review",
+      "label": "需修正",
+      "role": "return",
+      "variant": "dashed"
+    },
+    {
+      "id": "next-change",
+      "from": "checkpoint",
+      "to": "context",
+      "label": "合併後接續",
+      "role": "return",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "輸入與輸出",
+      "items": [
+        "輸入：目標、限制、既有程式與文獻；訪談保留答案、題數與未決事項。",
+        "輸出：系統／change 圖、具真實 tree／絕對路徑的 trace、同一 PR 的程式與歸檔資料。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "接受與完成",
+      "items": [
+        "完整文件先備妥，再逐段人工 trace；回饋修正後複驗並確認。",
+        "使用者手動合併；目前 PR 未合併時，兩種模式都不開始下一個 change。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "方法與證據",
+      "items": [
+        "六面向訪談、來源比較、TDD、雙軸 review 與具體架構整理，各有適用條件。",
+        "P.A.R.A 原位導覽；Wiki／候選分離，明示偏好與推測分開。Jev／tag 留待設計。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+interface:
+  display_name: "撰寫易審核的 PR"
+  short_description: "依實際變更撰寫模組目的、函式流程圖、人工驗收與證據，降低審核負擔"

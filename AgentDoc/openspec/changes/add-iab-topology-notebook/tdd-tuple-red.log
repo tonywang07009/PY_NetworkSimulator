@@ -1,0 +1,22 @@
+..................................................................FFF    [100%]
+=================================== FAILURES ===================================
+____ test_accepts_only_tuple_for_collection_config[iab_nodes-example_nodes] ____
+tests/test_topology_notebook.py:278: in test_accepts_only_tuple_for_collection_config
+    with pytest.raises(ValueError, match=field):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+___ test_accepts_only_tuple_for_collection_config[zone_outer_radii_m-value1] ___
+tests/test_topology_notebook.py:278: in test_accepts_only_tuple_for_collection_config
+    with pytest.raises(ValueError, match=field):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+____ test_accepts_only_tuple_for_collection_config[zone_tag_counts-value2] _____
+tests/test_topology_notebook.py:278: in test_accepts_only_tuple_for_collection_config
+    with pytest.raises(ValueError, match=field):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+=========================== short test summary info ============================
+FAILED tests/test_topology_notebook.py::test_accepts_only_tuple_for_collection_config[iab_nodes-example_nodes]
+FAILED tests/test_topology_notebook.py::test_accepts_only_tuple_for_collection_config[zone_outer_radii_m-value1]
+FAILED tests/test_topology_notebook.py::test_accepts_only_tuple_for_collection_config[zone_tag_counts-value2]
+3 failed, 66 passed in 0.59s

@@ -1,0 +1,4 @@
+Command: MPLCONFIGDIR=/tmp/pynet-mpl python -m pytest tests/test_topology_notebook.py -q --tb=short
+CWD: /home/tonywang/Net_simluation/PY_NetworkSimulator
+.....................................................................    [100%]
+69 passed in 0.57s

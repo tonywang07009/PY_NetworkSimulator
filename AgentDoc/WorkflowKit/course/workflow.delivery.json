@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "7d2d0d44-402b-4128-859e-c495b7883a7f",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "/home/tonywang/Agent_workflow/course/workflow.archify.json",
+  "output": "/home/tonywang/Agent_workflow/course/workflow.html",
+  "specification": {
+    "sha256": "49130c6ca681acf12b430408a8fbcc44af0ccca8edef2acf7ba6ef3a12e11e08",
+    "bytes": 6494
+  },
+  "artifact": {
+    "sha256": "6d97638a766724be18afdb36dc1e0cb70126a8b76b59a8a12d98269f4031f444",
+    "bytes": 832727
+  }
+}

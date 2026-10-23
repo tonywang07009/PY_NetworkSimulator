@@ -1,0 +1,38 @@
+[
+  {
+    "server": "symdex-py-networksimulator",
+    "initialize": "PASS",
+    "tools": 21,
+    "server_info": {
+      "name": "symdex-mcp",
+      "title": null,
+      "version": "3.4.2",
+      "websiteUrl": null,
+      "icons": null
+    }
+  },
+  {
+    "server": "filesystem-py-networksimulator",
+    "initialize": "PASS",
+    "tools": 14,
+    "server_info": {
+      "name": "secure-filesystem-server",
+      "title": null,
+      "version": "0.2.0",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "call": {
+      "name": "list_allowed_directories",
+      "is_error": false,
+      "content": [
+        {
+          "type": "text",
+          "text": "Allowed directories:\n/home/tonywang/Net_simluation/PY_NetworkSimulator",
+          "annotations": null,
+          "meta": null
+        }
+      ]
+    }
+  }
+]

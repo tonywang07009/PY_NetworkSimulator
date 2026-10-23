@@ -1,0 +1,1084 @@
+.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.F...               [100%]
+=================================== FAILURES ===================================
+_ test_classifies_horizontal_distance_at_exclusive_inner_boundaries[0.001-NEAR] _
+
+api = <module 'topology_notebook_under_test'>, distance = 0.001
+expected = 'NEAR'
+
+    @pytest.mark.parametrize('distance,expected', [
+        (0.001, 'NEAR'), (9.999, 'NEAR'), (10, 'NEAR'), (10.001, 'MID'),
+        (29.999, 'MID'), (30, 'MID'), (30.001, 'FAR'), (49.999, 'FAR'), (50, 'FAR'),
+    ])
+    def test_classifies_horizontal_distance_at_exclusive_inner_boundaries(api, distance, expected):
+>       assert api.classify_distance(distance).value == expected
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:48: AttributeError
+_ test_classifies_horizontal_distance_at_exclusive_inner_boundaries[9.999-NEAR] _
+
+api = <module 'topology_notebook_under_test'>, distance = 9.999
+expected = 'NEAR'
+
+    @pytest.mark.parametrize('distance,expected', [
+        (0.001, 'NEAR'), (9.999, 'NEAR'), (10, 'NEAR'), (10.001, 'MID'),
+        (29.999, 'MID'), (30, 'MID'), (30.001, 'FAR'), (49.999, 'FAR'), (50, 'FAR'),
+    ])
+    def test_classifies_horizontal_distance_at_exclusive_inner_boundaries(api, distance, expected):
+>       assert api.classify_distance(distance).value == expected
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:48: AttributeError
+__ test_classifies_horizontal_distance_at_exclusive_inner_boundaries[10-NEAR] __
+
+api = <module 'topology_notebook_under_test'>, distance = 10, expected = 'NEAR'
+
+    @pytest.mark.parametrize('distance,expected', [
+        (0.001, 'NEAR'), (9.999, 'NEAR'), (10, 'NEAR'), (10.001, 'MID'),
+        (29.999, 'MID'), (30, 'MID'), (30.001, 'FAR'), (49.999, 'FAR'), (50, 'FAR'),
+    ])
+    def test_classifies_horizontal_distance_at_exclusive_inner_boundaries(api, distance, expected):
+>       assert api.classify_distance(distance).value == expected
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:48: AttributeError
+_ test_classifies_horizontal_distance_at_exclusive_inner_boundaries[10.001-MID] _
+
+api = <module 'topology_notebook_under_test'>, distance = 10.001
+expected = 'MID'
+
+    @pytest.mark.parametrize('distance,expected', [
+        (0.001, 'NEAR'), (9.999, 'NEAR'), (10, 'NEAR'), (10.001, 'MID'),
+        (29.999, 'MID'), (30, 'MID'), (30.001, 'FAR'), (49.999, 'FAR'), (50, 'FAR'),
+    ])
+    def test_classifies_horizontal_distance_at_exclusive_inner_boundaries(api, distance, expected):
+>       assert api.classify_distance(distance).value == expected
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:48: AttributeError
+_ test_classifies_horizontal_distance_at_exclusive_inner_boundaries[29.999-MID] _
+
+api = <module 'topology_notebook_under_test'>, distance = 29.999
+expected = 'MID'
+
+    @pytest.mark.parametrize('distance,expected', [
+        (0.001, 'NEAR'), (9.999, 'NEAR'), (10, 'NEAR'), (10.001, 'MID'),
+        (29.999, 'MID'), (30, 'MID'), (30.001, 'FAR'), (49.999, 'FAR'), (50, 'FAR'),
+    ])
+    def test_classifies_horizontal_distance_at_exclusive_inner_boundaries(api, distance, expected):
+>       assert api.classify_distance(distance).value == expected
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:48: AttributeError
+__ test_classifies_horizontal_distance_at_exclusive_inner_boundaries[30-MID] ___
+
+api = <module 'topology_notebook_under_test'>, distance = 30, expected = 'MID'
+
+    @pytest.mark.parametrize('distance,expected', [
+        (0.001, 'NEAR'), (9.999, 'NEAR'), (10, 'NEAR'), (10.001, 'MID'),
+        (29.999, 'MID'), (30, 'MID'), (30.001, 'FAR'), (49.999, 'FAR'), (50, 'FAR'),
+    ])
+    def test_classifies_horizontal_distance_at_exclusive_inner_boundaries(api, distance, expected):
+>       assert api.classify_distance(distance).value == expected
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:48: AttributeError
+_ test_classifies_horizontal_distance_at_exclusive_inner_boundaries[30.001-FAR] _
+
+api = <module 'topology_notebook_under_test'>, distance = 30.001
+expected = 'FAR'
+
+    @pytest.mark.parametrize('distance,expected', [
+        (0.001, 'NEAR'), (9.999, 'NEAR'), (10, 'NEAR'), (10.001, 'MID'),
+        (29.999, 'MID'), (30, 'MID'), (30.001, 'FAR'), (49.999, 'FAR'), (50, 'FAR'),
+    ])
+    def test_classifies_horizontal_distance_at_exclusive_inner_boundaries(api, distance, expected):
+>       assert api.classify_distance(distance).value == expected
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:48: AttributeError
+_ test_classifies_horizontal_distance_at_exclusive_inner_boundaries[49.999-FAR] _
+
+api = <module 'topology_notebook_under_test'>, distance = 49.999
+expected = 'FAR'
+
+    @pytest.mark.parametrize('distance,expected', [
+        (0.001, 'NEAR'), (9.999, 'NEAR'), (10, 'NEAR'), (10.001, 'MID'),
+        (29.999, 'MID'), (30, 'MID'), (30.001, 'FAR'), (49.999, 'FAR'), (50, 'FAR'),
+    ])
+    def test_classifies_horizontal_distance_at_exclusive_inner_boundaries(api, distance, expected):
+>       assert api.classify_distance(distance).value == expected
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:48: AttributeError
+__ test_classifies_horizontal_distance_at_exclusive_inner_boundaries[50-FAR] ___
+
+api = <module 'topology_notebook_under_test'>, distance = 50, expected = 'FAR'
+
+    @pytest.mark.parametrize('distance,expected', [
+        (0.001, 'NEAR'), (9.999, 'NEAR'), (10, 'NEAR'), (10.001, 'MID'),
+        (29.999, 'MID'), (30, 'MID'), (30.001, 'FAR'), (49.999, 'FAR'), (50, 'FAR'),
+    ])
+    def test_classifies_horizontal_distance_at_exclusive_inner_boundaries(api, distance, expected):
+>       assert api.classify_distance(distance).value == expected
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:48: AttributeError
+_________________ test_rejects_distance_outside_deployment[0] __________________
+
+api = <module 'topology_notebook_under_test'>, distance = 0
+
+    @pytest.mark.parametrize('distance', [0, -1, 50.001, float('inf'), float('nan'), True, None])
+    def test_rejects_distance_outside_deployment(api, distance):
+        with pytest.raises(ValueError, match='distance'):
+>           api.classify_distance(distance)
+            ^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:54: AttributeError
+_________________ test_rejects_distance_outside_deployment[-1] _________________
+
+api = <module 'topology_notebook_under_test'>, distance = -1
+
+    @pytest.mark.parametrize('distance', [0, -1, 50.001, float('inf'), float('nan'), True, None])
+    def test_rejects_distance_outside_deployment(api, distance):
+        with pytest.raises(ValueError, match='distance'):
+>           api.classify_distance(distance)
+            ^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:54: AttributeError
+_______________ test_rejects_distance_outside_deployment[50.001] _______________
+
+api = <module 'topology_notebook_under_test'>, distance = 50.001
+
+    @pytest.mark.parametrize('distance', [0, -1, 50.001, float('inf'), float('nan'), True, None])
+    def test_rejects_distance_outside_deployment(api, distance):
+        with pytest.raises(ValueError, match='distance'):
+>           api.classify_distance(distance)
+            ^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:54: AttributeError
+________________ test_rejects_distance_outside_deployment[inf] _________________
+
+api = <module 'topology_notebook_under_test'>, distance = inf
+
+    @pytest.mark.parametrize('distance', [0, -1, 50.001, float('inf'), float('nan'), True, None])
+    def test_rejects_distance_outside_deployment(api, distance):
+        with pytest.raises(ValueError, match='distance'):
+>           api.classify_distance(distance)
+            ^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:54: AttributeError
+________________ test_rejects_distance_outside_deployment[nan] _________________
+
+api = <module 'topology_notebook_under_test'>, distance = nan
+
+    @pytest.mark.parametrize('distance', [0, -1, 50.001, float('inf'), float('nan'), True, None])
+    def test_rejects_distance_outside_deployment(api, distance):
+        with pytest.raises(ValueError, match='distance'):
+>           api.classify_distance(distance)
+            ^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:54: AttributeError
+________________ test_rejects_distance_outside_deployment[True] ________________
+
+api = <module 'topology_notebook_under_test'>, distance = True
+
+    @pytest.mark.parametrize('distance', [0, -1, 50.001, float('inf'), float('nan'), True, None])
+    def test_rejects_distance_outside_deployment(api, distance):
+        with pytest.raises(ValueError, match='distance'):
+>           api.classify_distance(distance)
+            ^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:54: AttributeError
+________________ test_rejects_distance_outside_deployment[None] ________________
+
+api = <module 'topology_notebook_under_test'>, distance = None
+
+    @pytest.mark.parametrize('distance', [0, -1, 50.001, float('inf'), float('nan'), True, None])
+    def test_rejects_distance_outside_deployment(api, distance):
+        with pytest.raises(ValueError, match='distance'):
+>           api.classify_distance(distance)
+            ^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:54: AttributeError
+_______ test_refuses_invalid_config_with_reason[zone_tag_counts-value0] ________
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_tag_counts'
+value = (9, 0, 0)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+_______ test_refuses_invalid_config_with_reason[zone_tag_counts-value1] ________
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_tag_counts'
+value = (0, 0, 0)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+_______ test_refuses_invalid_config_with_reason[zone_tag_counts-value2] ________
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_tag_counts'
+value = (-1, 20, 11)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+_______ test_refuses_invalid_config_with_reason[zone_tag_counts-value3] ________
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_tag_counts'
+value = (10.5, 13, 7)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+        with pytest.raises(ValueError, match='.+'):
+>           api.build_topology(config)
+
+tests/test_topology_notebook.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = TopologyConfig(donor=FixedNodeConfig(node_id='Donor-1', position=Position2D(x_m=120, y_m=-120)), iab_nodes=(FixedNodeC..._m=180, y_m=120))), zone_outer_radii_m=(10.0, 30.0, 50.0), zone_tag_counts=(10.5, 13, 7), min_tags_per_node=2, seed=42)
+
+>   ???
+E   TypeError: 'float' object cannot be interpreted as an integer
+
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:5: TypeError
+_______ test_refuses_invalid_config_with_reason[zone_tag_counts-value4] ________
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_tag_counts'
+value = (True, 13, 7)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+_______ test_refuses_invalid_config_with_reason[zone_tag_counts-value5] ________
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_tag_counts'
+value = (10, 13)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+________ test_refuses_invalid_config_with_reason[zone_tag_counts-None] _________
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_tag_counts'
+value = None
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+        with pytest.raises(ValueError, match='.+'):
+>           api.build_topology(config)
+
+tests/test_topology_notebook.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = TopologyConfig(donor=FixedNodeConfig(node_id='Donor-1', position=Position2D(x_m=120, y_m=-120)), iab_nodes=(FixedNodeC...ition2D(x_m=180, y_m=120))), zone_outer_radii_m=(10.0, 30.0, 50.0), zone_tag_counts=None, min_tags_per_node=2, seed=42)
+
+>   ???
+E   TypeError: 'NoneType' object is not iterable
+
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:4: TypeError
+______ test_refuses_invalid_config_with_reason[zone_outer_radii_m-value7] ______
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_outer_radii_m'
+value = (0, 30, 50)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+        with pytest.raises(ValueError, match='.+'):
+>           api.build_topology(config)
+
+tests/test_topology_notebook.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = TopologyConfig(donor=FixedNodeConfig(node_id='Donor-1', position=Position2D(x_m=120, y_m=-120)), iab_nodes=(FixedNodeC...ition2D(x_m=180, y_m=120))), zone_outer_radii_m=(0, 30, 50), zone_tag_counts=(10, 13, 7), min_tags_per_node=2, seed=42)
+
+>   ???
+E   ZeroDivisionError: float division by zero
+
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:17: ZeroDivisionError
+______ test_refuses_invalid_config_with_reason[zone_outer_radii_m-value8] ______
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_outer_radii_m'
+value = (30, 10, 50)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+______ test_refuses_invalid_config_with_reason[zone_outer_radii_m-value9] ______
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_outer_radii_m'
+value = (10, 10, 50)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+_____ test_refuses_invalid_config_with_reason[zone_outer_radii_m-value10] ______
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_outer_radii_m'
+value = (10, 30, inf)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+_____ test_refuses_invalid_config_with_reason[zone_outer_radii_m-value11] ______
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_outer_radii_m'
+value = (True, 30, 50)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+_____ test_refuses_invalid_config_with_reason[zone_outer_radii_m-value12] ______
+
+api = <module 'topology_notebook_under_test'>, field = 'zone_outer_radii_m'
+value = (10, 30)
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+        with pytest.raises(ValueError, match='.+'):
+>           api.build_topology(config)
+
+tests/test_topology_notebook.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = TopologyConfig(donor=FixedNodeConfig(node_id='Donor-1', position=Position2D(x_m=120, y_m=-120)), iab_nodes=(FixedNodeC...Position2D(x_m=180, y_m=120))), zone_outer_radii_m=(10, 30), zone_tag_counts=(10, 13, 7), min_tags_per_node=2, seed=42)
+
+>   ???
+E   IndexError: tuple index out of range
+
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:15: IndexError
+______________ test_refuses_invalid_config_with_reason[seed-True] ______________
+
+api = <module 'topology_notebook_under_test'>, field = 'seed', value = True
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+______________ test_refuses_invalid_config_with_reason[seed-4.2] _______________
+
+api = <module 'topology_notebook_under_test'>, field = 'seed', value = 4.2
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+______________ test_refuses_invalid_config_with_reason[seed-None] ______________
+
+api = <module 'topology_notebook_under_test'>, field = 'seed', value = None
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+_________ test_refuses_invalid_config_with_reason[min_tags_per_node-1] _________
+
+api = <module 'topology_notebook_under_test'>, field = 'min_tags_per_node'
+value = 1
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+_______ test_refuses_invalid_config_with_reason[min_tags_per_node-True] ________
+
+api = <module 'topology_notebook_under_test'>, field = 'min_tags_per_node'
+value = True
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+________ test_refuses_invalid_config_with_reason[min_tags_per_node-2.5] ________
+
+api = <module 'topology_notebook_under_test'>, field = 'min_tags_per_node'
+value = 2.5
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+        with pytest.raises(ValueError, match='.+'):
+>           api.build_topology(config)
+
+tests/test_topology_notebook.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = TopologyConfig(donor=FixedNodeConfig(node_id='Donor-1', position=Position2D(x_m=120, y_m=-120)), iab_nodes=(FixedNodeC..._m=180, y_m=120))), zone_outer_radii_m=(10.0, 30.0, 50.0), zone_tag_counts=(10, 13, 7), min_tags_per_node=2.5, seed=42)
+
+>   ???
+E   TypeError: 'float' object cannot be interpreted as an integer
+
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:8: TypeError
+__________ test_refuses_invalid_config_with_reason[iab_nodes-value19] __________
+
+api = <module 'topology_notebook_under_test'>, field = 'iab_nodes', value = ()
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+        with pytest.raises(ValueError, match='.+'):
+>           api.build_topology(config)
+
+tests/test_topology_notebook.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:10: in build_topology
+    ???
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:10: in <genexpr>
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <random.Random object at 0x5d6f9eebc940>, seq = ()
+
+    def choice(self, seq):
+        """Choose a random element from a non-empty sequence."""
+    
+        # As an accommodation for NumPy, we don't use "if not seq"
+        # because bool(numpy.array()) raises a ValueError.
+        if not len(seq):
+>           raise IndexError('Cannot choose from an empty sequence')
+E           IndexError: Cannot choose from an empty sequence
+
+../../miniforge3/lib/python3.12/random.py:347: IndexError
+___________ test_refuses_invalid_config_with_reason[iab_nodes-None] ____________
+
+api = <module 'topology_notebook_under_test'>, field = 'iab_nodes', value = None
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+        with pytest.raises(ValueError, match='.+'):
+>           api.build_topology(config)
+
+tests/test_topology_notebook.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = TopologyConfig(donor=FixedNodeConfig(node_id='Donor-1', position=Position2D(x_m=120, y_m=-120)), iab_nodes=None, zone_outer_radii_m=(10.0, 30.0, 50.0), zone_tag_counts=(10, 13, 7), min_tags_per_node=2, seed=42)
+
+>   ???
+E   TypeError: 'NoneType' object is not iterable
+
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:8: TypeError
+_____________ test_refuses_invalid_config_with_reason[donor-None] ______________
+
+api = <module 'topology_notebook_under_test'>, field = 'donor', value = None
+
+    @pytest.mark.parametrize('field,value', [
+        ('zone_tag_counts', (9, 0, 0)), ('zone_tag_counts', (0, 0, 0)),
+        ('zone_tag_counts', (-1, 20, 11)), ('zone_tag_counts', (10.5, 13, 7)),
+        ('zone_tag_counts', (True, 13, 7)), ('zone_tag_counts', (10, 13)),
+        ('zone_tag_counts', None), ('zone_outer_radii_m', (0, 30, 50)),
+        ('zone_outer_radii_m', (30, 10, 50)), ('zone_outer_radii_m', (10, 10, 50)),
+        ('zone_outer_radii_m', (10, 30, float('inf'))), ('zone_outer_radii_m', (True, 30, 50)),
+        ('zone_outer_radii_m', (10, 30)), ('seed', True), ('seed', 4.2),
+        ('seed', None), ('min_tags_per_node', 1), ('min_tags_per_node', True),
+        ('min_tags_per_node', 2.5), ('iab_nodes', ()), ('iab_nodes', None), ('donor', None),
+    ])
+    def test_refuses_invalid_config_with_reason(api, field, value):
+        config = replace(api.example_config(), **{field: value})
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:70: Failed
+_____________________ test_refuses_wrong_config_type[None] _____________________
+
+api = <module 'topology_notebook_under_test'>, config = None
+
+    @pytest.mark.parametrize('config', [None, {}, 'config'])
+    def test_refuses_wrong_config_type(api, config):
+        with pytest.raises(ValueError, match='config'):
+>           api.build_topology(config)
+
+tests/test_topology_notebook.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = None
+
+>   ???
+E   AttributeError: 'NoneType' object has no attribute 'seed'
+
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:3: AttributeError
+___________________ test_refuses_wrong_config_type[config1] ____________________
+
+api = <module 'topology_notebook_under_test'>, config = {}
+
+    @pytest.mark.parametrize('config', [None, {}, 'config'])
+    def test_refuses_wrong_config_type(api, config):
+        with pytest.raises(ValueError, match='config'):
+>           api.build_topology(config)
+
+tests/test_topology_notebook.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = {}
+
+>   ???
+E   AttributeError: 'dict' object has no attribute 'seed'
+
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:3: AttributeError
+____________________ test_refuses_wrong_config_type[config] ____________________
+
+api = <module 'topology_notebook_under_test'>, config = 'config'
+
+    @pytest.mark.parametrize('config', [None, {}, 'config'])
+    def test_refuses_wrong_config_type(api, config):
+        with pytest.raises(ValueError, match='config'):
+>           api.build_topology(config)
+
+tests/test_topology_notebook.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = 'config'
+
+>   ???
+E   AttributeError: 'str' object has no attribute 'seed'
+
+/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb#builder:3: AttributeError
+________ test_refuses_duplicate_ids_and_invalid_coordinates[-position0] ________
+
+api = <module 'topology_notebook_under_test'>, node_id = '', position = (0, 0)
+
+    @pytest.mark.parametrize('node_id,position', [
+        ('', (0, 0)), (' ', (0, 0)), (None, (0, 0)), ('Node-2', (0, 0)),
+        ('Donor-1', (0, 0)), ('Node-1', (float('nan'), 0)),
+        ('Node-1', (0, float('inf'))), ('Node-1', (True, 0)),
+    ])
+    def test_refuses_duplicate_ids_and_invalid_coordinates(api, node_id, position):
+        config = api.example_config()
+        bad_node = api.FixedNodeConfig(node_id, api.Position2D(*position))
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:88: Failed
+_______ test_refuses_duplicate_ids_and_invalid_coordinates[ -position1] ________
+
+api = <module 'topology_notebook_under_test'>, node_id = ' ', position = (0, 0)
+
+    @pytest.mark.parametrize('node_id,position', [
+        ('', (0, 0)), (' ', (0, 0)), (None, (0, 0)), ('Node-2', (0, 0)),
+        ('Donor-1', (0, 0)), ('Node-1', (float('nan'), 0)),
+        ('Node-1', (0, float('inf'))), ('Node-1', (True, 0)),
+    ])
+    def test_refuses_duplicate_ids_and_invalid_coordinates(api, node_id, position):
+        config = api.example_config()
+        bad_node = api.FixedNodeConfig(node_id, api.Position2D(*position))
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:88: Failed
+______ test_refuses_duplicate_ids_and_invalid_coordinates[None-position2] ______
+
+api = <module 'topology_notebook_under_test'>, node_id = None, position = (0, 0)
+
+    @pytest.mark.parametrize('node_id,position', [
+        ('', (0, 0)), (' ', (0, 0)), (None, (0, 0)), ('Node-2', (0, 0)),
+        ('Donor-1', (0, 0)), ('Node-1', (float('nan'), 0)),
+        ('Node-1', (0, float('inf'))), ('Node-1', (True, 0)),
+    ])
+    def test_refuses_duplicate_ids_and_invalid_coordinates(api, node_id, position):
+        config = api.example_config()
+        bad_node = api.FixedNodeConfig(node_id, api.Position2D(*position))
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:88: Failed
+_____ test_refuses_duplicate_ids_and_invalid_coordinates[Node-2-position3] _____
+
+api = <module 'topology_notebook_under_test'>, node_id = 'Node-2'
+position = (0, 0)
+
+    @pytest.mark.parametrize('node_id,position', [
+        ('', (0, 0)), (' ', (0, 0)), (None, (0, 0)), ('Node-2', (0, 0)),
+        ('Donor-1', (0, 0)), ('Node-1', (float('nan'), 0)),
+        ('Node-1', (0, float('inf'))), ('Node-1', (True, 0)),
+    ])
+    def test_refuses_duplicate_ids_and_invalid_coordinates(api, node_id, position):
+        config = api.example_config()
+        bad_node = api.FixedNodeConfig(node_id, api.Position2D(*position))
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:88: Failed
+____ test_refuses_duplicate_ids_and_invalid_coordinates[Donor-1-position4] _____
+
+api = <module 'topology_notebook_under_test'>, node_id = 'Donor-1'
+position = (0, 0)
+
+    @pytest.mark.parametrize('node_id,position', [
+        ('', (0, 0)), (' ', (0, 0)), (None, (0, 0)), ('Node-2', (0, 0)),
+        ('Donor-1', (0, 0)), ('Node-1', (float('nan'), 0)),
+        ('Node-1', (0, float('inf'))), ('Node-1', (True, 0)),
+    ])
+    def test_refuses_duplicate_ids_and_invalid_coordinates(api, node_id, position):
+        config = api.example_config()
+        bad_node = api.FixedNodeConfig(node_id, api.Position2D(*position))
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:88: Failed
+_____ test_refuses_duplicate_ids_and_invalid_coordinates[Node-1-position5] _____
+
+api = <module 'topology_notebook_under_test'>, node_id = 'Node-1'
+position = (nan, 0)
+
+    @pytest.mark.parametrize('node_id,position', [
+        ('', (0, 0)), (' ', (0, 0)), (None, (0, 0)), ('Node-2', (0, 0)),
+        ('Donor-1', (0, 0)), ('Node-1', (float('nan'), 0)),
+        ('Node-1', (0, float('inf'))), ('Node-1', (True, 0)),
+    ])
+    def test_refuses_duplicate_ids_and_invalid_coordinates(api, node_id, position):
+        config = api.example_config()
+        bad_node = api.FixedNodeConfig(node_id, api.Position2D(*position))
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:88: Failed
+_____ test_refuses_duplicate_ids_and_invalid_coordinates[Node-1-position6] _____
+
+api = <module 'topology_notebook_under_test'>, node_id = 'Node-1'
+position = (0, inf)
+
+    @pytest.mark.parametrize('node_id,position', [
+        ('', (0, 0)), (' ', (0, 0)), (None, (0, 0)), ('Node-2', (0, 0)),
+        ('Donor-1', (0, 0)), ('Node-1', (float('nan'), 0)),
+        ('Node-1', (0, float('inf'))), ('Node-1', (True, 0)),
+    ])
+    def test_refuses_duplicate_ids_and_invalid_coordinates(api, node_id, position):
+        config = api.example_config()
+        bad_node = api.FixedNodeConfig(node_id, api.Position2D(*position))
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:88: Failed
+_____ test_refuses_duplicate_ids_and_invalid_coordinates[Node-1-position7] _____
+
+api = <module 'topology_notebook_under_test'>, node_id = 'Node-1'
+position = (True, 0)
+
+    @pytest.mark.parametrize('node_id,position', [
+        ('', (0, 0)), (' ', (0, 0)), (None, (0, 0)), ('Node-2', (0, 0)),
+        ('Donor-1', (0, 0)), ('Node-1', (float('nan'), 0)),
+        ('Node-1', (0, float('inf'))), ('Node-1', (True, 0)),
+    ])
+    def test_refuses_duplicate_ids_and_invalid_coordinates(api, node_id, position):
+        config = api.example_config()
+        bad_node = api.FixedNodeConfig(node_id, api.Position2D(*position))
+>       with pytest.raises(ValueError, match='.+'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:88: Failed
+_____________ test_refuses_overlapping_or_touching_node_regions[0] _____________
+
+api = <module 'topology_notebook_under_test'>, separation = 0
+
+    @pytest.mark.parametrize('separation', [0, 99.999, 100])
+    def test_refuses_overlapping_or_touching_node_regions(api, separation):
+        config = api.example_config()
+        node = replace(config.iab_nodes[1], position=api.Position2D(separation, 0))
+>       with pytest.raises(ValueError, match='overlap|touch'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:96: Failed
+__________ test_refuses_overlapping_or_touching_node_regions[99.999] ___________
+
+api = <module 'topology_notebook_under_test'>, separation = 99.999
+
+    @pytest.mark.parametrize('separation', [0, 99.999, 100])
+    def test_refuses_overlapping_or_touching_node_regions(api, separation):
+        config = api.example_config()
+        node = replace(config.iab_nodes[1], position=api.Position2D(separation, 0))
+>       with pytest.raises(ValueError, match='overlap|touch'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:96: Failed
+____________ test_refuses_overlapping_or_touching_node_regions[100] ____________
+
+api = <module 'topology_notebook_under_test'>, separation = 100
+
+    @pytest.mark.parametrize('separation', [0, 99.999, 100])
+    def test_refuses_overlapping_or_touching_node_regions(api, separation):
+        config = api.example_config()
+        node = replace(config.iab_nodes[1], position=api.Position2D(separation, 0))
+>       with pytest.raises(ValueError, match='overlap|touch'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_topology_notebook.py:96: Failed
+_______________ test_all_positions_match_owner_and_assigned_ring _______________
+
+api = <module 'topology_notebook_under_test'>
+
+    def test_all_positions_match_owner_and_assigned_ring(api):
+        for seed in (0, 1, 42, -7, 123456):
+            config = api.example_config(seed)
+            nodes = {n.node_id: n for n in config.iab_nodes}
+            result = api.build_topology(config)
+            for tag in result.tags:
+                centre = nodes[tag.parent_node_id].position
+                distance = math.hypot(tag.position.x_m - centre.x_m, tag.position.y_m - centre.y_m)
+>               assert api.classify_distance(distance, config.zone_outer_radii_m) == tag.zone
+                       ^^^^^^^^^^^^^^^^^^^^^
+E               AttributeError: module 'topology_notebook_under_test' has no attribute 'classify_distance'
+
+tests/test_topology_notebook.py:114: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_topology_notebook.py::test_classifies_horizontal_distance_at_exclusive_inner_boundaries[0.001-NEAR]
+FAILED tests/test_topology_notebook.py::test_classifies_horizontal_distance_at_exclusive_inner_boundaries[9.999-NEAR]
+FAILED tests/test_topology_notebook.py::test_classifies_horizontal_distance_at_exclusive_inner_boundaries[10-NEAR]
+FAILED tests/test_topology_notebook.py::test_classifies_horizontal_distance_at_exclusive_inner_boundaries[10.001-MID]
+FAILED tests/test_topology_notebook.py::test_classifies_horizontal_distance_at_exclusive_inner_boundaries[29.999-MID]
+FAILED tests/test_topology_notebook.py::test_classifies_horizontal_distance_at_exclusive_inner_boundaries[30-MID]
+FAILED tests/test_topology_notebook.py::test_classifies_horizontal_distance_at_exclusive_inner_boundaries[30.001-FAR]
+FAILED tests/test_topology_notebook.py::test_classifies_horizontal_distance_at_exclusive_inner_boundaries[49.999-FAR]
+FAILED tests/test_topology_notebook.py::test_classifies_horizontal_distance_at_exclusive_inner_boundaries[50-FAR]
+FAILED tests/test_topology_notebook.py::test_rejects_distance_outside_deployment[0]
+FAILED tests/test_topology_notebook.py::test_rejects_distance_outside_deployment[-1]
+FAILED tests/test_topology_notebook.py::test_rejects_distance_outside_deployment[50.001]
+FAILED tests/test_topology_notebook.py::test_rejects_distance_outside_deployment[inf]
+FAILED tests/test_topology_notebook.py::test_rejects_distance_outside_deployment[nan]
+FAILED tests/test_topology_notebook.py::test_rejects_distance_outside_deployment[True]
+FAILED tests/test_topology_notebook.py::test_rejects_distance_outside_deployment[None]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_tag_counts-value0]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_tag_counts-value1]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_tag_counts-value2]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_tag_counts-value3]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_tag_counts-value4]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_tag_counts-value5]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_tag_counts-None]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_outer_radii_m-value7]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_outer_radii_m-value8]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_outer_radii_m-value9]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_outer_radii_m-value10]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_outer_radii_m-value11]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[zone_outer_radii_m-value12]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[seed-True]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[seed-4.2]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[seed-None]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[min_tags_per_node-1]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[min_tags_per_node-True]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[min_tags_per_node-2.5]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[iab_nodes-value19]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[iab_nodes-None]
+FAILED tests/test_topology_notebook.py::test_refuses_invalid_config_with_reason[donor-None]
+FAILED tests/test_topology_notebook.py::test_refuses_wrong_config_type[None]
+FAILED tests/test_topology_notebook.py::test_refuses_wrong_config_type[config1]
+FAILED tests/test_topology_notebook.py::test_refuses_wrong_config_type[config]
+FAILED tests/test_topology_notebook.py::test_refuses_duplicate_ids_and_invalid_coordinates[-position0]
+FAILED tests/test_topology_notebook.py::test_refuses_duplicate_ids_and_invalid_coordinates[ -position1]
+FAILED tests/test_topology_notebook.py::test_refuses_duplicate_ids_and_invalid_coordinates[None-position2]
+FAILED tests/test_topology_notebook.py::test_refuses_duplicate_ids_and_invalid_coordinates[Node-2-position3]
+FAILED tests/test_topology_notebook.py::test_refuses_duplicate_ids_and_invalid_coordinates[Donor-1-position4]
+FAILED tests/test_topology_notebook.py::test_refuses_duplicate_ids_and_invalid_coordinates[Node-1-position5]
+FAILED tests/test_topology_notebook.py::test_refuses_duplicate_ids_and_invalid_coordinates[Node-1-position6]
+FAILED tests/test_topology_notebook.py::test_refuses_duplicate_ids_and_invalid_coordinates[Node-1-position7]
+FAILED tests/test_topology_notebook.py::test_refuses_overlapping_or_touching_node_regions[0]
+FAILED tests/test_topology_notebook.py::test_refuses_overlapping_or_touching_node_regions[99.999]
+FAILED tests/test_topology_notebook.py::test_refuses_overlapping_or_touching_node_regions[100]
+FAILED tests/test_topology_notebook.py::test_all_positions_match_owner_and_assigned_ring
+53 failed, 5 passed in 0.16s

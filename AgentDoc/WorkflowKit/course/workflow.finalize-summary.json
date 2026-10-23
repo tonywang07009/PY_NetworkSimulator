@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/home/tonywang/Agent_workflow/course/workflow.archify.json",
+    "sha256": "49130c6ca681acf12b430408a8fbcc44af0ccca8edef2acf7ba6ef3a12e11e08",
+    "bytes": 6494
+  },
+  "artifact": {
+    "path": "/home/tonywang/Agent_workflow/course/workflow.html",
+    "sha256": "6d97638a766724be18afdb36dc1e0cb70126a8b76b59a8a12d98269f4031f444",
+    "bytes": 832727
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "fail"
+  },
+  "failedStage": "browser-check",
+  "diagnostics": [
+    {
+      "code": "viewer/evidence-path-conflict",
+      "severity": "error",
+      "message": "browser-check will not replace the existing unowned evidence path \"/home/tonywang/Agent_workflow/course/workflow.browser-check.json\".",
+      "subject": {
+        "artifact": "/home/tonywang/Agent_workflow/course/workflow.html",
+        "evidencePath": "/home/tonywang/Agent_workflow/course/workflow.browser-check.json"
+      },
+      "evidence": {
+        "reason": {
+          "code": "ownership-artifact-mismatch"
+        }
+      },
+      "supportedFixes": [
+        "move the conflicting file aside, or choose a separate --out-dir, then rerun browser-check"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/home/tonywang/Agent_workflow/course/workflow.finalize.json",
+    "summaryReceipt": "/home/tonywang/Agent_workflow/course/workflow.finalize-summary.json",
+    "browserCheckReceipt": "/home/tonywang/Agent_workflow/course/workflow.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.1.0",
+    "availableVersion": "3.1.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-18T10:52:37.116Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 416
+}

@@ -1,0 +1,12 @@
+{
+  "notebook": "notebooks/01_iab_topology.ipynb",
+  "code_cells": 11,
+  "code_payload_sha256": "d68e1ef2354838f342ee4ed5e471a9ed0c7eeb08826e4433182efc3e8759cd05",
+  "formal_documents": 10,
+  "requirements": 7,
+  "scenarios": 14,
+  "spec_sync": "identical requirement bodies",
+  "archive": "not-moved",
+  "issue": "not-published",
+  "pr": "local-draft"
+}

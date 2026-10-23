@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "IAB 拓撲模組：Notebook 原型與驗收架構（實作規劃）",
+    "locale": "zh-TW",
+    "output": ".archify/architecture-iab-topology-20261023-131337/iab-topology.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "settings",
+      "type": "frontend",
+      "label": "Notebook 設定",
+      "sublabel": "座標／三區配額／seed",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        240,
+        76
+      ],
+      "tag": "設定 cell"
+    },
+    {
+      "id": "validate",
+      "type": "backend",
+      "label": "Config 驗證",
+      "sublabel": "數量／半徑／ID／不重疊",
+      "pos": [
+        400,
+        40
+      ],
+      "size": [
+        240,
+        76
+      ],
+      "tag": "非法設定明確拒絕"
+    },
+    {
+      "id": "build",
+      "type": "backend",
+      "label": "拓撲生成器",
+      "sublabel": "build_topology(config)",
+      "pos": [
+        760,
+        40
+      ],
+      "size": [
+        270,
+        76
+      ],
+      "tag": "局部 RNG；有限步驟"
+    },
+    {
+      "id": "snapshot",
+      "type": "backend",
+      "label": "不可變拓撲快照",
+      "sublabel": "TopologySnapshot",
+      "pos": [
+        760,
+        240
+      ],
+      "size": [
+        270,
+        76
+      ],
+      "tag": "config＋UEs＋Tags"
+    },
+    {
+      "id": "checks",
+      "type": "backend",
+      "label": "情境測試",
+      "sublabel": "配額／距離／歸屬／重現",
+      "pos": [
+        400,
+        240
+      ],
+      "size": [
+        240,
+        76
+      ],
+      "tag": "未通過則修正"
+    },
+    {
+      "id": "present",
+      "type": "frontend",
+      "label": "表格與部署圖",
+      "sublabel": "同一快照；不重新抽樣",
+      "pos": [
+        40,
+        240
+      ],
+      "size": [
+        240,
+        76
+      ],
+      "tag": "UE 僅顯示邏輯歸屬"
+    },
+    {
+      "id": "human",
+      "type": "external",
+      "label": "人工程式導讀",
+      "sublabel": "輸入 → 處理 → 輸出",
+      "pos": [
+        40,
+        440
+      ],
+      "size": [
+        240,
+        76
+      ],
+      "tag": "由使用者理解與接受"
+    },
+    {
+      "id": "extract",
+      "type": "backend",
+      "label": "接受後抽離 .py",
+      "sublabel": "共用契約集中單一檔案",
+      "pos": [
+        400,
+        440
+      ],
+      "size": [
+        240,
+        76
+      ],
+      "tag": "原情境再驗證等價性"
+    }
+  ],
+  "connections": [
+    {
+      "id": "settings-validate",
+      "from": "settings",
+      "to": "validate",
+      "label": "建立 Config"
+    },
+    {
+      "id": "validate-build",
+      "from": "validate",
+      "to": "build",
+      "label": "合法設定"
+    },
+    {
+      "id": "build-snapshot",
+      "from": "build",
+      "to": "snapshot",
+      "label": "生成並核對"
+    },
+    {
+      "id": "snapshot-checks",
+      "from": "snapshot",
+      "to": "checks",
+      "label": "驗證快照"
+    },
+    {
+      "id": "checks-present",
+      "from": "checks",
+      "to": "present",
+      "label": "通過後呈現"
+    },
+    {
+      "id": "present-human",
+      "from": "present",
+      "to": "human",
+      "label": "程式＋情境證據"
+    },
+    {
+      "id": "human-extract",
+      "from": "human",
+      "to": "extract",
+      "label": "人工接受後"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "已確認的拓撲模型",
+      "items": [
+        "1 Donor 直連 5 Nodes；各 1 UE，Node 整合 Reader。",
+        "平面水平距離、位置靜態；UE 僅 ID 與 Node 歸屬，無物理座標。",
+        "近／中／遠外邊界 10／30／50 m；五個部署區域不重疊。",
+        "30 Tags、10／13／7 是可配置示例；不是每 Node 各 30 個。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "生成器內部流程",
+      "items": [
+        "先依 seed 隨機分配 Node／分區，精確保留全場三區配額。",
+        "每 Node 至少 2 個；總數不足明確拒絕，不無限重抽。",
+        "在所屬 Node 的環帶按面積均勻抽樣，再建立靜態快照。",
+        "保存完整設定與結果；不改全域 RNG，不受 Policy 抽樣影響。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Config／DTO 集中管理",
+      "items": [
+        "Notebook 宣告 cell：Position2D、FixedNodeConfig、TopologyConfig。",
+        "UERecord、TagRecord、TopologySnapshot 與必要 TagZone Enum。",
+        "使用不可變資料；距離、連線與統計由快照推導，避免重複真值。",
+        "人工接受後集中至單一共用 .py；圖中型別與入口均為設計草案。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "本圖的證據與後續邊界",
+      "items": [
+        "這是即將實作的設計圖，尚無 Notebook／模擬器測試成果。",
+        "設計依據：docs/architecture/iab-topology-design.md 與訪談紀錄。",
+        "本次不計算 SNR／BER／採能；Channel／EH 與資源時序後續實作。",
+        "近區 SNR 優於遠區、自身 CW 自干擾完美消除，保留為 Channel 的研究約束。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+E                                                                        [100%]
+==================================== ERRORS ====================================
+____ ERROR at setup of test_builds_exact_global_quotas_and_one_ue_per_node _____
+
+    @pytest.fixture(scope='module')
+    def api():
+>       notebook = json.loads(NOTEBOOK.read_text())
+                              ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_topology_notebook.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../miniforge3/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/01_iab_topology.ipynb'
+
+../../miniforge3/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ============================
+ERROR tests/test_topology_notebook.py::test_builds_exact_global_quotas_and_one_ue_per_node
+1 error in 0.02s

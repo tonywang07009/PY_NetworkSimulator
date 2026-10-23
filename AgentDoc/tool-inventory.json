@@ -1,0 +1,75 @@
+{
+  "verified_date": "2026-10-15",
+  "versions": {
+    "openspec": "1.4.1",
+    "rtk": "0.42.1",
+    "symdex": "0.1.26",
+    "codex": "0.162.1",
+    "ponytail_plugin": "5.2.0",
+    "archify": {
+      "tag": "v3.1.0",
+      "commit": "1c2b42d660e4a7571813fb43839c79e3e9ca7720"
+    }
+  },
+  "newly_installed": [
+    "archify skill"
+  ],
+  "reused": [
+    "openspec CLI",
+    "rtk CLI",
+    "symdex CLI/MCP",
+    "ponytail plugin",
+    "filesystem MCP binary"
+  ],
+  "mcp_registration_scope": "user ~/.codex/config.toml",
+  "new_mcp_names": [
+    "symdex-py-networksimulator",
+    "filesystem-py-networksimulator"
+  ],
+  "mcp_configuration": {
+    "filesystem": {
+      "command": "/usr/local/bin/mcp-server-filesystem",
+      "args": [
+        "/home/tonywang/OAI"
+      ]
+    },
+    "symdex": {
+      "command": "/home/tonywang/miniforge3/bin/symdex",
+      "args": [
+        "--state-dir",
+        "/home/tonywang/OAI/Red_cap_openairinterface5g/.symdex",
+        "serve"
+      ]
+    },
+    "markitdown": {
+      "command": "/home/tonywang/miniforge3/envs/mcp/bin/markitdown-mcp"
+    },
+    "openaiDeveloperDocs": {
+      "url": "https://developers.openai.com/mcp"
+    },
+    "symdex-py-networksimulator": {
+      "command": "/home/tonywang/miniforge3/bin/symdex",
+      "args": [
+        "--state-dir",
+        "/home/tonywang/Net_simluation/PY_NetworkSimulator/AgentDoc/tool-state/symdex",
+        "serve"
+      ]
+    },
+    "filesystem-py-networksimulator": {
+      "command": "/usr/local/bin/mcp-server-filesystem",
+      "args": [
+        "/home/tonywang/Net_simluation/PY_NetworkSimulator"
+      ]
+    }
+  },
+  "mcp_smoke_evidence": "AgentDoc/EvenStore/mcp-smoke.json",
+  "boundaries": [
+    "New MCP registration requires a new Codex session to appear in the agent tool catalog.",
+    "No simulator source index built.",
+    "Archify installed; diagram generation and browser verification not performed.",
+    "Markitdown configuration observed; conversion not tested in this setup.",
+    "LLM Wiki desktop application not installed; WikiSkill is a paper reference."
+  ],
+  "mcp_smoke_status": "PASS: initialize/list_tools for both project servers; filesystem allowed-root query passed",
+  "archify_cli_probe": "PASS: guide command returns valid JSON; --version unsupported; version pinned by upstream tag/commit"
+}

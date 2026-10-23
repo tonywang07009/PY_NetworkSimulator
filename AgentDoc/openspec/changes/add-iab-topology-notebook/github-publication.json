@@ -1,0 +1,10 @@
+{
+  "issue_url": "https://github.com/tonywang07009/PY_NetworkSimulator/issues/1",
+  "repo": "tonywang07009/PY_NetworkSimulator",
+  "base": "main",
+  "branch": "feat/iab-topology",
+  "publication_authorized": true,
+  "scope": "current project content including reference and workflow documents",
+  "archive_status": "blocked-by-incomplete-lifecycle-tasks",
+  "merge_verified": false
+}

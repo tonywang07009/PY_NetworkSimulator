@@ -1,0 +1,25 @@
+{
+  "sources": [
+    {
+      "file": "LoRea_SenSys2017_author.pdf",
+      "source_url": "https://uu.diva-portal.org/smash/get/diva2:1163386/FULLTEXT01.pdf",
+      "retrieved_on": "2026-10-23",
+      "bytes": 2536010,
+      "sha256": "f0dc66ec653f0269b64e0c23cc74cbe6d6f6e3522fb1f50fa725acd742659abf"
+    },
+    {
+      "file": "LoRa_Backscatter_IMWUT2017_author.pdf",
+      "source_url": "https://longrange.cs.washington.edu/files/loRaBackscatter.pdf",
+      "retrieved_on": "2026-10-23",
+      "bytes": 2984456,
+      "sha256": "fe9c5f2bbecd68d583fd201ed7fb01b40029bd5bcce06d0bdcc74030f9ea4b0f"
+    },
+    {
+      "file": "Ambient_IoT_Topologies_TCCN2026.pdf",
+      "source_url": "https://aaltodoc.aalto.fi/server/api/core/bitstreams/6ee00c5a-57ae-4f3f-8a68-2674a6ac8662/content",
+      "retrieved_on": "2026-10-23",
+      "bytes": 2346849,
+      "sha256": "0017f53072c74b407e6bc5a588a5ab4970a6366fdc8770c74023c31428b6b352"
+    }
+  ]
+}
