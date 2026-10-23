@@ -1,0 +1,1297 @@
+{
+  "schema_version": 1,
+  "metadata_updated_on": "2026-10-15",
+  "path_base": "ReferDoc/Spec",
+  "metadata_basis": "Transcribed from local Markdown indexes; versions describe local files, not a live latest-version check.",
+  "layer_definition": {
+    "L1": "PHY/RF 與無線資源邊界",
+    "L2": "MAC/RLC/BAP/PDCP",
+    "L3": "RRC、架構、控制介面及核心網服務；此分類是模擬器責任對照，非嚴格 OSI 分層。"
+  },
+  "usage_definition": {
+    "core": "目前設計的主要規範依據",
+    "conditional": "依模擬功能選配",
+    "reference": "需求或 RF 等參考",
+    "study": "Informative TR 研究背景",
+    "supplement": "跨 Release 補充資料"
+  },
+  "query_rules": {
+    "spec_key": "Use exact keys such as TS 38.340; specify TS/TR when a number is ambiguous.",
+    "keyword_key": "English keyword keys are lowercase; unknown keys return no match. Keywords are curated aliases, not full-text search.",
+    "multi_match": "Indexes return arrays because a topic may span several documents.",
+    "paths": "Resolve paths relative to path_base; historical_versions are not default selections.",
+    "authority": "Use this catalog for document routing; check the PDF for normative wording and exact clauses."
+  },
+  "model_boundaries": [
+    "R19 RAN/MAC 為主要基準；TS 23.369、TS 24.369 本地版本為 R20，跨版本映射 [Needs Verification]。",
+    "IAB-DU/Reader 整合、energy harvesting 方程與 fairness/deadline 排程策略屬研究模型。",
+    "TS 38.300 共用一份 PDF；A_IoT 查詢可指向 IAB 目錄。",
+    "JSON 依本地索引整理，沒有建立規範全文或條款索引。"
+  ],
+  "by_domain": {
+    "IAB": [
+      "TS 38.174",
+      "TS 38.175",
+      "TS 38.300",
+      "TS 38.321",
+      "TS 38.322",
+      "TS 38.323",
+      "TS 38.331",
+      "TS 38.340",
+      "TS 38.401",
+      "TS 38.423",
+      "TS 38.470",
+      "TS 38.473",
+      "TS 38.474",
+      "TR 38.874"
+    ],
+    "A_IoT": [
+      "TS 38.300",
+      "TS 38.191",
+      "TS 38.194",
+      "TS 38.291",
+      "TS 38.391",
+      "TS 38.413",
+      "TS 22.369",
+      "TS 23.369",
+      "TS 24.369",
+      "TS 29.369",
+      "TS 33.369",
+      "TR 22.840",
+      "TR 23.700-13",
+      "TR 38.769",
+      "TR 38.848"
+    ]
+  },
+  "by_layer": {
+    "L1": [
+      "TS 38.174",
+      "TS 38.175",
+      "TS 38.300",
+      "TR 38.874",
+      "TS 38.191",
+      "TS 38.194",
+      "TS 38.291",
+      "TR 38.769",
+      "TR 38.848"
+    ],
+    "L3": [
+      "TS 38.300",
+      "TS 38.331",
+      "TS 38.401",
+      "TS 38.423",
+      "TS 38.470",
+      "TS 38.473",
+      "TS 38.474",
+      "TR 38.874",
+      "TS 38.413",
+      "TS 22.369",
+      "TS 23.369",
+      "TS 24.369",
+      "TS 29.369",
+      "TS 33.369",
+      "TR 22.840",
+      "TR 23.700-13"
+    ],
+    "L2": [
+      "TS 38.321",
+      "TS 38.322",
+      "TS 38.323",
+      "TS 38.340",
+      "TR 38.874",
+      "TS 38.391",
+      "TR 38.769",
+      "TR 38.848"
+    ]
+  },
+  "by_keyword": {
+    "rf": [
+      "TS 38.174",
+      "TS 38.191",
+      "TS 38.194"
+    ],
+    "radio requirements": [
+      "TS 38.174",
+      "TS 38.191",
+      "TS 38.194"
+    ],
+    "無線傳輸": [
+      "TS 38.174"
+    ],
+    "接收要求": [
+      "TS 38.174"
+    ],
+    "emc": [
+      "TS 38.175"
+    ],
+    "電磁相容": [
+      "TS 38.175"
+    ],
+    "architecture": [
+      "TS 38.300",
+      "TS 38.401",
+      "TS 23.369",
+      "TR 23.700-13"
+    ],
+    "iab architecture": [
+      "TS 38.300",
+      "TS 38.401"
+    ],
+    "aiot architecture": [
+      "TS 38.300",
+      "TS 23.369",
+      "TR 23.700-13"
+    ],
+    "hard": [
+      "TS 38.300"
+    ],
+    "soft": [
+      "TS 38.300"
+    ],
+    "unavailable": [
+      "TS 38.300"
+    ],
+    "symbol availability": [
+      "TS 38.300"
+    ],
+    "guard symbols": [
+      "TS 38.300",
+      "TS 38.321"
+    ],
+    "split gnb": [
+      "TS 38.300"
+    ],
+    "架構": [
+      "TS 38.300",
+      "TS 38.401"
+    ],
+    "資源可用性": [
+      "TS 38.300"
+    ],
+    "mac": [
+      "TS 38.321",
+      "TS 38.391",
+      "TR 38.769",
+      "TR 38.848"
+    ],
+    "nr mac": [
+      "TS 38.321"
+    ],
+    "timing offset": [
+      "TS 38.321"
+    ],
+    "beam": [
+      "TS 38.321"
+    ],
+    "power control": [
+      "TS 38.321"
+    ],
+    "排程": [
+      "TS 38.321",
+      "TR 38.874",
+      "TS 38.391"
+    ],
+    "時序": [
+      "TS 38.321"
+    ],
+    "rlc": [
+      "TS 38.322"
+    ],
+    "bh-rlc": [
+      "TS 38.322",
+      "TS 38.331",
+      "TS 38.340",
+      "TS 38.401",
+      "TS 38.473"
+    ],
+    "am": [
+      "TS 38.322"
+    ],
+    "um": [
+      "TS 38.322"
+    ],
+    "segmentation": [
+      "TS 38.322",
+      "TS 38.391"
+    ],
+    "reassembly": [
+      "TS 38.322"
+    ],
+    "retransmission": [
+      "TS 38.322"
+    ],
+    "queue": [
+      "TS 38.322",
+      "TS 38.474"
+    ],
+    "重傳": [
+      "TS 38.322"
+    ],
+    "佇列": [
+      "TS 38.322"
+    ],
+    "pdcp": [
+      "TS 38.323"
+    ],
+    "ue bearer": [
+      "TS 38.323"
+    ],
+    "rrc": [
+      "TS 38.331"
+    ],
+    "rrcreconfiguration": [
+      "TS 38.331"
+    ],
+    "bap config": [
+      "TS 38.331",
+      "TS 38.473"
+    ],
+    "bap address": [
+      "TS 38.331"
+    ],
+    "default ul route": [
+      "TS 38.331"
+    ],
+    "組態": [
+      "TS 38.331",
+      "TS 38.473"
+    ],
+    "bap": [
+      "TS 38.340"
+    ],
+    "routing": [
+      "TS 38.340"
+    ],
+    "next hop": [
+      "TS 38.340"
+    ],
+    "flow control": [
+      "TS 38.340"
+    ],
+    "congestion": [
+      "TS 38.340"
+    ],
+    "forwarding": [
+      "TS 38.340"
+    ],
+    "header rewriting": [
+      "TS 38.340"
+    ],
+    "路由": [
+      "TS 38.340"
+    ],
+    "壅塞": [
+      "TS 38.340"
+    ],
+    "流量控制": [
+      "TS 38.340"
+    ],
+    "cu": [
+      "TS 38.401",
+      "TS 38.470"
+    ],
+    "du": [
+      "TS 38.401",
+      "TS 38.470"
+    ],
+    "mt": [
+      "TS 38.401"
+    ],
+    "donor": [
+      "TS 38.401"
+    ],
+    "integration": [
+      "TS 38.401"
+    ],
+    "xnap": [
+      "TS 38.423"
+    ],
+    "xn": [
+      "TS 38.423"
+    ],
+    "migration": [
+      "TS 38.423"
+    ],
+    "inter-donor": [
+      "TS 38.423"
+    ],
+    "inter-cu": [
+      "TS 38.423"
+    ],
+    "topology adaptation": [
+      "TS 38.423"
+    ],
+    "遷移": [
+      "TS 38.423"
+    ],
+    "f1": [
+      "TS 38.470",
+      "TS 38.473",
+      "TS 38.474"
+    ],
+    "transport configuration": [
+      "TS 38.470"
+    ],
+    "f1ap": [
+      "TS 38.473"
+    ],
+    "resource configuration": [
+      "TS 38.473"
+    ],
+    "f1-u": [
+      "TS 38.474"
+    ],
+    "transport": [
+      "TS 38.474"
+    ],
+    "qos": [
+      "TS 38.474",
+      "TR 38.874"
+    ],
+    "latency": [
+      "TS 38.474"
+    ],
+    "iab study": [
+      "TR 38.874"
+    ],
+    "deployment": [
+      "TR 38.874"
+    ],
+    "scheduling": [
+      "TR 38.874"
+    ],
+    "fairness": [
+      "TR 38.874"
+    ],
+    "topology": [
+      "TR 38.874"
+    ],
+    "公平性": [
+      "TR 38.874"
+    ],
+    "tag": [
+      "TS 38.191"
+    ],
+    "device": [
+      "TS 38.191"
+    ],
+    "backscatter": [
+      "TS 38.191",
+      "TS 38.291"
+    ],
+    "標籤": [
+      "TS 38.191"
+    ],
+    "reader": [
+      "TS 38.194"
+    ],
+    "cw": [
+      "TS 38.194"
+    ],
+    "carrier wave": [
+      "TS 38.194"
+    ],
+    "bs": [
+      "TS 38.194"
+    ],
+    "載波": [
+      "TS 38.194"
+    ],
+    "phy": [
+      "TS 38.291",
+      "TR 38.769",
+      "TR 38.848"
+    ],
+    "aiot phy": [
+      "TS 38.291"
+    ],
+    "r2d": [
+      "TS 38.291",
+      "TR 38.769"
+    ],
+    "d2r": [
+      "TS 38.291",
+      "TS 38.391",
+      "TR 38.769"
+    ],
+    "waveform": [
+      "TS 38.291"
+    ],
+    "coding": [
+      "TS 38.291"
+    ],
+    "duration": [
+      "TS 38.291"
+    ],
+    "實體層": [
+      "TS 38.291"
+    ],
+    "aiot mac": [
+      "TS 38.391"
+    ],
+    "paging": [
+      "TS 38.391"
+    ],
+    "cfa": [
+      "TS 38.391"
+    ],
+    "cbra": [
+      "TS 38.391"
+    ],
+    "msg1": [
+      "TS 38.391"
+    ],
+    "msg2": [
+      "TS 38.391"
+    ],
+    "d2r scheduling info": [
+      "TS 38.391"
+    ],
+    "tbs": [
+      "TS 38.391"
+    ],
+    "padding": [
+      "TS 38.391"
+    ],
+    "grant": [
+      "TS 38.391"
+    ],
+    "ngap": [
+      "TS 38.413"
+    ],
+    "inventory": [
+      "TS 38.413"
+    ],
+    "inventory request": [
+      "TS 38.413"
+    ],
+    "inventory report": [
+      "TS 38.413"
+    ],
+    "core signaling": [
+      "TS 38.413",
+      "TS 24.369"
+    ],
+    "service requirements": [
+      "TS 22.369",
+      "TR 22.840"
+    ],
+    "stage 1": [
+      "TS 22.369",
+      "TR 22.840"
+    ],
+    "服務需求": [
+      "TS 22.369",
+      "TR 22.840"
+    ],
+    "core": [
+      "TS 23.369",
+      "TS 29.369",
+      "TR 23.700-13"
+    ],
+    "stage 2": [
+      "TS 23.369"
+    ],
+    "aiotf": [
+      "TS 23.369",
+      "TR 23.700-13"
+    ],
+    "核心網": [
+      "TS 23.369"
+    ],
+    "nas": [
+      "TS 24.369"
+    ],
+    "aiot nas": [
+      "TS 24.369"
+    ],
+    "stage 3": [
+      "TS 24.369",
+      "TS 29.369"
+    ],
+    "data management": [
+      "TS 29.369"
+    ],
+    "service api": [
+      "TS 29.369"
+    ],
+    "security": [
+      "TS 33.369"
+    ],
+    "private network": [
+      "TS 33.369"
+    ],
+    "安全": [
+      "TS 33.369"
+    ],
+    "aiot study": [
+      "TR 22.840",
+      "TR 23.700-13",
+      "TR 38.769",
+      "TR 38.848"
+    ],
+    "ran study": [
+      "TR 38.769",
+      "TR 38.848"
+    ],
+    "topology 2": [
+      "TR 38.769"
+    ],
+    "historical": [
+      "TR 38.848"
+    ]
+  },
+  "documents": {
+    "TS 38.174": {
+      "title": "IAB radio transmission and reception",
+      "type": "TS",
+      "version": "19.2.0",
+      "release": 19,
+      "path": "IAB/TS_138_174_v19.2.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L1"
+      ],
+      "usage": "reference",
+      "keywords": [
+        "rf",
+        "radio requirements",
+        "無線傳輸",
+        "接收要求"
+      ],
+      "scope": "RF/PHY 參考；目前 abstract PHY 模型未驗證設備符合性。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.175": {
+      "title": "IAB Electromagnetic Compatibility",
+      "type": "TS",
+      "version": "19.0.0",
+      "release": 19,
+      "path": "IAB/TS_138_175_v19.0.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L1"
+      ],
+      "usage": "reference",
+      "keywords": [
+        "emc",
+        "電磁相容"
+      ],
+      "scope": "EMC 設備要求，未納入目前執行模型。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.300": {
+      "title": "NR and NG-RAN overall description; Stage 2",
+      "type": "TS",
+      "version": "19.4.0",
+      "release": 19,
+      "path": "IAB/TS_138_300_v19.4.0.pdf",
+      "domains": [
+        "IAB",
+        "A_IoT"
+      ],
+      "layers": [
+        "L1",
+        "L3"
+      ],
+      "usage": "core",
+      "keywords": [
+        "architecture",
+        "iab architecture",
+        "aiot architecture",
+        "hard",
+        "soft",
+        "unavailable",
+        "symbol availability",
+        "guard symbols",
+        "split gnb",
+        "架構",
+        "資源可用性"
+      ],
+      "scope": "跨層架構與資源限制；R19 A-IoT split-gNB 邊界請查原文。",
+      "metadata_sources": [
+        "IAB/README.md",
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TS 38.321": {
+      "title": "NR MAC protocol",
+      "type": "TS",
+      "version": "19.4.0",
+      "release": 19,
+      "path": "IAB/TS_138_321_v19.4.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L2"
+      ],
+      "usage": "core",
+      "keywords": [
+        "mac",
+        "nr mac",
+        "timing offset",
+        "guard symbols",
+        "beam",
+        "power control",
+        "排程",
+        "時序"
+      ],
+      "scope": "IAB MAC 控制效果與資源時序；beam/power 可由研究模型抽象。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.322": {
+      "title": "NR RLC protocol",
+      "type": "TS",
+      "version": "19.3.0",
+      "release": 19,
+      "path": "IAB/TS_138_322_v19.3.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L2"
+      ],
+      "usage": "core",
+      "keywords": [
+        "rlc",
+        "bh-rlc",
+        "am",
+        "um",
+        "segmentation",
+        "reassembly",
+        "retransmission",
+        "queue",
+        "重傳",
+        "佇列"
+      ],
+      "scope": "逐跳 BH-RLC queue、分段重組與重傳行為。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.323": {
+      "title": "NR PDCP protocol",
+      "type": "TS",
+      "version": "19.1.0",
+      "release": 19,
+      "path": "IAB/TS_138_323_v19.1.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L2"
+      ],
+      "usage": "conditional",
+      "keywords": [
+        "pdcp",
+        "ue bearer"
+      ],
+      "scope": "模擬 UE bearer PDCP 時使用；不是 BAP/BH-RLC 最小資料面必要項。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.331": {
+      "title": "NR RRC protocol",
+      "type": "TS",
+      "version": "19.4.0",
+      "release": 19,
+      "path": "IAB/TS_138_331_v19.4.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "core",
+      "keywords": [
+        "rrc",
+        "rrcreconfiguration",
+        "bap config",
+        "bap address",
+        "default ul route",
+        "bh-rlc",
+        "組態"
+      ],
+      "scope": "BAP address/default route 與 BH-RLC 的組態狀態效果。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.340": {
+      "title": "Backhaul Adaptation Protocol",
+      "type": "TS",
+      "version": "19.0.0",
+      "release": 19,
+      "path": "IAB/TS_138_340_v19.0.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L2"
+      ],
+      "usage": "core",
+      "keywords": [
+        "bap",
+        "routing",
+        "next hop",
+        "bh-rlc",
+        "flow control",
+        "congestion",
+        "forwarding",
+        "header rewriting",
+        "路由",
+        "壅塞",
+        "流量控制"
+      ],
+      "scope": "多跳 BAP 轉送、BH-RLC 對映及逐跳 flow control。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.401": {
+      "title": "NG-RAN architecture description",
+      "type": "TS",
+      "version": "19.3.0",
+      "release": 19,
+      "path": "IAB/TS_138_401_v19.3.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "core",
+      "keywords": [
+        "architecture",
+        "iab architecture",
+        "cu",
+        "du",
+        "mt",
+        "donor",
+        "integration",
+        "bh-rlc",
+        "架構"
+      ],
+      "scope": "IAB 實體責任、整合及 BH-RLC 建立流程。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.423": {
+      "title": "Xn Application Protocol",
+      "type": "TS",
+      "version": "19.4.0",
+      "release": 19,
+      "path": "IAB/TS_138_423_v19.4.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "conditional",
+      "keywords": [
+        "xnap",
+        "xn",
+        "migration",
+        "inter-donor",
+        "inter-cu",
+        "topology adaptation",
+        "遷移"
+      ],
+      "scope": "跨 donor/CU migration 時納入；固定單一 donor 模型可略。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.470": {
+      "title": "F1 general aspects and principles",
+      "type": "TS",
+      "version": "19.2.0",
+      "release": 19,
+      "path": "IAB/TS_138_470_v19.2.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "core",
+      "keywords": [
+        "f1",
+        "cu",
+        "du",
+        "transport configuration"
+      ],
+      "scope": "CU/DU F1 介面框架。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.473": {
+      "title": "F1 Application Protocol",
+      "type": "TS",
+      "version": "19.3.0",
+      "release": 19,
+      "path": "IAB/TS_138_473_v19.3.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "core",
+      "keywords": [
+        "f1",
+        "f1ap",
+        "bap config",
+        "bh-rlc",
+        "resource configuration",
+        "組態"
+      ],
+      "scope": "F1AP 訊息與 IAB 組態 IE；本地版本按 ETSI 可下載 PDF 收錄。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.474": {
+      "title": "F1 data transport",
+      "type": "TS",
+      "version": "19.0.0",
+      "release": 19,
+      "path": "IAB/TS_138_474_v19.0.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "conditional",
+      "keywords": [
+        "f1",
+        "f1-u",
+        "transport",
+        "qos",
+        "latency",
+        "queue"
+      ],
+      "scope": "追蹤 F1-U 傳輸細節時使用；可採明確標註的邏輯流抽象。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TR 38.874": {
+      "title": "Study on integrated access and backhaul",
+      "type": "TR",
+      "version": "16.0.0",
+      "release": 16,
+      "path": "IAB/TR_138_874_v16.0.0.pdf",
+      "domains": [
+        "IAB"
+      ],
+      "layers": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "usage": "study",
+      "keywords": [
+        "iab study",
+        "deployment",
+        "scheduling",
+        "qos",
+        "fairness",
+        "topology",
+        "排程",
+        "公平性"
+      ],
+      "scope": "IAB 研究背景；TR 不構成 normative requirement。",
+      "metadata_sources": [
+        "IAB/README.md"
+      ]
+    },
+    "TS 38.191": {
+      "title": "Ambient IoT device radio transmission and reception",
+      "type": "TS",
+      "version": "19.0.0",
+      "release": 19,
+      "path": "A_IoT/TS_138_191_v19.0.0.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L1"
+      ],
+      "usage": "reference",
+      "keywords": [
+        "rf",
+        "tag",
+        "device",
+        "radio requirements",
+        "backscatter",
+        "標籤"
+      ],
+      "scope": "Tag/device RF 需求參考，未由 MAC 模擬器驗證。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TS 38.194": {
+      "title": "Ambient IoT BS and CW node radio transmission and reception",
+      "type": "TS",
+      "version": "19.0.0",
+      "release": 19,
+      "path": "A_IoT/TS_138_194_v19.0.0.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L1"
+      ],
+      "usage": "reference",
+      "keywords": [
+        "rf",
+        "reader",
+        "cw",
+        "carrier wave",
+        "bs",
+        "radio requirements",
+        "載波"
+      ],
+      "scope": "Reader/BS/CW radio 要求，未由抽象 PHY 驗證。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TS 38.291": {
+      "title": "Ambient IoT physical layer",
+      "type": "TS",
+      "version": "19.3.0",
+      "release": 19,
+      "path": "A_IoT/TS38291_PHY.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L1"
+      ],
+      "usage": "core",
+      "keywords": [
+        "phy",
+        "aiot phy",
+        "r2d",
+        "d2r",
+        "backscatter",
+        "waveform",
+        "coding",
+        "duration",
+        "實體層"
+      ],
+      "scope": "A-IoT PHY 傳輸格式；模擬器可抽象時間、解碼與接收 bits。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TS 38.391": {
+      "title": "Ambient IoT MAC protocol",
+      "type": "TS",
+      "version": "19.4.0",
+      "release": 19,
+      "path": "A_IoT/TS_138_391_v19.4.0.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L2"
+      ],
+      "usage": "core",
+      "keywords": [
+        "mac",
+        "aiot mac",
+        "paging",
+        "cfa",
+        "cbra",
+        "msg1",
+        "msg2",
+        "d2r",
+        "d2r scheduling info",
+        "tbs",
+        "segmentation",
+        "padding",
+        "grant",
+        "排程"
+      ],
+      "scope": "Paging/CFA/CBRA 與 D2R MAC；Msg2 的 24-bit Scheduling Info 由 1–8 個 ID entries 共用。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ],
+      "historical_versions": [
+        {
+          "version": "19.3.0",
+          "release": 19,
+          "path": "A_IoT/TS_138_391_v19.3.0_historical.pdf"
+        }
+      ]
+    },
+    "TS 38.413": {
+      "title": "NG Application Protocol",
+      "type": "TS",
+      "version": "19.4.0",
+      "release": 19,
+      "path": "A_IoT/TS_138_413_v19.4.0.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "conditional",
+      "keywords": [
+        "ngap",
+        "inventory",
+        "inventory request",
+        "inventory report",
+        "core signaling"
+      ],
+      "scope": "模擬 gNB/core A-IoT 服務程序時使用；service API 抽象需另行標註。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TS 22.369": {
+      "title": "Service requirements for ambient power-enabled IoT",
+      "type": "TS",
+      "version": "19.3.0",
+      "release": 19,
+      "path": "A_IoT/TS_22_369_v19.3.0.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "reference",
+      "keywords": [
+        "service requirements",
+        "stage 1",
+        "服務需求"
+      ],
+      "scope": "Stage 1 需求；原檔 TR22369.pdf 實際為 TS 22.369。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TS 23.369": {
+      "title": "Architecture support for ambient power-enabled IoT; Stage 2",
+      "type": "TS",
+      "version": "20.0.0",
+      "release": 20,
+      "path": "A_IoT/TS23369.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "supplement",
+      "keywords": [
+        "architecture",
+        "aiot architecture",
+        "core",
+        "stage 2",
+        "aiotf",
+        "核心網"
+      ],
+      "scope": "Release 20 核心網補充；與 R19 RAN profile 的映射 [Needs Verification]。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TS 24.369": {
+      "title": "Ambient IoT NAS protocol for 5GS; Stage 3",
+      "type": "TS",
+      "version": "20.0.0",
+      "release": 20,
+      "path": "A_IoT/TS24369.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "supplement",
+      "keywords": [
+        "nas",
+        "aiot nas",
+        "stage 3",
+        "core signaling"
+      ],
+      "scope": "Release 20 NAS；與 R19 RAN profile 的映射 [Needs Verification]。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TS 29.369": {
+      "title": "Ambient IoT Data Management Services; Stage 3",
+      "type": "TS",
+      "version": "19.3.0",
+      "release": 19,
+      "path": "A_IoT/TS29369.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "reference",
+      "keywords": [
+        "data management",
+        "service api",
+        "stage 3",
+        "core"
+      ],
+      "scope": "核心網 data-management services 規範參考。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TS 33.369": {
+      "title": "Security aspects of AIoT services for isolated private networks",
+      "type": "TS",
+      "version": "19.3.0",
+      "release": 19,
+      "path": "A_IoT/TS33369.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "conditional",
+      "keywords": [
+        "security",
+        "private network",
+        "安全"
+      ],
+      "scope": "模擬 isolated private network A-IoT 安全程序時使用。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TR 22.840": {
+      "title": "Study on ambient power-enabled Internet of Things",
+      "type": "TR",
+      "version": "19.0.0",
+      "release": 19,
+      "path": "A_IoT/TR22840.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "study",
+      "keywords": [
+        "service requirements",
+        "aiot study",
+        "stage 1",
+        "服務需求"
+      ],
+      "scope": "服務與需求研究背景，informative。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TR 23.700-13": {
+      "title": "Study on architecture support of ambient power-enabled IoT",
+      "type": "TR",
+      "version": "19.0.0",
+      "release": 19,
+      "path": "A_IoT/TR23700.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L3"
+      ],
+      "usage": "study",
+      "keywords": [
+        "architecture",
+        "aiot architecture",
+        "aiot study",
+        "core",
+        "aiotf"
+      ],
+      "scope": "架構方案研究；與後續 TS 23.369 分開判讀。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TR 38.769": {
+      "title": "Study on solutions for Ambient IoT in NR",
+      "type": "TR",
+      "version": "19.0.0",
+      "release": 19,
+      "path": "A_IoT/TR38769.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L1",
+        "L2"
+      ],
+      "usage": "study",
+      "keywords": [
+        "aiot study",
+        "ran study",
+        "phy",
+        "mac",
+        "r2d",
+        "d2r",
+        "topology 2"
+      ],
+      "scope": "R19 RAN solutions study，不取代 TS 38.291/38.391。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    },
+    "TR 38.848": {
+      "title": "Study on Ambient IoT in RAN",
+      "type": "TR",
+      "version": "18.0.0",
+      "release": 18,
+      "path": "A_IoT/TR38848.pdf",
+      "domains": [
+        "A_IoT"
+      ],
+      "layers": [
+        "L1",
+        "L2"
+      ],
+      "usage": "study",
+      "keywords": [
+        "aiot study",
+        "ran study",
+        "phy",
+        "mac",
+        "historical"
+      ],
+      "scope": "R18 歷史研究背景，R19 TS 規範應優先。",
+      "metadata_sources": [
+        "A_IoT/SPEC_INDEX.md"
+      ]
+    }
+  }
+}

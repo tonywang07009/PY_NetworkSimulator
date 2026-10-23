@@ -1,6 +1,6 @@
 # 同起點服務批次：Config 與輪長範例
 
-更新：2026-10-23。依使用者最新明確決策重整，取代此文件先前依序啟動兩個服務週期的草案。依據：[R-01 第 31 節](../../ReferDoc/Plan/R-01_System_Model_and_Baseline_Decision_Record.md)、[訪談紀錄](../../interview/2026-10-20-ambient-iot-des.md)。尚未實作或執行模擬器。
+更新：2026-10-23。依使用者最新明確決策重整，取代此文件先前依序啟動兩個服務週期的草案。依據：[R-01 第 31 節](../../ReferDoc/Plan/R-01_System_Model_and_Baseline_Decision_Record.md)、[系統模型決策](../../ReferDoc/Plan/R-01_System_Model_and_Baseline_Decision_Record.md)。尚未實作或執行模擬器。
 
 ## 已確定的時間規則
 

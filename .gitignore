@@ -1,19 +1,26 @@
-
-# The Desigon Simluator Used
-ReferDoc/
-AgentDoc/
-
-# agent used
-.agents/
-AGENTS.md
-/openspec
-CONTEXT.md
-agent.md
-
-# Python／Notebook執行暫存
+# Python／Notebook執行快取
 __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 
-# flamwork
-.archify/
+# Agent資料保存在獨立worktree；本機導覽連結不發布
+/.agents
+/AgentDoc
+/.archify
+/interview
+/AGENTS.md
+/agent.md
+/CONTEXT.md
+/openspec
+/docs/architecture/code-trace.md
+
+# 本機工具／帳號設定
+/.aws/
+/.codex/
+
+# Notebook執行環境紀錄
+/notebooks/artifacts/iab-topology/notebook-execution.json
+
+# 架構圖工具收據保存在agent worktree
+/docs/architecture/*.delivery.json
+**/.archify-delivery-*/

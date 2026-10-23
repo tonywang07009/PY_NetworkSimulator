@@ -2,7 +2,7 @@
   "schema_version": 1,
   "diagram_type": "architecture",
   "meta": {
-    "title": "Ambient IoT 模組全貌：拓撲原型已實作，其餘為規劃",
+    "title": "Ambient IoT 模組全貌：拓撲已抽離，其餘為規劃",
     "locale": "zh-TW",
     "output": "docs/architecture/system.html",
     "quality_profile": "showcase"
@@ -116,7 +116,7 @@
     {
       "id": "topology",
       "type": "backend",
-      "label": "IAB 拓撲原型",
+      "label": "IAB 拓撲模組",
       "sublabel": "靜態幾何／Node與Tag歸屬",
       "pos": [
         820,
@@ -126,7 +126,7 @@
         240,
         82
       ],
-      "tag": "Notebook已驗證；待人工接受"
+      "tag": "人工導讀接受；.py等價複驗"
     }
   ],
   "connections": [
@@ -194,7 +194,7 @@
       "title": "每模組交付與人工接受",
       "items": [
         "Notebook 原型 → 對應情境測試 → 人工逐段閱讀與接受 → 抽離 .py → 等價複驗。",
-        "本次僅拓撲Notebook已驗證；其餘模組與跨模組ACPT尚未實作。",
+        "拓撲已抽離為.py並由Notebook import；其餘模組與整合ACPT尚未實作。",
         "NO_OP 與 INVALID_ACTION 分開記錄，皆停止本 Window 新排程。"
       ]
     },
@@ -204,8 +204,8 @@
       "items": [
         "1 Donor／5 Nodes／5 UE；UE僅ID／歸屬。",
         "10／30／50 m三區、不重疊、精確配額、每Node至少2 Tags、區內面積均勻。",
-        "66個pytest、8項Notebook情境、乾淨kernel均通過；尚待人工程式接受。",
-        "詳細實作／測試／導讀：本change的architecture.html、code-trace.md及validation.md。"
+        "由同一份部署結果產生表格、部署圖與匯出檔案。",
+        "操作請看ReferDoc/Implementation/IABTopology/README.md，程式位於src/iab。"
       ]
     }
   ]

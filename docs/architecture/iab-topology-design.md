@@ -1,10 +1,10 @@
 # IAB 拓撲模組：Config／DTO與Notebook設計草案
 
-更新：2026-10-23。**最新狀態：拓撲Notebook與測試已實作／驗證，待人工理解與接受，尚未抽離.py。** 本文以下保留原設計草案與規劃tree；實際現況以[code-trace](code-trace.md)及 `AgentDoc/openspec/changes/add-iab-topology-notebook/` 的OpenSpec／validation為準，不將歷史「未實作」描述當成目前狀態。沿用[已確認範圍](iab-topology-scope.md)與[剩餘項盤點](iab-topology-remaining-decisions.md)。
+更新：2026-10-23。**最新狀態：IAB拓撲已抽離至src/iab，Notebook透過import使用同一模組。** 本文保留部分歷史設計討論；操作方式請看[產品使用說明](../../ReferDoc/Implementation/IABTopology/README.md)。沿用[已確認範圍](iab-topology-scope.md)與[剩餘項盤點](iab-topology-remaining-decisions.md)。
 
 ## 實作規劃架構圖
 
-[以 Archify 開啟 Notebook 原型與驗收架構](../../.archify/architecture-iab-topology-20261023-131337/iab-topology.html)。這是根據本文件與訪談繪製的設計圖，不是現有程式呼叫關係或模擬器驗證成果。涵蓋設定、驗證、生成、快照、情境測試、表／圖、人工接受及抽離.py；Channel／EH列後續邊界。
+[以 Archify 開啟 Notebook 原型與驗收架構](iab-topology.html)。這是根據本文件與訪談繪製的設計圖，不是現有程式呼叫關係或模擬器驗證成果。涵蓋設定、驗證、生成、快照、情境測試、表／圖、人工接受及抽離.py；Channel／EH列後續邊界。
 
 ## 模組入口與責任
 
@@ -95,7 +95,7 @@ PY_NetworkSimulator/
 ├── notebooks/                         # 待建：原型與人工閱讀入口
 │   └── 01_iab_topology.ipynb           # 待建：定義→設定→生成→測試→表／圖
 ├── src/                               # 人工接受Notebook後建立
-│   └── network_simulator/
+│   └── iab/
 │       ├── __init__.py                # 套件入口
 │       ├── contracts.py               # 所有共用Config／DTO／必要Enum
 │       ├── topology.py                # 驗證、配額／位置生成、快照
@@ -140,3 +140,15 @@ Notebook階段把Config／DTO與各函式依責任放在不同cell，先不建�
 6. 使用者明確表示理解並接受此版本Notebook後，才抽離contracts.py／topology.py／plotting.py；讓Notebook import抽離實作，再跑同設定／seed及相同情境，核對Tag歸屬、分區、座標、統計及錯誤行為等價。若改動模型／可觀察行為，須重新處理受影響的人工接受。
 
 這是模組級理解與接受；不等於OpenSpec工作流已歸檔、PR已合併或整體模擬器／Channel科學有效性已驗證。當前沒有上述Notebook／程式／測試／人工接受證據。
+
+## 人工導讀修訂：tuple唯一輸入格式
+
+使用者選擇直接tuple輸入，已移除Notebook的__post_init__，不接受list或自動轉換。iab_nodes／zone_outer_radii_m／zone_tag_counts的格式由build_topology既有驗證明確檢查，README已記錄。回歸69 tests及乾淨kernel通過，原快照不變。
+
+## 最新實作狀態：已抽離.py
+
+2026-10-23使用者理解主要邏輯並授權後，src/iab/{contracts,topology,plotting}.py已建立，Notebook改import；142 pytest與乾淨kernel通過。先前「尚無src／待人工接受」保留為歷史。使用者選每模組多文件，依write-reviewable-pr原則先交ReferDoc/Implementation/IABTopology中英文合併草稿待檢閱，尚未sync／archive／merge。
+
+## 最新目錄分類
+
+使用者要求依模組分類，IAB拓撲正式程式位於src/iab/，測試、Notebook執行器與fixture集中tests/iab/。原設計中的來源／測試平鋪方式已由此安排取代；不建立尚未實作的Node／UE／Tag獨立模組。
