@@ -241,3 +241,12 @@
 - 使用者明確准許commit／push／Issue／PR，並要求目前內容都push。授權範圍包含現有研究參考、AgentDoc與專案工作流資料；執行快取及本機帳號／Git內部資料不納入。原gitignore不改。
 - 已唯讀核對GitHub repo tonywang07009/PY_NetworkSimulator為public，預設分支main，沒有既有IAB Issue或此分支PR；建立Issue #1：https://github.com/tonywang07009/PY_NetworkSimulator/issues/1。
 - 歸檔skill與既有task4.3實際merge核對存在順序衝突，未修改規則或假勾選，先發布draft PR保留active change。發布不等於完成／合併；EvoSkill與明日模組討論不啟動下一個change實作。
+
+## 2026-10-23｜目前內容已push；草稿PR #2已發布
+
+- 使用者明確授權後，已提交並push目前專案內容至origin/feat/iab-topology，包含程式、Notebook、ReferDoc、AgentDoc、現有工作流工具與訪談。排除帳號設定、Git內部資料、執行快取及新生成的暫存HTML；該暫存檔留本機未刪除。
+- Issue #1：https://github.com/tonywang07009/PY_NetworkSimulator/issues/1；草稿PR #2：https://github.com/tonywang07009/PY_NetworkSimulator/pull/2，base main，未merge。首次交付commit 131b23806f7f107e18884f8c72e1ef0e163bc257；本段發布紀錄另以後續commit補入。
+- 發布前重新執行tests/iab：142 passed，1.42s；主規格與change strict驗證通過，沒有把代理檢查當使用者實際操作驗收或遠端CI。
+- 實際archive仍受未完成lifecycle task與archive skill順序衝突限制；保留draft PR、active change，workflow stage維持review（不是awaiting_merge／complete），不偽造archive_path。
+- 使用者要求push後討論明日模組與EvoSkill：可先討論距離→SNR的通道品質模組，或600ms DU Window出現時刻的資源時間表；未替使用者選參數、建立下一change或開始實作。
+- EvoSkill流程為有來源的回饋紀錄→資格評估→隔離候選比較→使用者指定版本啟用；本輪產品文案修訂只構成一個回饋事件，不能拆成多個同根因事件充數。當前不建立空候選、不修改既有技能，正式知識結案依workflow待所有change合併後執行。

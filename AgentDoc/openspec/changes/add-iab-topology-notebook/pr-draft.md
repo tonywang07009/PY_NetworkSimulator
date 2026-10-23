@@ -94,3 +94,9 @@ flowchart TD
 ### 歸檔待辦
 
 現行archive skill會在任何未完成task存在時停止，但本change的task包含PR合併後才能核對的4.3，造成順序衝突。本PR先保留active change與archive-preparation.md，不冒稱已歸檔。此衝突需在後續workflow討論中釐清，完成合併前仍維持此change活動中，不開始下一個模組實作。
+
+## 已發布位置
+
+- Issue：https://github.com/tonywang07009/PY_NetworkSimulator/issues/1
+- 草稿PR：https://github.com/tonywang07009/PY_NetworkSimulator/pull/2
+- 目前內容已push至feat/iab-topology；未合併、未實際歸檔。

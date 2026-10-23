@@ -31,3 +31,9 @@
 - 遠端發布、實際歸檔、PR、CI、使用者 merge 尚未完成。
 
 訊號品質、電量、排程與跨模組整合不在本 change 範圍內。
+
+## 已發布位置
+
+- Issue：https://github.com/tonywang07009/PY_NetworkSimulator/issues/1
+- 草稿PR：https://github.com/tonywang07009/PY_NetworkSimulator/pull/2
+- 目前內容已push至feat/iab-topology；未合併、未實際歸檔。

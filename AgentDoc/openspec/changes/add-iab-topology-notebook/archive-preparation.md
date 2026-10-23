@@ -20,7 +20,7 @@
 
 ## 移動前仍需完成
 
-- 建立本 change 的實際 Issue 並記錄對應 URL；不得以草稿或假 URL 取代。
+- Issue映射已成立：https://github.com/tonywang07009/PY_NetworkSimulator/issues/1；仍需處理未完成任務與歸檔順序衝突。
 - 核對 tasks 中未完成的交付／合併項目，遵循 archive skill 的任務檢查；沒有將未完成事項勾成完成。
 - 核對實際日期與目的地，確認沒有同名歸檔。
 - 移動時同步修正根 README、Notebook、導讀、架構候選與收據、workflow 索引的可用路徑；保留歷史原始命令，不將舊紀錄改寫成新執行結果。
@@ -38,3 +38,7 @@
 - `$workflow` 授權本機開發與交付準備，沒有授權 commit、push 或遠端發訊息。
 - 本機草稿與主規格同步不等於 PR 已發布；歸檔成功也不等於合併。
 - 由使用者執行 merge；核對真實結果後才更新 change／workflow 完成狀態。
+
+## 發布後狀態
+
+使用者已授權目前內容全部commit／push，並已建立Issue #1／草稿PR #2。前述「未授權」屬準備時歷史；目前仍未完成實際archive與merge。archive skill的所有task完成檢查包含事後merge核對，與PR前歸檔有順序衝突，已保留待討論，不自動改動技能規則或刪除未完成工作。
