@@ -2,7 +2,7 @@
 
 > **2026-10-23 最新範圍**：本輪全部服務從全域 0 啟動，輪長取最晚 Deadline；舊多期清單／手填共同週期長度及全部 Deadline 嚴格早於輪末的前提已被 R-01 第 31 節取代。先做 [IAB 拓撲盤點](iab-topology-scope.md)，其直接決策不被下方全套 Config 討論阻擋；下方 D01／D02 舊週期問題只保留必要的單批服務契約。
 
-更新：2026-10-22。依兩份產品規劃、[Config／DTO 草案](config-dto.md)及[訪談答案](../../interview/2026-10-20-ambient-iot-des.md)整理。這是討論清單，不是新增已核准需求、OpenSpec tasks 或未實作行為的完成證據。
+更新：2026-10-22。依兩份產品規劃、[Config／DTO 草案](config-dto.md)及[系統模型決策](../../ReferDoc/Plan/R-01_System_Model_and_Baseline_Decision_Record.md)整理。這是討論清單，不是新增已核准需求、OpenSpec tasks 或未實作行為的完成證據。
 
 結論：已可繼續 Config／DTO 設計；本階段先封閉資料表示及跨模組契約，具體 PHY／EH／通道數值可留到依賴模組前確認。研究演算法與科學校準不阻擋純契約草案。每項不是一道固定訪談題；工程欄位／命名由代理先交完整草案，僅對影響模型、資訊權限、計帳或驗收的未決事項逐題詢問。
 

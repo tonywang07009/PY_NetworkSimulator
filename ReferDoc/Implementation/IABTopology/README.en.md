@@ -30,4 +30,4 @@ This feature currently describes positions and connections. It does not yet calc
 
 Integrating Tag reading into a Node is part of this research model. Its use within the IAB split base-station architecture is a research extension, not a claim of full standards compliance.
 
-For the reasons behind the settings, read the [system model plan](../../Plan/R-01_System_Model_and_Baseline_Decision_Record.md). For implementation details, see the [code guide](../../../docs/architecture/code-trace.md).
+For the reasons behind the settings, read the [system model plan](../../Plan/R-01_System_Model_and_Baseline_Decision_Record.md). For implementation details, see the [IAB source files](../../../src/iab/).

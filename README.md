@@ -50,3 +50,9 @@ MPLBACKEND=Agg python -m pytest tests/iab/test_topology_notebook.py tests/iab/te
 測試需要 pytest；Notebook 另需可用 Jupyter kernel。既有乾淨 kernel 執行器為 `tests/iab/execute_topology_notebook.py`。匯出目錄內同名檔案會覆寫，匯出中途失敗可能留下部分檔案。幾何分區不代表已驗證 RF 無干擾或 SNR 品質。
 
 來源碼與測試依模組分類：目前IAB拓撲程式位於 `src/iab/`，對應測試與比對資料位於 `tests/iab/`。從專案根目錄執行 `python -m pytest tests/iab -q` 可檢查此模組。
+
+## 產品架構
+
+- [整體模組架構](docs/architecture/system.html)
+- [IAB拓撲架構](docs/architecture/iab-topology.html)
+- [IAB設計說明](docs/architecture/iab-topology-design.md)

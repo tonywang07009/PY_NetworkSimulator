@@ -51,7 +51,7 @@ def main():
               'packages': {name: importlib.metadata.version(name)
                            for name in ('nbformat', 'nbclient', 'ipykernel', 'matplotlib')},
               'notebook': str(path.relative_to(root))}
-    receipt = root / 'AgentDoc/openspec/changes/add-iab-topology-notebook/notebook-execution.json'
+    receipt = root / 'notebooks/artifacts/iab-topology/notebook-execution.json'
     receipt.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(report, ensure_ascii=False))
 

@@ -1,7 +1,0 @@
-schema: spec-driven
-context: |
-  專案：PY_NetworkSimulator。使用繁體中文。
-  開始前讀取 openspec/PROGRESS.md 與 openspec/HANDOFF.md。
-  根目錄 openspec 是 AgentDoc/openspec 的符號連結，兩者是同一份資料。
-  規範索引：ReferDoc/Spec/spec_index.json；原始規範與研究延伸須分開。
-  專案工具路由：openspec/projects/py-networksimulator/toolbox.md。

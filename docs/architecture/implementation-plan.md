@@ -9,7 +9,7 @@
 ## 決策來源與邊界
 
 - [交接規格](../../ReferDoc/Plan/Codex_Handoff_Specification_Ambient_IoT_DES.md) 與 [R-01](../../ReferDoc/Plan/R-01_System_Model_and_Baseline_Decision_Record.md) 是既有產品決策來源；新增決策見 R-01 第 25–27 節。
-- [訪談紀錄](../../interview/2026-10-20-ambient-iot-des.md) 保留本次明確答案。此文件及[互動模組圖](system.html)是衍生設計，後續核准的行為及驗收歸入 OpenSpec，避免多份競爭規格。
+- [系統模型決策](../../ReferDoc/Plan/R-01_System_Model_and_Baseline_Decision_Record.md) 保留本次明確答案。此文件及[互動模組圖](system.html)是衍生設計，後續核准的行為及驗收歸入 OpenSpec，避免多份競爭規格。
 - 沒有阻擋架構討論的未決問題。正式 TBS/payload、CFA、PHY/EH、情境分布與時間取整等設定，需在依賴它們的模組實作前明示來源或確認測試替代值。
 - Q-TRADEOFFS-01 的 synthetic／正式參數順序仍未回答，暫緩到相關模組；本輪不代選、不採用數值、不安裝環境。
 - 預告下一窗 CW 功率不代表預知下一窗時間或 SNR；引擎真實狀態不得直接傳給 Policy。保持既定的最多 8 Tag、固定 CFA、整數 ns、同時間批次結算及 Deadline 排他規則。

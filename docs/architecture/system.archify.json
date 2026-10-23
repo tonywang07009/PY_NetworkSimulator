@@ -204,8 +204,8 @@
       "items": [
         "1 Donor／5 Nodes／5 UE；UE僅ID／歸屬。",
         "10／30／50 m三區、不重疊、精確配額、每Node至少2 Tags、區內面積均勻。",
-        "142 pytest通過；Notebook乾淨kernel另有執行收據。",
-        "詳細實作／測試／導讀：本change的architecture.html、code-trace.md及validation.md。"
+        "由同一份部署結果產生表格、部署圖與匯出檔案。",
+        "操作請看ReferDoc/Implementation/IABTopology/README.md，程式位於src/iab。"
       ]
     }
   ]

@@ -1,10 +1,10 @@
 # IAB 拓撲模組：Config／DTO與Notebook設計草案
 
-更新：2026-10-23。**最新狀態：拓撲Notebook與測試已實作／驗證，待人工理解與接受，尚未抽離.py。** 本文以下保留原設計草案與規劃tree；實際現況以[code-trace](code-trace.md)及 `AgentDoc/openspec/changes/add-iab-topology-notebook/` 的OpenSpec／validation為準，不將歷史「未實作」描述當成目前狀態。沿用[已確認範圍](iab-topology-scope.md)與[剩餘項盤點](iab-topology-remaining-decisions.md)。
+更新：2026-10-23。**最新狀態：IAB拓撲已抽離至src/iab，Notebook透過import使用同一模組。** 本文保留部分歷史設計討論；操作方式請看[產品使用說明](../../ReferDoc/Implementation/IABTopology/README.md)。沿用[已確認範圍](iab-topology-scope.md)與[剩餘項盤點](iab-topology-remaining-decisions.md)。
 
 ## 實作規劃架構圖
 
-[以 Archify 開啟 Notebook 原型與驗收架構](../../.archify/architecture-iab-topology-20261023-131337/iab-topology.html)。這是根據本文件與訪談繪製的設計圖，不是現有程式呼叫關係或模擬器驗證成果。涵蓋設定、驗證、生成、快照、情境測試、表／圖、人工接受及抽離.py；Channel／EH列後續邊界。
+[以 Archify 開啟 Notebook 原型與驗收架構](iab-topology.html)。這是根據本文件與訪談繪製的設計圖，不是現有程式呼叫關係或模擬器驗證成果。涵蓋設定、驗證、生成、快照、情境測試、表／圖、人工接受及抽離.py；Channel／EH列後續邊界。
 
 ## 模組入口與責任
 

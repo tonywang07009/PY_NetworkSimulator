@@ -30,4 +30,4 @@
 
 Node 整合 Tag 讀取功能是本研究採用的設定；它在 IAB 分離式基地台架構下的整合屬研究擴充，不代表已符合完整標準。
 
-需要了解設定依據時，可讀 [系統模型規劃](../../Plan/R-01_System_Model_and_Baseline_Decision_Record.md)。需要查看程式時，再讀 [程式導讀](../../../docs/architecture/code-trace.md)。
+需要了解設定依據時，可讀 [系統模型規劃](../../Plan/R-01_System_Model_and_Baseline_Decision_Record.md)。需要查看程式時，再讀 [IAB 程式目錄](../../../src/iab/)。
