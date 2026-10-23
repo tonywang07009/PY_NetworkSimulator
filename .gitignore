@@ -1,0 +1,19 @@
+
+# The Desigon Simluator Used
+ReferDoc/
+AgentDoc/
+
+# agent used
+.agents/
+AGENTS.md
+/openspec
+CONTEXT.md
+agent.md
+
+# Python／Notebook執行暫存
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# flamwork
+.archify/

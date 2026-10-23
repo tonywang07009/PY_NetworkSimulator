@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "config": {
+    "donor": {
+      "node_id": "Donor-1",
+      "position": {
+        "x_m": 120,
+        "y_m": -120
+      }
+    },
+    "iab_nodes": [
+      {
+        "node_id": "Node-1",
+        "position": {
+          "x_m": 0,
+          "y_m": 0
+        }
+      },
+      {
+        "node_id": "Node-2",
+        "position": {
+          "x_m": 120,
+          "y_m": 0
+        }
+      },
+      {
+        "node_id": "Node-3",
+        "position": {
+          "x_m": 240,
+          "y_m": 0
+        }
+      },
+      {
+        "node_id": "Node-4",
+        "position": {
+          "x_m": 60,
+          "y_m": 120
+        }
+      },
+      {
+        "node_id": "Node-5",
+        "position": {
+          "x_m": 180,
+          "y_m": 120
+        }
+      }
+    ],
+    "zone_outer_radii_m": [
+      10.0,
+      30.0,
+      50.0
+    ],
+    "zone_tag_counts": [
+      10,
+      13,
+      7
+    ],
+    "min_tags_per_node": 2,
+    "seed": 42
+  },
+  "ues": [
+    {
+      "ue_id": "UE-1",
+      "parent_node_id": "Node-1"
+    },
+    {
+      "ue_id": "UE-2",
+      "parent_node_id": "Node-2"
+    },
+    {
+      "ue_id": "UE-3",
+      "parent_node_id": "Node-3"
+    },
+    {
+      "ue_id": "UE-4",
+      "parent_node_id": "Node-4"
+    },
+    {
+      "ue_id": "UE-5",
+      "parent_node_id": "Node-5"
+    }
+  ],
+  "tags": [
+    {
+      "tag_id": "Tag-001",
+      "parent_node_id": "Node-5",
+      "zone": "MID",
+      "position": {
+        "x_m": 174.1063074302299,
+        "y_m": 99.91561124436129
+      }
+    },
+    {
+      "tag_id": "Tag-002",
+      "parent_node_id": "Node-4",
+      "zone": "MID",
+      "position": {
+        "x_m": 64.06724480512494,
+        "y_m": 149.09979403313113
+      }
+    },
+    {
+      "tag_id": "Tag-003",
+      "parent_node_id": "Node-3",
+      "zone": "MID",
+      "position": {
+        "x_m": 262.67331601498324,
+        "y_m": 12.426196924361742
+      }
+    },
+    {
+      "tag_id": "Tag-004",
+      "parent_node_id": "Node-2",
+      "zone": "FAR",
+      "position": {
+        "x_m": 157.14474611455543,
+        "y_m": 27.34597626539543
+      }
+    },
+    {
+      "tag_id": "Tag-005",
+      "parent_node_id": "Node-2",
+      "zone": "MID",
+      "position": {
+        "x_m": 102.86941863752779,
+        "y_m": -19.600109685806494
+      }
+    },
+    {
+      "tag_id": "Tag-006",
+      "parent_node_id": "Node-1",
+      "zone": "NEAR",
+      "position": {
+        "x_m": -5.462265968595314,
+        "y_m": 5.803484521502326
+      }
+    },
+    {
+      "tag_id": "Tag-007",
+      "parent_node_id": "Node-4",
+      "zone": "NEAR",
+      "position": {
+        "x_m": 59.05335561742059,
+        "y_m": 128.84042766701828
+      }
+    },
+    {
+      "tag_id": "Tag-008",
+      "parent_node_id": "Node-1",
+      "zone": "MID",
+      "position": {
+        "x_m": -7.337113069012945,
+        "y_m": -9.840889270920806
+      }
+    },
+    {
+      "tag_id": "Tag-009",
+      "parent_node_id": "Node-3",
+      "zone": "MID",
+      "position": {
+        "x_m": 249.6591666179786,
+        "y_m": 17.87164501976629
+      }
+    },
+    {
+      "tag_id": "Tag-010",
+      "parent_node_id": "Node-5",
+      "zone": "MID",
+      "position": {
+        "x_m": 189.21220682857748,
+        "y_m": 135.22608968143925
+      }
+    },
+    {
+      "tag_id": "Tag-011",
+      "parent_node_id": "Node-2",
+      "zone": "NEAR",
+      "position": {
+        "x_m": 127.86040407379667,
+        "y_m": -0.5181733502176857
+      }
+    },
+    {
+      "tag_id": "Tag-012",
+      "parent_node_id": "Node-3",
+      "zone": "FAR",
+      "position": {
+        "x_m": 204.01467294208643,
+        "y_m": -13.455728176819132
+      }
+    },
+    {
+      "tag_id": "Tag-013",
+      "parent_node_id": "Node-1",
+      "zone": "FAR",
+      "position": {
+        "x_m": 20.645613505999208,
+        "y_m": -31.27900000602806
+      }
+    },
+    {
+      "tag_id": "Tag-014",
+      "parent_node_id": "Node-1",
+      "zone": "MID",
+      "position": {
+        "x_m": 2.1933426566585026,
+        "y_m": 16.564700985936522
+      }
+    },
+    {
+      "tag_id": "Tag-015",
+      "parent_node_id": "Node-4",
+      "zone": "MID",
+      "position": {
+        "x_m": 48.17957394529834,
+        "y_m": 147.10345610364294
+      }
+    },
+    {
+      "tag_id": "Tag-016",
+      "parent_node_id": "Node-1",
+      "zone": "FAR",
+      "position": {
+        "x_m": 11.046662061872954,
+        "y_m": 44.15411482217318
+      }
+    },
+    {
+      "tag_id": "Tag-017",
+      "parent_node_id": "Node-3",
+      "zone": "NEAR",
+      "position": {
+        "x_m": 241.70398645517477,
+        "y_m": -1.6749503655558031
+      }
+    },
+    {
+      "tag_id": "Tag-018",
+      "parent_node_id": "Node-3",
+      "zone": "MID",
+      "position": {
+        "x_m": 225.74694365725614,
+        "y_m": -21.09758470185123
+      }
+    },
+    {
+      "tag_id": "Tag-019",
+      "parent_node_id": "Node-5",
+      "zone": "MID",
+      "position": {
+        "x_m": 200.7567293566869,
+        "y_m": 107.64473126295013
+      }
+    },
+    {
+      "tag_id": "Tag-020",
+      "parent_node_id": "Node-3",
+      "zone": "NEAR",
+      "position": {
+        "x_m": 239.3132275781927,
+        "y_m": 7.3241489868724745
+      }
+    },
+    {
+      "tag_id": "Tag-021",
+      "parent_node_id": "Node-1",
+      "zone": "MID",
+      "position": {
+        "x_m": -24.562139495110465,
+        "y_m": -9.969919621920127
+      }
+    },
+    {
+      "tag_id": "Tag-022",
+      "parent_node_id": "Node-4",
+      "zone": "FAR",
+      "position": {
+        "x_m": 20.687518877616874,
+        "y_m": 96.88848221415188
+      }
+    },
+    {
+      "tag_id": "Tag-023",
+      "parent_node_id": "Node-5",
+      "zone": "NEAR",
+      "position": {
+        "x_m": 177.42106011870703,
+        "y_m": 121.8885922610317
+      }
+    },
+    {
+      "tag_id": "Tag-024",
+      "parent_node_id": "Node-1",
+      "zone": "FAR",
+      "position": {
+        "x_m": 46.35269564598863,
+        "y_m": -0.7172110558918376
+      }
+    },
+    {
+      "tag_id": "Tag-025",
+      "parent_node_id": "Node-4",
+      "zone": "NEAR",
+      "position": {
+        "x_m": 65.89161287867289,
+        "y_m": 123.78632649413774
+      }
+    },
+    {
+      "tag_id": "Tag-026",
+      "parent_node_id": "Node-1",
+      "zone": "NEAR",
+      "position": {
+        "x_m": 7.535122619234906,
+        "y_m": 6.205665924832004
+      }
+    },
+    {
+      "tag_id": "Tag-027",
+      "parent_node_id": "Node-5",
+      "zone": "FAR",
+      "position": {
+        "x_m": 190.10777929367404,
+        "y_m": 82.66477359081065
+      }
+    },
+    {
+      "tag_id": "Tag-028",
+      "parent_node_id": "Node-3",
+      "zone": "NEAR",
+      "position": {
+        "x_m": 247.00401278764227,
+        "y_m": 2.9542864097062567
+      }
+    },
+    {
+      "tag_id": "Tag-029",
+      "parent_node_id": "Node-5",
+      "zone": "NEAR",
+      "position": {
+        "x_m": 187.86138365169242,
+        "y_m": 119.80837946287117
+      }
+    },
+    {
+      "tag_id": "Tag-030",
+      "parent_node_id": "Node-3",
+      "zone": "MID",
+      "position": {
+        "x_m": 261.4741498278227,
+        "y_m": -3.9458095611562705
+      }
+    }
+  ]
+}

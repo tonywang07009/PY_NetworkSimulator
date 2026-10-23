@@ -1,0 +1,7 @@
+parameter,value
+seed,42
+zone_outer_radii_m,"(10.0, 30.0, 50.0)"
+zone_tag_counts,"(10, 13, 7)"
+min_tags_per_node,2
+donor,"{'node_id': 'Donor-1', 'position': {'x_m': 120, 'y_m': -120}}"
+iab_nodes,"[{'node_id': 'Node-1', 'position': {'x_m': 0, 'y_m': 0}}, {'node_id': 'Node-2', 'position': {'x_m': 120, 'y_m': 0}}, {'node_id': 'Node-3', 'position': {'x_m': 240, 'y_m': 0}}, {'node_id': 'Node-4', 'position': {'x_m': 60, 'y_m': 120}}, {'node_id': 'Node-5', 'position': {'x_m': 180, 'y_m': 120}}]"

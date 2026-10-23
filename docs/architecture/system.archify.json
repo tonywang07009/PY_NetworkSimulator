@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Ambient IoT 模組全貌：拓撲原型已實作，其餘為規劃",
+    "locale": "zh-TW",
+    "output": "docs/architecture/system.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "timeline",
+      "type": "backend",
+      "label": "ResourceTimeline",
+      "sublabel": "外生 UE／DU 時序",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        240,
+        82
+      ],
+      "tag": "後續規劃，未實作"
+    },
+    {
+      "id": "channel",
+      "type": "backend",
+      "label": "Channel／PHY",
+      "sublabel": "本窗 SNR、EH 與接收結果",
+      "pos": [
+        430,
+        40
+      ],
+      "size": [
+        240,
+        82
+      ],
+      "tag": "後續規劃，未實作"
+    },
+    {
+      "id": "state",
+      "type": "backend",
+      "label": "Tag／ServiceManager",
+      "sublabel": "電池狀態／服務認列分開持有",
+      "pos": [
+        40,
+        280
+      ],
+      "size": [
+        240,
+        82
+      ],
+      "tag": "後續規劃，未實作"
+    },
+    {
+      "id": "engine",
+      "type": "backend",
+      "label": "SimulationEngine",
+      "sublabel": "時間、狀態提交與 Trace",
+      "pos": [
+        430,
+        280
+      ],
+      "size": [
+        240,
+        82
+      ],
+      "tag": "後續規劃，未實作"
+    },
+    {
+      "id": "node",
+      "type": "backend",
+      "label": "Node",
+      "sublabel": "唯讀當前 Observation",
+      "pos": [
+        820,
+        280
+      ],
+      "size": [
+        240,
+        82
+      ],
+      "tag": "後續規劃，未實作"
+    },
+    {
+      "id": "policy",
+      "type": "backend",
+      "label": "Policy",
+      "sublabel": "僅提議 Tag／TBS",
+      "pos": [
+        820,
+        520
+      ],
+      "size": [
+        240,
+        82
+      ],
+      "tag": "後續規劃，未實作"
+    },
+    {
+      "id": "validator",
+      "type": "backend",
+      "label": "ActionValidator",
+      "sublabel": "時間、能量、CFA 整批驗證",
+      "pos": [
+        430,
+        520
+      ],
+      "size": [
+        240,
+        82
+      ],
+      "tag": "後續規劃，未實作"
+    },
+    {
+      "id": "topology",
+      "type": "backend",
+      "label": "IAB 拓撲原型",
+      "sublabel": "靜態幾何／Node與Tag歸屬",
+      "pos": [
+        820,
+        40
+      ],
+      "size": [
+        240,
+        82
+      ],
+      "tag": "Notebook已驗證；待人工接受"
+    }
+  ],
+  "connections": [
+    {
+      "id": "topology-channel",
+      "from": "topology",
+      "to": "channel",
+      "label": "幾何／歸屬（後續介接）"
+    },
+    {
+      "id": "timeline-to-engine",
+      "from": "timeline",
+      "to": "engine",
+      "label": "依時揭露"
+    },
+    {
+      "id": "channel-to-engine",
+      "from": "channel",
+      "to": "engine",
+      "label": "當前模型結果"
+    },
+    {
+      "id": "engine-to-state",
+      "from": "engine",
+      "to": "state",
+      "label": "提交狀態"
+    },
+    {
+      "id": "engine-to-node",
+      "from": "engine",
+      "to": "node",
+      "label": "合法當前快照"
+    },
+    {
+      "id": "node-to-policy",
+      "from": "node",
+      "to": "policy",
+      "label": "Observation"
+    },
+    {
+      "id": "policy-to-validator",
+      "from": "policy",
+      "to": "validator",
+      "label": "Action"
+    },
+    {
+      "id": "validator-to-engine",
+      "from": "validator",
+      "to": "engine",
+      "label": "合法計畫或停排"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "設計來源與資訊限制",
+      "items": [
+        "依已確認產品模型與add-iab-topology-notebook衍生；不是已提交HEAD的呼叫圖。",
+        "服務皆t=0開始；輪長取最晚Deadline；Policy不得讀未揭露未來SNR／Window起點。",
+        "Tag 與 ServiceManager 是不同狀態所有者；圖中合併顯示其狀態提交關係。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "每模組交付與人工接受",
+      "items": [
+        "Notebook 原型 → 對應情境測試 → 人工逐段閱讀與接受 → 抽離 .py → 等價複驗。",
+        "本次僅拓撲Notebook已驗證；其餘模組與跨模組ACPT尚未實作。",
+        "NO_OP 與 INVALID_ACTION 分開記錄，皆停止本 Window 新排程。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "本次工作與證據",
+      "items": [
+        "1 Donor／5 Nodes／5 UE；UE僅ID／歸屬。",
+        "10／30／50 m三區、不重疊、精確配額、每Node至少2 Tags、區內面積均勻。",
+        "66個pytest、8項Notebook情境、乾淨kernel均通過；尚待人工程式接受。",
+        "詳細實作／測試／導讀：本change的architecture.html、code-trace.md及validation.md。"
+      ]
+    }
+  ]
+}

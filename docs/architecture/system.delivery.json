@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "831573e7-1163-412d-bb5b-7b02f96d418e",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/home/tonywang/Net_simluation/PY_NetworkSimulator/docs/architecture/system.archify.json",
+  "output": "/home/tonywang/Net_simluation/PY_NetworkSimulator/docs/architecture/system.html",
+  "specification": {
+    "sha256": "d6f4cbde0ae35349f0a113ce65b68c2aeef656cea0e8a08fec2a664af94df004",
+    "bytes": 4893
+  },
+  "artifact": {
+    "sha256": "b414729be0bfa888cbedd107a46e05a18d24f7cd865000b0ce9568788800d6c0",
+    "bytes": 820696
+  }
+}
