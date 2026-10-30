@@ -1,0 +1,114 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "通道模型：核心模組與計算階段",
+    "locale": "zh-TW",
+    "quality_profile": "showcase",
+    "output": "docs/architecture/channel-model.html"
+  },
+  "lanes": [
+    {
+      "id": "input",
+      "label": "輸入"
+    },
+    {
+      "id": "channel",
+      "label": "實算品質"
+    },
+    {
+      "id": "rule",
+      "label": "接收規則"
+    },
+    {
+      "id": "output",
+      "label": "可解釋結果"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "load",
+      "lane": "input",
+      "col": 0,
+      "type": "external",
+      "label": "讀入拓樸與宣告窗",
+      "sublabel": "檢查有效距離；綁定 CW 功率",
+      "width": 300
+    },
+    {
+      "id": "budget",
+      "lane": "channel",
+      "col": 0,
+      "type": "backend",
+      "label": "計算往返接收功率",
+      "sublabel": "同窗共同偏移；輸出 SNR／SINR",
+      "width": 300
+    },
+    {
+      "id": "receive",
+      "lane": "rule",
+      "col": 0,
+      "type": "backend",
+      "label": "套用功率表與有限碼長近似",
+      "sublabel": "保留原始機率與最終採用機率",
+      "width": 300
+    },
+    {
+      "id": "result",
+      "lane": "output",
+      "col": 0,
+      "type": "external",
+      "label": "顯示品質、結果與原因",
+      "sublabel": "相同傳輸不重抽；保留數值診斷",
+      "width": 300
+    }
+  ],
+  "edges": [
+    {
+      "id": "load-budget",
+      "from": "load",
+      "to": "budget",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "budget-receive",
+      "from": "budget",
+      "to": "receive",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "receive-result",
+      "from": "receive",
+      "to": "result",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ],
+  "mainPath": [
+    "load",
+    "budget",
+    "receive",
+    "result"
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "文獻與研究假設分開",
+      "items": [
+        "往返路損與 BPSK 有限碼長公式有原始來源。",
+        "可靠／不可達的 0／1 規則由研究功率表指定。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "本圖的證據範圍",
+      "items": [
+        "核心位於 src/channel；Config/DTO集中 contracts.py；Notebook匯入同一份程式。",
+        "本圖依模型描述整理，不是已提交HEAD的呼叫圖；驗證見對應情境測試。",
+        "完整標準流程圖與分支條件見 ChannelModel 使用指南。"
+      ]
+    }
+  ]
+}

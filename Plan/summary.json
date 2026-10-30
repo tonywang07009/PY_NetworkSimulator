@@ -1,0 +1,48 @@
+{
+  "status": "DRAFT",
+  "engineer_hours": 273.75,
+  "human_hours": 104.75,
+  "theoretical_cpm_hours": 203.75,
+  "critical_packages": [
+    "W01",
+    "W02",
+    "W04",
+    "W05",
+    "W07",
+    "W08",
+    "W09",
+    "W10",
+    "W12",
+    "W13",
+    "W15"
+  ],
+  "scenarios": {
+    "a": {
+      "workdays": 49.0625,
+      "weeks": 9.8125
+    },
+    "m": {
+      "workdays": 91.25,
+      "weeks": 18.25
+    },
+    "te": {
+      "workdays": 92.3125,
+      "weeks": 18.4625
+    },
+    "b": {
+      "workdays": 153.0625,
+      "weeks": 30.6125
+    }
+  },
+  "capacity_sensitivity": {
+    "1": 145,
+    "2": 93,
+    "4": 69
+  },
+  "wait_sensitivity_days": {
+    "0": 93,
+    "1": 108,
+    "2": 123
+  },
+  "reserve_20_percent_days": 111
+}

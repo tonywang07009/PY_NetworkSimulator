@@ -2,7 +2,7 @@
   "schema_version": 1,
   "diagram_type": "architecture",
   "meta": {
-    "title": "Ambient IoT 模組全貌：拓撲已抽離，其餘為規劃",
+    "title": "Ambient IoT 模組全貌：拓樸與通道已抽離",
     "locale": "zh-TW",
     "output": "docs/architecture/system.html",
     "quality_profile": "showcase"
@@ -27,7 +27,7 @@
       "id": "channel",
       "type": "backend",
       "label": "Channel／PHY",
-      "sublabel": "本窗 SNR、EH 與接收結果",
+      "sublabel": "本窗 SNR／SINR 與短封包接收",
       "pos": [
         430,
         40
@@ -36,7 +36,7 @@
         240,
         82
       ],
-      "tag": "後續規劃，未實作"
+      "tag": "人工接受；核心位於 src/channel；EH 待實作"
     },
     {
       "id": "state",
@@ -184,7 +184,7 @@
       "dot": "cyan",
       "title": "設計來源與資訊限制",
       "items": [
-        "依已確認產品模型與add-iab-topology-notebook衍生；不是已提交HEAD的呼叫圖。",
+        "依已確認模型與拓樸／通道原型設計衍生；不是已提交HEAD的呼叫圖。",
         "服務皆t=0開始；輪長取最晚Deadline；Policy不得讀未揭露未來SNR／Window起點。",
         "Tag 與 ServiceManager 是不同狀態所有者；圖中合併顯示其狀態提交關係。"
       ]
@@ -194,7 +194,7 @@
       "title": "每模組交付與人工接受",
       "items": [
         "Notebook 原型 → 對應情境測試 → 人工逐段閱讀與接受 → 抽離 .py → 等價複驗。",
-        "拓撲已抽離為.py並由Notebook import；其餘模組與整合ACPT尚未實作。",
+        "拓樸與通道皆已人工接受並抽離.py；Notebook匯入核心；其餘模組與整合仍為規劃。",
         "NO_OP 與 INVALID_ACTION 分開記錄，皆停止本 Window 新排程。"
       ]
     },

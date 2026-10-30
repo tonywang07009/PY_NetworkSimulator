@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="archify 3.1.0">
   <meta name="archify-reader-contract" content="declared-wide-v1">
-  <title>Ambient IoT 模組全貌：拓撲已抽離，其餘為規劃</title>
+  <title>Ambient IoT 模組全貌：拓樸與通道已抽離</title>
   <script>
     // Resolve the theme before first paint so light-preference users don't
     // see a dark flash. The toolbar script below re-applies with UI state.
@@ -5150,7 +5150,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
            data-preset-badge-blueprint="藍圖 / 修訂 01"
            data-preset-badge-editorial="編輯風格 / 現場筆記">
         <div class="pulse-dot"></div>
-        <h1>Ambient IoT 模組全貌：拓撲已抽離，其餘為規劃</h1>
+        <h1>Ambient IoT 模組全貌：拓樸與通道已抽離</h1>
       </div>
     </div>
 
@@ -5160,7 +5160,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     <div class="diagram-container" data-detail-level="read"
          data-preset-badge-editorial-plate="ARCHIFY / 圖版 04">
       <svg viewBox="0 0 1100 670" role="img" lang="zh-TW" aria-labelledby="archify-diagram-title archify-diagram-description" data-animation="trace" data-preset="classic" data-quality-profile="showcase" data-node-ui="" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14">
-        <title id="archify-diagram-title">Ambient IoT 模組全貌：拓撲已抽離，其餘為規劃</title>
+        <title id="archify-diagram-title">Ambient IoT 模組全貌：拓樸與通道已抽離</title>
         <desc id="archify-diagram-description">由 Archify 產生的架構圖。</desc>
         <!-- Definitions -->
         <defs>
@@ -5255,16 +5255,16 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <text data-detail="fine" x="160" y="114" class="t-backend" font-size="7" text-anchor="middle">後續規劃，未實作</text>
         </g>
 
-        <g id="node-channel" data-node-id="channel" data-node-label="Channel／PHY" tabindex="0" role="button" aria-label="聚焦Channel／PHY，本窗 SNR、EH 與接收結果, 架構元件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="本窗 SNR、EH 與接收結果" data-node-tag="後續規劃，未實作" data-node-context="架構元件">
-          <title>Channel／PHY · 本窗 SNR、EH 與接收結果 · 架構元件 · 後續規劃，未實作</title>
+        <g id="node-channel" data-node-id="channel" data-node-label="Channel／PHY" tabindex="0" role="button" aria-label="聚焦Channel／PHY，本窗 SNR／SINR 與短封包接收, 架構元件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="本窗 SNR／SINR 與短封包接收" data-node-tag="人工接受；核心位於 src/channel；EH 待實作" data-node-context="架構元件">
+          <title>Channel／PHY · 本窗 SNR／SINR 與短封包接收 · 架構元件 · 人工接受；核心位於 src/channel；EH 待實作</title>
           <rect x="430" y="40" width="240" height="82" rx="8" class="c-mask"/>
           <rect x="430" y="40" width="240" height="82" rx="8" class="c-backend" data-animate="node" style="--step:1" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(436 46) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="550" y="79" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Channel／PHY</text>
-        <text data-detail="context" x="550" y="95" class="t-muted" font-size="9" text-anchor="middle">本窗 SNR、EH 與接收結果</text>
-        <text data-detail="fine" x="550" y="114" class="t-backend" font-size="7" text-anchor="middle">後續規劃，未實作</text>
+        <text data-detail="context" x="550" y="95" class="t-muted" font-size="9" text-anchor="middle">本窗 SNR／SINR 與短封包接收</text>
+        <text data-detail="fine" x="550" y="114" class="t-backend" font-size="7" text-anchor="middle">人工接受；核心位於 src/channel；EH 待實作</text>
         </g>
 
         <g id="node-state" data-node-id="state" data-node-label="Tag／ServiceManager" tabindex="0" role="button" aria-label="聚焦Tag／ServiceManager，電池狀態／服務認列分開持有, 架構元件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="電池狀態／服務認列分開持有" data-node-tag="後續規劃，未實作" data-node-context="架構元件">
@@ -5567,7 +5567,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <h3>設計來源與資訊限制</h3>
         </div>
         <ul>
-          <li>依已確認產品模型與add-iab-topology-notebook衍生；不是已提交HEAD的呼叫圖。</li>
+          <li>依已確認模型與拓樸／通道原型設計衍生；不是已提交HEAD的呼叫圖。</li>
           <li>服務皆t=0開始；輪長取最晚Deadline；Policy不得讀未揭露未來SNR／Window起點。</li>
           <li>Tag 與 ServiceManager 是不同狀態所有者；圖中合併顯示其狀態提交關係。</li>
         </ul>
@@ -5580,7 +5580,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </div>
         <ul>
           <li>Notebook 原型 → 對應情境測試 → 人工逐段閱讀與接受 → 抽離 .py → 等價複驗。</li>
-          <li>拓撲已抽離為.py並由Notebook import；其餘模組與整合ACPT尚未實作。</li>
+          <li>拓樸與通道皆已人工接受並抽離.py；Notebook匯入核心；其餘模組與整合仍為規劃。</li>
           <li>NO_OP 與 INVALID_ACTION 分開記錄，皆停止本 Window 新排程。</li>
         </ul>
       </div>

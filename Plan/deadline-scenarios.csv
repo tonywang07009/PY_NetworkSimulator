@@ -1,0 +1,6 @@
+﻿option,engineer_daily_h,human_normal_daily_h,human_boost_daily_h,workdays,available_workdays,margin_days,finish_date
+原容量、共同時段固定,4,2,2,93,47,-46,超過年底
+原容量、共同時段彈性,4,2,2,82,47,-35,超過年底
+工程8h、人工仍2h,8,2,2,57,47,-10,超過年底
+只加速技術關鍵包,8,2,4,42,47,5,2026-12-23
+關鍵包加近關鍵CLM支路,8,2,4,38,47,9,2026-12-17

@@ -1,0 +1,1031 @@
+{
+  "source": "Human-accepted notebook, captured before extraction on 2026-10-31",
+  "notebook_sha256": "c571fd47bf22e370e6b2ab172633b2329ae6741448209dfce32e3af8e474edcb",
+  "topology_seed": 42,
+  "cases": [
+    {
+      "channel_seed": 20261029,
+      "phy_seed": 20261030,
+      "tag_ids": [
+        "Tag-006",
+        "Tag-001",
+        "Tag-004"
+      ],
+      "windows": [
+        {
+          "snapshot": {
+            "profile_id": "channel-entry-synthetic-v0.1",
+            "channel_seed": 20261029,
+            "window_id": 0,
+            "power_level": "LOW",
+            "node_offsets_db": [
+              [
+                "Node-1",
+                0.06827848476792031
+              ],
+              [
+                "Node-2",
+                1.2457809451567066
+              ],
+              [
+                "Node-3",
+                -0.22488094561411343
+              ],
+              [
+                "Node-4",
+                -0.8399461993038555
+              ],
+              [
+                "Node-5",
+                2.8017709437050122
+              ]
+            ]
+          },
+          "records": [
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 0,
+                "channel_seed": 20261029,
+                "node_id": "Node-1",
+                "tag_id": "Tag-006",
+                "zone": "NEAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "LOW",
+                  "distance_m": 7.969741658485021,
+                  "offset_db": 0.06827848476792031,
+                  "cw_power_dbm": -2.0,
+                  "cw_power_w": 0.000630957344480193,
+                  "received_dbm": -111.34190147530391,
+                  "received_w": 7.341923457033251e-15,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 16.658098524696072,
+                  "sinr_db": 13.64779856805626,
+                  "rho": 46.32440527826548
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 46.32440527826548,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": null,
+                  "dispersion_bits2": null,
+                  "epsilon": null,
+                  "log_error": null,
+                  "log_success": null,
+                  "status": "QUADRATURE_PRECISION_LIMIT"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 20261030
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 0,
+                "channel_seed": 20261029,
+                "node_id": "Node-5",
+                "tag_id": "Tag-001",
+                "zone": "MID",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "LOW",
+                  "distance_m": 20.931275254857027,
+                  "offset_db": 2.8017709437050122,
+                  "cw_power_dbm": -2.0,
+                  "cw_power_w": 0.000630957344480193,
+                  "received_dbm": -125.38246681819857,
+                  "received_w": 2.8956983468013867e-16,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 2.6175331818014413,
+                  "sinr_db": -0.39276677483837097,
+                  "rho": 1.8270621393134916
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 1.8270621393134916,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.6909772162048697,
+                  "dispersion_bits2": 0.5650348770829221,
+                  "epsilon": 0.0020239070838023654,
+                  "log_error": -6.202725435822956,
+                  "log_success": -0.0020259579513884685,
+                  "status": "FINITE_REFERENCE"
+                },
+                "receive_class": "RANDOM",
+                "used_error_probability": 0.0020239070838023654,
+                "rule_reason": "BINARY_INPUT_AWGN_FBL"
+              },
+              "failed": false,
+              "uniform_draw": 0.014821036982947455,
+              "sampling_status": "CONDITIONAL_BERNOULLI_52_BIT_GRID",
+              "phy_seed": 20261030
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 0,
+                "channel_seed": 20261029,
+                "node_id": "Node-2",
+                "tag_id": "Tag-004",
+                "zone": "FAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "LOW",
+                  "distance_m": 46.12520549355147,
+                  "offset_db": 1.2457809451567066,
+                  "cw_power_dbm": -2.0,
+                  "cw_power_w": 0.000630957344480193,
+                  "received_dbm": -140.66416182157144,
+                  "received_w": 8.581907275905122e-18,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": -12.66416182157144,
+                  "sinr_db": -15.674461778211253,
+                  "rho": 0.05414817425380354
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 0.05414817425380354,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.03803799022460337,
+                  "dispersion_bits2": 0.1041515985974423,
+                  "epsilon": 1.0,
+                  "log_error": -2.7393255548520463e-59,
+                  "log_success": -134.8448087444123,
+                  "status": "FLOAT_TAIL"
+                },
+                "receive_class": "UNREACHABLE",
+                "used_error_probability": 1.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_UNREACHABLE"
+              },
+              "failed": true,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 20261030
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "profile_id": "channel-entry-synthetic-v0.1",
+            "channel_seed": 20261029,
+            "window_id": 1,
+            "power_level": "MEDIUM",
+            "node_offsets_db": [
+              [
+                "Node-1",
+                -2.644892485031054
+              ],
+              [
+                "Node-2",
+                1.0815903808145144
+              ],
+              [
+                "Node-3",
+                1.6773840049000492
+              ],
+              [
+                "Node-4",
+                0.9159109799293939
+              ],
+              [
+                "Node-5",
+                -2.0034393871971847
+              ]
+            ]
+          },
+          "records": [
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 1,
+                "channel_seed": 20261029,
+                "node_id": "Node-1",
+                "tag_id": "Tag-006",
+                "zone": "NEAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "MEDIUM",
+                  "distance_m": 7.969741658485021,
+                  "offset_db": -2.644892485031054,
+                  "cw_power_dbm": 10.0,
+                  "cw_power_w": 0.01,
+                  "received_dbm": -102.05507244510288,
+                  "received_w": 6.230067549035336e-14,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 25.944927554897106,
+                  "sinr_db": 22.934627598257293,
+                  "rho": 393.0906876671568
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 393.0906876671568,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": null,
+                  "dispersion_bits2": null,
+                  "epsilon": null,
+                  "log_error": null,
+                  "log_success": null,
+                  "status": "QUADRATURE_PRECISION_LIMIT"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 20261030
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 1,
+                "channel_seed": 20261029,
+                "node_id": "Node-5",
+                "tag_id": "Tag-001",
+                "zone": "MID",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "MEDIUM",
+                  "distance_m": 20.931275254857027,
+                  "offset_db": -2.0034393871971847,
+                  "cw_power_dbm": 10.0,
+                  "cw_power_w": 0.01,
+                  "received_dbm": -118.18767714910076,
+                  "received_w": 1.5178619882627682e-15,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 9.812322850899253,
+                  "sinr_db": 6.802022894259441,
+                  "rho": 9.57706169401704
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 9.57706169401704,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.9959295499804073,
+                  "dispersion_bits2": 0.012853168349628687,
+                  "epsilon": 0.0,
+                  "log_error": -1229.464818117303,
+                  "log_success": -0.0,
+                  "status": "FLOAT_TAIL"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 20261030
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 1,
+                "channel_seed": 20261029,
+                "node_id": "Node-2",
+                "tag_id": "Tag-004",
+                "zone": "FAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "MEDIUM",
+                  "distance_m": 46.12520549355147,
+                  "offset_db": 1.0815903808145144,
+                  "cw_power_dbm": 10.0,
+                  "cw_power_w": 0.01,
+                  "received_dbm": -128.82835238591363,
+                  "received_w": 1.309678690949014e-16,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": -0.8283523859136286,
+                  "sinr_db": -3.8386523425534405,
+                  "rho": 0.8263513889634869
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 0.8263513889634869,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.4260052503363993,
+                  "dispersion_bits2": 0.6481501157504062,
+                  "epsilon": 0.8507937518510363,
+                  "log_error": -0.16158553953464738,
+                  "log_success": -1.9024257144153032,
+                  "status": "FINITE_REFERENCE"
+                },
+                "receive_class": "RANDOM",
+                "used_error_probability": 0.8507937518510363,
+                "rule_reason": "BINARY_INPUT_AWGN_FBL"
+              },
+              "failed": true,
+              "uniform_draw": 0.8877496504384846,
+              "sampling_status": "CONDITIONAL_BERNOULLI_52_BIT_GRID",
+              "phy_seed": 20261030
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "profile_id": "channel-entry-synthetic-v0.1",
+            "channel_seed": 20261029,
+            "window_id": 2,
+            "power_level": "HIGH",
+            "node_offsets_db": [
+              [
+                "Node-1",
+                -0.13972227247465385
+              ],
+              [
+                "Node-2",
+                1.9577542882126622
+              ],
+              [
+                "Node-3",
+                -0.49243587815804224
+              ],
+              [
+                "Node-4",
+                -0.9567286624019147
+              ],
+              [
+                "Node-5",
+                1.2970239209624816
+              ]
+            ]
+          },
+          "records": [
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 2,
+                "channel_seed": 20261029,
+                "node_id": "Node-1",
+                "tag_id": "Tag-006",
+                "zone": "NEAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "HIGH",
+                  "distance_m": 7.969741658485021,
+                  "offset_db": -0.13972227247465385,
+                  "cw_power_dbm": 22.0,
+                  "cw_power_w": 0.15848931924611134,
+                  "received_dbm": -87.54990223254649,
+                  "received_w": 1.75796318840804e-12,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 40.45009776745353,
+                  "sinr_db": 37.439797810813715,
+                  "rho": 11091.997850518725
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 11091.997850518725,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": null,
+                  "dispersion_bits2": null,
+                  "epsilon": null,
+                  "log_error": null,
+                  "log_success": null,
+                  "status": "QUADRATURE_PRECISION_LIMIT"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 20261030
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 2,
+                "channel_seed": 20261029,
+                "node_id": "Node-5",
+                "tag_id": "Tag-001",
+                "zone": "MID",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "HIGH",
+                  "distance_m": 20.931275254857027,
+                  "offset_db": 1.2970239209624816,
+                  "cw_power_dbm": 22.0,
+                  "cw_power_w": 0.15848931924611134,
+                  "received_dbm": -102.88721384094109,
+                  "received_w": 5.143735353229253e-14,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 25.112786159058924,
+                  "sinr_db": 22.10248620241911,
+                  "rho": 324.5477599182424
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 324.5477599182424,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": null,
+                  "dispersion_bits2": null,
+                  "epsilon": null,
+                  "log_error": null,
+                  "log_success": null,
+                  "status": "QUADRATURE_PRECISION_LIMIT"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 20261030
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 2,
+                "channel_seed": 20261029,
+                "node_id": "Node-2",
+                "tag_id": "Tag-004",
+                "zone": "FAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "HIGH",
+                  "distance_m": 46.12520549355147,
+                  "offset_db": 1.9577542882126622,
+                  "cw_power_dbm": 22.0,
+                  "cw_power_w": 0.15848931924611134,
+                  "received_dbm": -115.95218847851547,
+                  "received_w": 2.539692591815931e-15,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 12.047811521484544,
+                  "sinr_db": 9.037511564844731,
+                  "rho": 16.024376935282017
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 16.024376935282017,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.9998667734532847,
+                  "dispersion_bits2": 0.0004545762778799313,
+                  "epsilon": 0.0,
+                  "log_error": -35185.35830254901,
+                  "log_success": -0.0,
+                  "status": "FLOAT_TAIL"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 20261030
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "channel_seed": 101,
+      "phy_seed": 102,
+      "tag_ids": [
+        "Tag-006",
+        "Tag-001",
+        "Tag-004"
+      ],
+      "windows": [
+        {
+          "snapshot": {
+            "profile_id": "channel-entry-synthetic-v0.1",
+            "channel_seed": 101,
+            "window_id": 0,
+            "power_level": "LOW",
+            "node_offsets_db": [
+              [
+                "Node-1",
+                -1.5848740320197072
+              ],
+              [
+                "Node-2",
+                -0.6994634479777071
+              ],
+              [
+                "Node-3",
+                -2.5164104574451605
+              ],
+              [
+                "Node-4",
+                1.7975466674862588
+              ],
+              [
+                "Node-5",
+                1.3659015630168998
+              ]
+            ]
+          },
+          "records": [
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 0,
+                "channel_seed": 101,
+                "node_id": "Node-1",
+                "tag_id": "Tag-006",
+                "zone": "NEAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "LOW",
+                  "distance_m": 7.969741658485021,
+                  "offset_db": -1.5848740320197072,
+                  "cw_power_dbm": -2.0,
+                  "cw_power_w": 0.000630957344480193,
+                  "received_dbm": -112.99505399209154,
+                  "received_w": 5.01758341068739e-15,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 15.00494600790848,
+                  "sinr_db": 11.994646051268667,
+                  "rho": 31.658811045151914
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 31.658811045151914,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.999999959762234,
+                  "dispersion_bits2": 1.4711015342305134e-07,
+                  "epsilon": 0.0,
+                  "log_error": -108762030.35458378,
+                  "log_success": -0.0,
+                  "status": "FLOAT_TAIL"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 102
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 0,
+                "channel_seed": 101,
+                "node_id": "Node-5",
+                "tag_id": "Tag-001",
+                "zone": "MID",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "LOW",
+                  "distance_m": 20.931275254857027,
+                  "offset_db": 1.3659015630168998,
+                  "cw_power_dbm": -2.0,
+                  "cw_power_w": 0.000630957344480193,
+                  "received_dbm": -126.81833619888667,
+                  "received_w": 2.0804935806175253e-16,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 1.1816638011133305,
+                  "sinr_db": -1.8286361555264814,
+                  "rho": 1.3127027048345248
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 1.3127027048345248,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.577105756143897,
+                  "dispersion_bits2": 0.6430902388239496,
+                  "epsilon": 0.13833795989497188,
+                  "log_error": -1.9780556029549277,
+                  "log_success": -0.14889215003931414,
+                  "status": "FINITE_REFERENCE"
+                },
+                "receive_class": "RANDOM",
+                "used_error_probability": 0.13833795989497188,
+                "rule_reason": "BINARY_INPUT_AWGN_FBL"
+              },
+              "failed": false,
+              "uniform_draw": 0.7456928404891007,
+              "sampling_status": "CONDITIONAL_BERNOULLI_52_BIT_GRID",
+              "phy_seed": 102
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 0,
+                "channel_seed": 101,
+                "node_id": "Node-2",
+                "tag_id": "Tag-004",
+                "zone": "FAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "LOW",
+                  "distance_m": 46.12520549355147,
+                  "offset_db": -0.6994634479777071,
+                  "cw_power_dbm": -2.0,
+                  "cw_power_w": 0.000630957344480193,
+                  "received_dbm": -142.60940621470584,
+                  "received_w": 5.483519327294127e-18,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": -14.609406214705842,
+                  "sinr_db": -17.619706171345655,
+                  "rho": 0.03459866793155324
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 0.03459866793155324,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.02453546856893954,
+                  "dispersion_bits2": 0.06843764880892868,
+                  "epsilon": 1.0,
+                  "log_error": -2.9753873261728224e-94,
+                  "log_success": -215.35262451724563,
+                  "status": "FLOAT_TAIL"
+                },
+                "receive_class": "UNREACHABLE",
+                "used_error_probability": 1.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_UNREACHABLE"
+              },
+              "failed": true,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 102
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "profile_id": "channel-entry-synthetic-v0.1",
+            "channel_seed": 101,
+            "window_id": 1,
+            "power_level": "MEDIUM",
+            "node_offsets_db": [
+              [
+                "Node-1",
+                1.5371083340596368
+              ],
+              [
+                "Node-2",
+                2.390655421072985
+              ],
+              [
+                "Node-3",
+                1.158079303269984
+              ],
+              [
+                "Node-4",
+                2.4943756493588136
+              ],
+              [
+                "Node-5",
+                1.322363498981601
+              ]
+            ]
+          },
+          "records": [
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 1,
+                "channel_seed": 101,
+                "node_id": "Node-1",
+                "tag_id": "Tag-006",
+                "zone": "NEAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "MEDIUM",
+                  "distance_m": 7.969741658485021,
+                  "offset_db": 1.5371083340596368,
+                  "cw_power_dbm": 10.0,
+                  "cw_power_w": 0.01,
+                  "received_dbm": -97.87307162601219,
+                  "received_w": 1.6318973508185863e-13,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 30.12692837398781,
+                  "sinr_db": 27.116628417347997,
+                  "rho": 1029.6576189367593
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 1029.6576189367593,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": null,
+                  "dispersion_bits2": null,
+                  "epsilon": null,
+                  "log_error": null,
+                  "log_success": null,
+                  "status": "QUADRATURE_PRECISION_LIMIT"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 102
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 1,
+                "channel_seed": 101,
+                "node_id": "Node-5",
+                "tag_id": "Tag-001",
+                "zone": "MID",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "MEDIUM",
+                  "distance_m": 20.931275254857027,
+                  "offset_db": 1.322363498981601,
+                  "cw_power_dbm": 10.0,
+                  "cw_power_w": 0.01,
+                  "received_dbm": -114.86187426292197,
+                  "received_w": 3.264469187078172e-15,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 13.138125737078052,
+                  "sinr_db": 10.12782578043824,
+                  "rho": 20.59740809416262
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 20.59740809416262,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.999987784048865,
+                  "dispersion_bits2": 4.292284894236415e-05,
+                  "epsilon": 0.0,
+                  "log_error": -372751.3020075857,
+                  "log_success": -0.0,
+                  "status": "FLOAT_TAIL"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 102
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 1,
+                "channel_seed": 101,
+                "node_id": "Node-2",
+                "tag_id": "Tag-004",
+                "zone": "FAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "MEDIUM",
+                  "distance_m": 46.12520549355147,
+                  "offset_db": 2.390655421072985,
+                  "cw_power_dbm": 10.0,
+                  "cw_power_w": 0.01,
+                  "received_dbm": -127.51928734565516,
+                  "received_w": 1.7703994476970914e-16,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 0.4807126543448528,
+                  "sinr_db": -2.529587302294959,
+                  "rho": 1.1170465341881595
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 1.1170465341881595,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.5223905561493557,
+                  "dispersion_bits2": 0.6579577452781435,
+                  "epsilon": 0.377406576111345,
+                  "log_error": -0.9744322214211583,
+                  "log_success": -0.4738615833679392,
+                  "status": "FINITE_REFERENCE"
+                },
+                "receive_class": "RANDOM",
+                "used_error_probability": 0.377406576111345,
+                "rule_reason": "BINARY_INPUT_AWGN_FBL"
+              },
+              "failed": false,
+              "uniform_draw": 0.45305613440056913,
+              "sampling_status": "CONDITIONAL_BERNOULLI_52_BIT_GRID",
+              "phy_seed": 102
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "profile_id": "channel-entry-synthetic-v0.1",
+            "channel_seed": 101,
+            "window_id": 2,
+            "power_level": "HIGH",
+            "node_offsets_db": [
+              [
+                "Node-1",
+                1.6625213210070227
+              ],
+              [
+                "Node-2",
+                -1.6208543381078526
+              ],
+              [
+                "Node-3",
+                2.848722993506769
+              ],
+              [
+                "Node-4",
+                1.9808525928425569
+              ],
+              [
+                "Node-5",
+                1.8486038303327073
+              ]
+            ]
+          },
+          "records": [
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 2,
+                "channel_seed": 101,
+                "node_id": "Node-1",
+                "tag_id": "Tag-006",
+                "zone": "NEAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "HIGH",
+                  "distance_m": 7.969741658485021,
+                  "offset_db": 1.6625213210070227,
+                  "cw_power_dbm": 22.0,
+                  "cw_power_w": 0.15848931924611134,
+                  "received_dbm": -85.74765863906481,
+                  "received_w": 2.6621598920504494e-12,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 42.25234136093519,
+                  "sinr_db": 39.24204140429538,
+                  "rho": 16797.093360698324
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 16797.093360698324,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": null,
+                  "dispersion_bits2": null,
+                  "epsilon": null,
+                  "log_error": null,
+                  "log_success": null,
+                  "status": "QUADRATURE_PRECISION_LIMIT"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 102
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 2,
+                "channel_seed": 101,
+                "node_id": "Node-5",
+                "tag_id": "Tag-001",
+                "zone": "MID",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "HIGH",
+                  "distance_m": 20.931275254857027,
+                  "offset_db": 1.8486038303327073,
+                  "cw_power_dbm": 22.0,
+                  "cw_power_w": 0.15848931924611134,
+                  "received_dbm": -102.33563393157087,
+                  "received_w": 5.840319508139423e-14,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 25.664366068429132,
+                  "sinr_db": 22.65406611178932,
+                  "rho": 368.4992487771525
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 368.4992487771525,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": null,
+                  "dispersion_bits2": null,
+                  "epsilon": null,
+                  "log_error": null,
+                  "log_success": null,
+                  "status": "QUADRATURE_PRECISION_LIMIT"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 102
+            },
+            {
+              "transmission_id": "baseline-packet",
+              "link": {
+                "window_id": 2,
+                "channel_seed": 101,
+                "node_id": "Node-2",
+                "tag_id": "Tag-004",
+                "zone": "FAR",
+                "budget": {
+                  "profile_id": "channel-entry-synthetic-v0.1",
+                  "power_level": "HIGH",
+                  "distance_m": 46.12520549355147,
+                  "offset_db": -1.6208543381078526,
+                  "cw_power_dbm": 22.0,
+                  "cw_power_w": 0.15848931924611134,
+                  "received_dbm": -119.53079710483598,
+                  "received_w": 1.1140900345496378e-15,
+                  "noise_w": 1.5848931924611109e-16,
+                  "interference_w": 1.5848931924611109e-16,
+                  "residual_self_interference_w": 0.0,
+                  "snr_db": 8.469202895164027,
+                  "sinr_db": 5.458902938524215,
+                  "rho": 7.0294328971128754
+                },
+                "fbl": {
+                  "model_id": "bi-awgn-normal-approximation-no-higher-order-v1",
+                  "rho": 7.0294328971128754,
+                  "k": 64,
+                  "n": 128,
+                  "capacity_bits": 0.983816717245609,
+                  "dispersion_bits2": 0.048075026887747015,
+                  "epsilon": 7.396449121222734e-138,
+                  "log_error": -315.7557427966157,
+                  "log_success": -7.396449121222942e-138,
+                  "status": "FINITE_REFERENCE"
+                },
+                "receive_class": "RELIABLE",
+                "used_error_probability": 0.0,
+                "rule_reason": "RESEARCH_POWER_TABLE_RELIABLE"
+              },
+              "failed": false,
+              "uniform_draw": null,
+              "sampling_status": "DETERMINISTIC_RESEARCH_RULE",
+              "phy_seed": 102
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

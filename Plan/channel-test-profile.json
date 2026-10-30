@@ -1,0 +1,69 @@
+{
+  "profile_id": "channel-entry-synthetic-v0.1",
+  "status": "ACCEPTED_TEST_CONFIGURATION",
+  "units": "SI except explicitly named dBm/dB fields",
+  "frequency_hz": 915000000.0,
+  "reference_distance_m": 1.0,
+  "reference_gain_linear": 0.0006797973850689421,
+  "reference_gain_db": -31.67620510321234,
+  "path_loss_exponent": 2.0,
+  "reflection_power_coefficient": 0.1,
+  "min_valid_distance_m": 1.0,
+  "max_valid_distance_m": 50.0,
+  "out_of_range_policy": "REJECT_WITHOUT_MOVING_TAG",
+  "bandwidth_hz": 10000.0,
+  "effective_bpsk_symbol_rate_hz": 10000.0,
+  "noise_density_dbm_hz": -174.0,
+  "receiver_noise_figure_db": 6.0,
+  "noise_power_dbm": -128.0,
+  "fixed_interference_dbm_by_node": {
+    "Node-1": -128.0,
+    "Node-2": -128.0,
+    "Node-3": -128.0,
+    "Node-4": -128.0,
+    "Node-5": -128.0
+  },
+  "cw_power_dbm": {
+    "LOW": -2.0,
+    "MEDIUM": 10.0,
+    "HIGH": 22.0
+  },
+  "outcome_class": {
+    "LOW": {
+      "NEAR": "RELIABLE",
+      "MID": "RANDOM",
+      "FAR": "UNREACHABLE"
+    },
+    "MEDIUM": {
+      "NEAR": "RELIABLE",
+      "MID": "RELIABLE",
+      "FAR": "RANDOM"
+    },
+    "HIGH": {
+      "NEAR": "RELIABLE",
+      "MID": "RELIABLE",
+      "FAR": "RELIABLE"
+    }
+  },
+  "offset_range_db": [
+    -3.0,
+    3.0
+  ],
+  "cross_node_offsets": "INDEPENDENT_ACCEPTED",
+  "channel_seed": 20261029,
+  "phy_seed": 20261030,
+  "reference_message_bits": 64,
+  "reference_channel_uses": 128,
+  "extra_fbl_cases": [
+    {
+      "k": 32,
+      "n": 128
+    },
+    {
+      "k": 64,
+      "n": 256
+    }
+  ],
+  "bpsk_snr_convention": "Y=sqrt(rho)*X+Z; X in {-1,+1}; Z~N(0,1); rho=2*SINR_RF*B_eq/R_s",
+  "purpose": "Logic and numeric reference fixtures only; not outdoor RF validation or a TS 38.291 transport-block configuration"
+}
