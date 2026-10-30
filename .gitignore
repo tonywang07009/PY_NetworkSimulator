@@ -24,3 +24,6 @@ __pycache__/
 # 架構圖工具收據保存在agent worktree
 /docs/architecture/*.delivery.json
 **/.archify-delivery-*/
+
+# Local Python environment
+/.venv/
