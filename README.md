@@ -2,38 +2,34 @@
 
 # PY_NetworkSimulator
 
-This Python project supports Ambient IoT research in an IAB network.
-The current local modules build a static network topology and calculate radio-link quality.
-Use the Notebooks to inspect settings, calculations, and results.
+PY_NetworkSimulator is a Python research project for Ambient IoT in an Integrated Access and Backhaul (IAB) network.
+It helps readers study a network deployment and the radio links between its Nodes and Tags.
 
-## System overview
-
-| Module | Input | Output |
-|---|---|---|
-| IAB topology | Node positions, Tag counts, and a random seed | A topology snapshot, distance tables, and deployment plots |
-| Channel model | The topology snapshot, channel settings, and window power | Received power, SNR, SINR, and packet reception results |
-
-The topology snapshot connects these two modules.
+The current modules create a static network topology.
+They also calculate link quality and packet reception for that topology.
 The channel model is available in the local worktree; its remote delivery is still pending.
+Energy, access, scheduling, and a complete simulation timeline are not yet integrated.
 
 ## Choose a reading path
 
-| Goal | Start here |
-|---|---|
-| Run a small example | [Quick start](#quick-start) |
-| Understand the system | [Architecture and data flow](#architecture-and-data-flow) |
+- [Quick start](#quick-start): run the example, then examine its deployment plot and channel calculations in the Notebooks.
+- [Architecture and data flow](#architecture-and-data-flow): understand the inputs, modules, outputs, and research limits.
 
 ## Quick start
 
 ### Prerequisites
 
-For the topology module, use Python 3.10 or later and Matplotlib.
-Channel calculations also need NumPy and SciPy. Notebook examples need a working Jupyter kernel.
-Tests need pytest. Use the existing project environment.
+For the topology example, use Python 3.10 or later and Matplotlib.
+Channel calculations also need NumPy and SciPy.
+To run the Notebooks, use an environment with Jupyter and a working Python kernel.
+Tests need pytest.
+If the existing project environment has these packages, use that environment.
 
-### Run the topology example
+Run the commands below from the project root.
+The `PYTHONPATH` setting makes the source modules available without installing this project as a package.
+The third-party packages above are still required.
 
-From the project root, run:
+### 1. Build the example topology
 
 ```bash
 PYTHONPATH=src python -c 'from iab.topology import build_topology, example_config; snapshot = build_topology(example_config()); print(len(snapshot.ues), len(snapshot.tags))'
@@ -45,72 +41,74 @@ Expected output:
 5 30
 ```
 
-These values are the UE count and Tag count in the example.
-With this `PYTHONPATH` invocation, you do not need to install the project as a package.
+The example has five user equipment devices (UEs) and 30 Tags.
+This output shows that the example topology was built.
+The command does not run the channel model or display a plot.
 
-### Continue in a Notebook
+### 2. Inspect the results
 
-- [Topology Notebook](notebooks/01_iab_topology.ipynb): edit settings, inspect tables, and display the deployment plot.
-- [Channel Notebook](notebooks/02_channel_model.ipynb): inspect channel calculations and packet reception.
+Open a Notebook in the environment above.
+Run its cells from the beginning:
 
-Run cells from the beginning in the selected environment.
-Both Notebooks import their core modules; settings, demonstrations, and scenarios remain in the Notebooks.
+- [Topology Notebook](notebooks/01_iab_topology.ipynb): examine the settings, Node and Tag tables, and deployment plot. You can change the example settings and run the cells again.
+- [Channel Notebook](notebooks/02_channel_model.ipynb): examine link calculations and packet reception for a topology.
 
-For topology settings and operation, read the [English IAB guide](ReferDoc/Implementation/IABTopology/README.en.md).
-For channel operation, read the [channel guide in Traditional Chinese](ReferDoc/Implementation/ChannelModel/README.md).
-The [guide index](ReferDoc/Implementation/README.md) lists available module documents.
+For settings, operation, and troubleshooting, use the [IAB topology guide](ReferDoc/Implementation/IABTopology/README.en.md) and the [channel guide in Traditional Chinese](ReferDoc/Implementation/ChannelModel/README.md). The [guide index](ReferDoc/Implementation/README.md) lists the module documents.
 
-## Topology configuration
+The topology export replaces files with the same names.
+A failed or interrupted export can leave partial files.
+Before export, copy the results that you need to keep.
 
-The static two-dimensional example has one Donor and five Nodes, with one UE per Node.
-UE association is logical. Tag counts are configurable; the example has 30 Tags.
-The module provides exact three-zone quotas, tables, and PNG/SVG/JSON/CSV export.
+## Architecture and data flow
 
-Three `TopologyConfig` collection fields require tuples:
+In the example, one Donor is the upstream station for five IAB Nodes.
+Each Node has one logically associated UE and reads its assigned Tags.
+Tags are placed around their assigned Nodes.
+The topology remains fixed during a simulation.
 
-| Field | Format or example |
+1. **Topology:** Node positions, Tag counts, and a random seed produce a topology snapshot, tables, and a deployment plot. The snapshot records the Nodes, Tags, and their relationships.
+2. **Channel:** The snapshot, channel settings, and window power provide the inputs for received power, SNR, SINR, and packet reception calculations. SNR compares signal power with noise; SINR also includes interference.
+3. **Results:** The Notebooks show the settings and calculations. The topology module can also export plots and data as PNG, SVG, JSON, and CSV.
+
+The topology's near, middle, and far zones describe distance.
+They do not establish RF coverage, absence of interference, or measured signal quality.
+
+The channel model uses research assumptions. One assumption is that a packet is ready to transmit.
+Its results do not guarantee outdoor performance.
+The [channel guide](ReferDoc/Implementation/ChannelModel/README.md) explains the assumptions and parameter sources.
+Tag reading within the IAB split architecture is a research extension, not a claim of full standards compliance.
+
+### Topology settings
+
+The example has one Donor, five Nodes, one UE per Node, and 30 Tags. Tag counts are configurable. Use tuples for these three `TopologyConfig` collection fields:
+
+| Field | Example and meaning |
 |---|---|
 | `iab_nodes` | `(node_1, node_2, node_3, node_4, node_5)` |
-| `zone_outer_radii_m` | `(10.0, 30.0, 50.0)`; near/middle/far outer boundaries in metres |
-| `zone_tag_counts` | `(10, 13, 7)`; near/middle/far Tag counts across the whole scene |
+| `zone_outer_radii_m` | `(10.0, 30.0, 50.0)`; near, middle, and far outer boundaries in metres |
+| `zone_tag_counts` | `(10, 13, 7)`; Tag counts across the whole scene for the three zones |
 
-Lists are rejected. No automatic format conversion occurs.
-`frozen=True` blocks field reassignment. Tuples block adding, removing, or replacing collection items.
-Together, these rules keep the configuration fixed; they do not replace the separate ID uniqueness validation.
+The module rejects lists and does not convert them automatically.
+`frozen=True` prevents field reassignment; tuples prevent adding, removing, or replacing collection items.
+The module checks ID uniqueness separately.
 
-Type annotations do not perform runtime input validation.
-`build_topology(config)` rejects list inputs and other invalid settings with a `ValueError` that explains the reason.
-No additional `__post_init__` conversion is needed.
+Type annotations do not validate inputs at runtime.
+For invalid settings, `build_topology(config)` raises a `ValueError` with the reason.
 
 ```python
 zone_tag_counts = (10, 13, 7)  # Accepted: tuple
 # zone_tag_counts = [10, 13, 7]  # Rejected: list
 ```
 
-## Architecture and data flow
+### Source and further reading
 
-The source and tests are grouped by module:
-
-```text
-src/
-├── iab/
-│   ├── __init__.py
-│   ├── contracts.py       # Shared dataclasses and TagZone
-│   ├── topology.py        # Validation, generation, tables, and export
-│   └── plotting.py        # Deployment plot with equal axis scaling
-└── channel/
-    ├── __init__.py
-    ├── contracts.py       # Channel configuration, data types, and enums
-    └── channel_model.py   # Channel calculations, windows, and packet reception
-```
+The core modules are [src/iab](src/iab/) for topology and [src/channel](src/channel/) for channel calculations. Their corresponding tests are in [tests/iab](tests/iab/) and [tests/channel](tests/channel/).
 
 - [System architecture](docs/architecture/system.html)
-- [IAB topology architecture](docs/architecture/iab-topology.html)
-- [IAB design notes](docs/architecture/iab-topology-design.md)
+- [IAB topology architecture](docs/architecture/iab-topology.html) and [design notes](docs/architecture/iab-topology-design.md)
 - [Channel architecture](docs/architecture/channel-model.html)
-- [Topology tests](tests/iab/) and [channel tests](tests/channel/)
 
-## Validation commands
+## Validation
 
 From the project root, use the existing test environment:
 
@@ -120,16 +118,8 @@ python -m pytest tests/iab -q
 python -m pytest tests/channel -q
 ```
 
-The existing clean-kernel topology runner is [execute_topology_notebook.py](tests/iab/execute_topology_notebook.py).
-The channel guide gives its corresponding kernel runner and environment.
-The quick-start command produced 5 30 on Python 3.12.12 during this README update.
-The test commands above were not rerun for this documentation change.
+For a clean-kernel run, use the [topology Notebook runner](tests/iab/execute_topology_notebook.py).
+The channel guide describes its runner and environment.
 
-## Limits
-
-This guide covers the current topology and channel modules. Energy and scheduling remain future work.
-Geometric zones do not establish RF coverage, absence of interference, or SNR quality.
-The channel guide records model assumptions and parameter sources.
-
-Export replaces files with the same names. An interrupted or failed export can leave partial files.
-Copy earlier results before export if you need to keep them.
+The quick-start command produced `5 30` during this README update.
+The test commands and Notebooks were not rerun for this documentation change.

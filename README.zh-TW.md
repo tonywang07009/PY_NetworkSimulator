@@ -2,38 +2,32 @@
 
 # PY_NetworkSimulator
 
-本專案使用 Python，支援 IAB 網路中的 Ambient IoT 研究。
-目前本地模組可建立靜態網路拓撲，並計算無線鏈路品質。
-您可以透過 Notebook 查看設定、計算過程與結果。
+PY_NetworkSimulator 是使用 Python 開發的研究專案，探討整合存取與回傳（Integrated Access and Backhaul，IAB）網路中的 Ambient IoT。
+本專案適合想了解網路部署，以及 Node 與 Tag 之間無線鏈路的讀者。
 
-## 系統概覽
-
-| 模組 | 輸入 | 輸出 |
-|---|---|---|
-| IAB 拓撲 | Node 位置、Tag 數量與亂數種子 | 拓撲快照、距離表與部署圖 |
-| 通道模型 | 拓撲快照、通道設定與窗功率 | 接收功率、SNR、SINR 與封包接收結果 |
-
-拓撲快照連接這兩個模組。
+目前的模組可建立靜態網路拓撲，並根據該拓撲計算鏈路品質與封包接收結果。
 通道模型已存在於本機工作目錄，遠端交付仍待完成。
+能量、接入、排程與完整模擬時間軸尚未整合。
 
 ## 選擇閱讀路徑
 
-| 目的 | 閱讀入口 |
-|---|---|
-| 執行小型範例 | [快速開始](#快速開始) |
-| 理解系統 | [架構與資料流](#架構與資料流) |
+- [快速開始](#快速開始)：執行範例，再透過 Notebook 查看部署圖與通道計算。
+- [架構與資料流](#架構與資料流)：了解輸入、模組、輸出與研究限制。
 
 ## 快速開始
 
 ### 前置條件
 
-拓撲模組使用 Python 3.10 以上版本與 Matplotlib。
-通道計算另需 NumPy、SciPy；Notebook 範例需要可用的 Jupyter kernel。
-測試需要 pytest。請沿用既有專案環境。
+拓撲範例需要 Python 3.10 以上版本與 Matplotlib。
+通道計算另需 NumPy 與 SciPy。
+執行 Notebook 的環境需要 Jupyter 和可用的 Python kernel；執行測試則需要 pytest。
+若既有專案環境已有這些套件，請使用該環境。
 
-### 執行拓撲範例
+請從專案根目錄執行以下命令。
+`PYTHONPATH` 設定讓 Python 可以使用來源碼中的模組，不必將本專案安裝成套件。
+上述第三方套件仍須事先準備。
 
-從專案根目錄執行：
+### 1. 建立範例拓撲
 
 ```bash
 PYTHONPATH=src python -c 'from iab.topology import build_topology, example_config; snapshot = build_topology(example_config()); print(len(snapshot.ues), len(snapshot.tags))'
@@ -45,72 +39,69 @@ PYTHONPATH=src python -c 'from iab.topology import build_topology, example_confi
 5 30
 ```
 
-兩個值分別是範例的 UE 數量與 Tag 數量。
-這種 `PYTHONPATH` 呼叫方式不需要安裝本套件。
+這兩個數字代表範例中的 5 個使用者設備（UE）與 30 個 Tag，顯示範例拓撲已建立。
+此命令不會執行通道模型或顯示部署圖。
 
-### 接續閱讀 Notebook
+### 2. 查看結果
 
-- [拓撲 Notebook](notebooks/01_iab_topology.ipynb)：修改設定、查看表格與部署圖。
-- [通道 Notebook](notebooks/02_channel_model.ipynb)：查看通道計算與封包接收。
+在上述環境開啟 Notebook，從第一個 cell 依序執行：
 
-選定環境後，從第一個 cell 依序執行。
-兩份 Notebook 都匯入核心模組，並保留設定、示範與情境。
+- [拓撲 Notebook](notebooks/01_iab_topology.ipynb)：查看設定、Node 與 Tag 表格，以及部署圖。您可以修改範例設定，再重新執行各 cell。
+- [通道 Notebook](notebooks/02_channel_model.ipynb)：查看指定拓撲的鏈路計算與封包接收結果。
 
-拓撲設定與操作見 [IAB 使用說明](ReferDoc/Implementation/IABTopology/README.md)。
-通道操作見[繁體中文通道指南](ReferDoc/Implementation/ChannelModel/README.md)。
-[使用說明索引](ReferDoc/Implementation/README.md)列出目前的模組文件。
+設定、操作與問題排解請參考 [IAB 拓撲指南](ReferDoc/Implementation/IABTopology/README.md)與[通道指南](ReferDoc/Implementation/ChannelModel/README.md)。[使用說明索引](ReferDoc/Implementation/README.md)列出各模組文件。
 
-## 拓撲設定
+拓撲匯出會覆寫同名檔案。
+匯出失敗或中斷時，可能留下不完整檔案。
+若要保留舊結果，請先複製再匯出。
 
-靜態二維範例有 1 個 Donor、5 個 Nodes，每個 Node 關聯 1 個 UE。
-UE 只有邏輯歸屬。Tag 數量可設定，範例共有 30 個 Tags。
-模組提供精確三區配額、表格，以及 PNG／SVG／JSON／CSV 匯出。
+## 架構與資料流
 
-`TopologyConfig` 的三個集合欄位使用 tuple：
+範例中的 Donor 是五個 IAB Node 的上游站台。
+每個 Node 在邏輯上關聯一個 UE，並讀取分配給它的 Tag。
+Tag 部署在所屬 Node 周圍；模擬期間拓撲保持固定。
 
-| 欄位 | 格式或範例 |
+1. **拓撲：** Node 位置、Tag 數量與亂數種子產生拓撲快照、表格與部署圖。快照記錄 Node、Tag 與其關係。
+2. **通道：** 拓撲快照、通道設定與窗功率作為輸入，用於計算接收功率、SNR、SINR 與封包接收結果。SNR 比較訊號與噪聲功率；SINR 也考慮干擾。
+3. **結果：** Notebook 顯示設定與計算過程。拓撲模組也能將圖與資料匯出為 PNG、SVG、JSON 和 CSV。
+
+拓撲的近、中、遠區表示距離，不能證明 RF 覆蓋範圍、沒有干擾或實測訊號品質。
+
+通道模型採用研究假設，並假設封包已具備傳送條件；其結果不能保證戶外場域性能。
+[通道指南](ReferDoc/Implementation/ChannelModel/README.md)說明模型假設與參數來源。
+IAB split 架構中的 Tag 讀取屬於研究擴充，並非完整符合標準的宣稱。
+
+### 拓撲設定
+
+範例有一個 Donor、五個 Node，每個 Node 對應一個 UE，全場共有 30 個 Tag。Tag 數量可設定。`TopologyConfig` 的三個集合欄位必須使用 tuple：
+
+| 欄位 | 範例與意義 |
 |---|---|
 | `iab_nodes` | `(node_1, node_2, node_3, node_4, node_5)` |
-| `zone_outer_radii_m` | `(10.0, 30.0, 50.0)`；近／中／遠區外邊界，單位為公尺 |
-| `zone_tag_counts` | `(10, 13, 7)`；全場近／中／遠區 Tag 數量 |
+| `zone_outer_radii_m` | `(10.0, 30.0, 50.0)`；近、中、遠區的外邊界，單位為公尺 |
+| `zone_tag_counts` | `(10, 13, 7)`；全場近、中、遠三區的 Tag 數量 |
 
-不接受 list，也不自動轉換格式。
-`frozen=True` 防止欄位重新賦值；tuple 防止容器元素被增刪或替換。
-兩者共同維持設定固定，但不取代獨立的 ID 唯一性驗證。
+模組不接受 list，也不自動轉換。
+`frozen=True` 防止欄位重新賦值；tuple 防止集合元素被增刪或替換。
+模組會另行檢查 ID 唯一性。
 
 型別註記不會自動執行輸入驗證。
-`build_topology(config)` 會拒絕 list 與其他非法設定，並拋出含原因的 `ValueError`。
-因此不需要額外的 `__post_init__` 格式轉換。
+`build_topology(config)` 遇到無效設定時，會拋出包含原因的 `ValueError`。
 
 ```python
 zone_tag_counts = (10, 13, 7)  # Accepted: tuple
 # zone_tag_counts = [10, 13, 7]  # Rejected: list
 ```
 
-## 架構與資料流
+### 程式與延伸閱讀
 
-來源碼與測試依模組分類：
-
-```text
-src/
-├── iab/
-│   ├── __init__.py
-│   ├── contracts.py       # Shared dataclasses and TagZone
-│   ├── topology.py        # Validation, generation, tables, and export
-│   └── plotting.py        # Deployment plot with equal axis scaling
-└── channel/
-    ├── __init__.py
-    ├── contracts.py       # Channel configuration, data types, and enums
-    └── channel_model.py   # Channel calculations, windows, and packet reception
-```
+核心程式分為處理拓撲的 [src/iab](src/iab/) 與計算通道的 [src/channel](src/channel/)。對應測試位於 [tests/iab](tests/iab/) 與 [tests/channel](tests/channel/)。
 
 - [整體架構](docs/architecture/system.html)
-- [IAB 拓撲架構](docs/architecture/iab-topology.html)
-- [IAB 設計說明](docs/architecture/iab-topology-design.md)
+- [IAB 拓撲架構](docs/architecture/iab-topology.html)與[設計說明](docs/architecture/iab-topology-design.md)
 - [通道架構](docs/architecture/channel-model.html)
-- [拓撲測試](tests/iab/)與[通道測試](tests/channel/)
 
-## 驗證命令
+## 驗證
 
 從專案根目錄使用既有測試環境：
 
@@ -120,16 +111,8 @@ python -m pytest tests/iab -q
 python -m pytest tests/channel -q
 ```
 
-既有拓撲乾淨 kernel 執行器為 [execute_topology_notebook.py](tests/iab/execute_topology_notebook.py)。
-通道指南列出對應的 kernel 執行器與環境。
-本次 README 更新以 Python 3.12.12 執行快速開始命令，實際輸出為 5 30。
-這次文件修改未重新執行上述測試命令。
+如需在乾淨 kernel 執行，請使用[拓撲 Notebook 執行器](tests/iab/execute_topology_notebook.py)。
+通道指南說明其對應執行器與環境。
 
-## 限制
-
-本指南說明目前的拓撲與通道模組；能量與排程仍是後續工作。
-幾何分區不能證明 RF 覆蓋範圍、沒有干擾或 SNR 品質。
-通道指南記錄模型假設與參數來源。
-
-匯出會覆寫同名檔案；中斷或失敗可能留下部分檔案。
-若要保留舊結果，請先複製後再匯出。
+本次 README 更新重新執行快速開始命令，輸出為 `5 30`。
+本次文件修改未重新執行上述測試命令或 Notebook。
