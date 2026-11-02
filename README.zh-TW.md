@@ -113,9 +113,11 @@ python -m pytest tests/channel -q
 如需在乾淨 kernel 執行，請使用[拓撲 Notebook 執行器](tests/iab/execute_topology_notebook.py)。
 通道指南說明其對應執行器與環境。
 
-本次在 Linux、Python 3.12.12 的全新暫存環境驗證準備步驟。
-套件安裝與 `pip check` 通過；拓撲命令輸出 `5 30`，通道鏈路查詢也成功。
-JupyterLab 4.6.5 命令可用，但尚未驗證瀏覽器操作或執行 Notebook。
-其他 Python 版本尚未驗證。安裝命令未固定套件版本，日後可能安裝到不同版本。
-本次接收流程說明更新執行了 6 項既有重點測試，涵蓋功率分類、浮點尾端與封包抽樣，全部通過。
-尚未重新執行上述完整測試命令；Mermaid 渲染與視覺排版仍待驗證。
+2026-10-31 以 Linux、Python 3.12.12 的全新暫存環境完成設定檢查。
+拓撲命令輸出 `5 30`，通道查詢成功；拓撲與通道的 227 項測試通過。
+在隔離專案副本中，拓撲與通道 Notebook 分別完成 11 與 13 個程式區塊，皆無錯誤且 kernel 正常關閉。
+Chrome 中的 JupyterLab 已開啟通道 Notebook。
+十份文件在 1280 與 390 像素寬的視窗完成渲染，頁面沒有水平溢出，Mermaid 流程圖也正常渲染。
+已檢視中文 README、通道單元與 JupyterLab 截圖；通道單元另提供 SVG 流程圖供放大閱讀。
+上述文件檢查使用本機 Markdown 預覽，不代表已驗證 GitHub 的渲染結果。
+其他 Python 版本與完整 STE 符合性仍待驗證；套件版本未固定。

@@ -37,6 +37,18 @@
 
 ## 文件閱讀順序
 
+Notebook 設計：[資源時間表逐 cell 原型計畫](../docs/architecture/resource-timeline-notebook-plan.md)，包含導讀順序、範例輸入與驗收情境；[Notebook 原始骨架](../notebooks/03_resource_timeline.ipynb)已補齊核心與示範，等待人工導讀接受。
+
+
+已整合至既有設計：[600 ms 資源時間表契約](../docs/architecture/resource-timeline-design.md)，包含資料流、事件與通道介接邊界。
+
+
+資源時間表：[UE／DU 時序完整草案](resource-timeline-draft.md)。共用外層窗口與獨立抽樣已定案；情境間隔數值、實作及驗收仍待完成。
+
+
+最新設計入口：[原始模型與剩餘設計盤點](design-resumption.md)（2026-10-31）。通道已完成本地人工接受與抽離；下方較早的「待接受」描述保留為歷史脈絡。
+
+
 目前通道討論入口：[共址背散射與有限碼長公式依據](channel-formula-evidence.md)（2026-10-25）。已選參數來源策略A，公式組合及正式數值仍待接受。
 
 2026-10-29更新[通道模型整合草案](channel-model-draft.md)。已選功率表優先。[鏈路對照](channel-link-binding.md)說明功率、通道計算與接收規則的綁定。實際參數及校準範圍仍待確認。

@@ -8,6 +8,7 @@ Start with the [project quick start](../README.md#quick-start) to prepare the en
 1. [Architecture and data flow](architecture.en.md): how the modules connect and what their results mean.
 2. [IAB topology](unit/iab-topology.en.md): topology settings and input limits.
 3. [Channel model](unit/channel-model.en.md): link formulas, research rules, and packet reception.
+4. [Resource timeline](unit/resource-timeline.en.md): accepted UE/Tag interval core in src/timeline, with an executable Notebook.
 
 The module guides provide additional settings and operation details.
-Energy, access, scheduling, and a complete simulation timeline are not yet integrated.
+Energy, access, scheduling, and a full simulation timeline are not yet integrated.

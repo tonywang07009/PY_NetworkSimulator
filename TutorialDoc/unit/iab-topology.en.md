@@ -16,7 +16,7 @@ The example has one Donor, five Nodes, one UE per Node, and 30 Tags. Tag counts 
 
 The module rejects lists and does not convert them automatically.
 `frozen=True` prevents field reassignment; tuples prevent adding, removing, or replacing collection items.
-The module checks ID uniqueness separately.
+The module makes sure that each ID is unique in a separate validation step.
 
 Type annotations do not validate inputs at runtime.
 For invalid settings, `build_topology(config)` raises a `ValueError` with the reason.

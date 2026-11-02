@@ -945,3 +945,100 @@ Baseline 與候選方法必須使用同一批服務請求／Deadline、Tag 初�
 - 核心位於src/channel/channel_model.py；所有Config/DTO/Enum集中src/channel/contracts.py。
 - Notebook保留逐cell說明、來源與示範，改用同一份.py核心。
 - 維持已接受的公式、接收規則、亂數與例外行為；正式Access/能量/CLM仍未整合。
+
+
+## 34. DU interval and UE occupancy (2026-10-31) [DECIDED]
+
+- Q-INFLUENCE-06: The user selected A. The fixed 600 ms DU interval includes UE uplink occupancy.
+- Source: original System Model p.10, version_1/main.pdf in /home/tonywang/115-1/system_model_mod; identical project copy at ReferDoc/Plan/main.pdf.
+- Paging, D2R and Guard must fit within the remaining usable time. The 600 ms is not an additional Tag-only interval after UE transmission.
+- Keep the accepted UE UL → Paging → CW/D2R sequence, Guard rule, and strict service deadline.
+- No UE duration, window start/spacing, per-Node synchronization, or scenario distribution is selected by this answer. Numerical examples are illustrative.
+
+
+### 34.1 Per-Node DU timing (2026-10-31) [DECIDED]
+
+- Q-INFLUENCE-07: The user confirmed that DU timing differs between Nodes.
+- UE timing origin and the meaning of 0,n ms remain unresolved; no UE period or duration is inferred.
+
+
+### 34.2 Initial UE interval (2026-10-31) [DECIDED]
+
+- Q-UNDERSTAND-01: The user selected A. Each Node's UE starts at global simulation time t=0.
+- Its transmission end time can differ by Node. Node-1 at 200 ms and Node-2 at 150 ms are illustrative examples, not selected test parameters.
+- The notation 0,n ms denotes a duration interval, not starts repeated every n ms.
+- Whether UE transmissions recur later in the run remains unresolved. Do not infer a period or a one-time-only workload.
+
+
+### 34.3 One-time UE occupancy (2026-10-31) [DECIDED]
+
+- Q-INFLUENCE-08: The user selected B. Each UE transmits only once, beginning at global t=0; UE occupancy does not recur later in the same run.
+- After its initial UE interval, the Node's remaining available resource is for Tags. Paging, D2R, Guard and energy constraints still apply.
+- This supersedes earlier scenario-pool suggestions that assume repeated UE traffic for the current first-version scenario.
+- The end of the remaining Tag resource interval still needs alignment with the earlier fixed 600 ms DU interval and the run ending at the latest service deadline. No continuous CW or removal of Guard is inferred.
+
+
+### 34.4 Tag interval end (2026-10-31) [DECIDED]
+
+- Q-UNDERSTAND-02: The user selected A. Tag resource after the initial UE transmission ends at the 600 ms DU boundary, not at the latest service deadline.
+- With the initial interval beginning at global 0, Node-j UE occupies [0,n_j) ms; its Tag resource is [n_j,600) ms.
+- For the user's illustrative end times, Node-1 has 400 ms and Node-2 has 450 ms for Paging/D2R/Guard. These durations do not represent pure payload airtime.
+- This resolves different initial Tag opportunities without assuming that initial enclosing intervals start at different global times.
+- The existence and timing of later DU intervals remain unresolved. UE does not recur in the run under §34.3.
+
+
+### 34.5 Later windows and random UE duration (2026-10-31) [DECIDED / PARTIAL]
+
+- Q-INFLUENCE-09: A selected. Later DU windows can occur in the same run; starts and gaps remain unspecified.
+- The user specified UE transmission duration at approximately 60%–75% of the DU interval, uniform sampling for assigned UE uplink/downlink time, and upward rounding of fractional durations.
+- For a 600 ms interval, the unrounded duration range is 360–450 ms. Earlier 200/150 ms examples are not parameters for this new duration rule.
+- The sampling recurrence needs clarification against §34.3's earlier one-time UE decision. Do not silently apply or suppress UE occupancy in later windows.
+- Rounding unit/grid, UL/DL partition or direction selection, and cross-Node/window statistical independence remain unspecified. Retain integer-nanosecond engine time.
+
+
+### 34.6 UE occupancy in every window (2026-10-31) [DECIDED]
+
+- Q-UNDERSTAND-03: The user selected A. Each DU window includes sampled UE occupancy using the 60%–75% rule, followed by upward rounding.
+- This supersedes §34.3's one-time-only UE rule. The UE-first ordering now applies at each window's relative origin; global t=0 describes the initial interval only.
+- The remaining part of each 600 ms window is for Tag Paging/D2R/Guard. Window starts/gaps, rounding unit, UL/DL allocation and sampling correlations remain unspecified.
+
+
+### 34.7 UE duration rounding (2026-10-31) [DECIDED]
+
+- Q-UNDERSTAND-04: The user selected A. Sample the UE duration uniformly before rounding; round upward to whole milliseconds.
+- For a 600 ms window: r is uniform over 0.60–0.75; UE_ms = ceil(600*r); UE_ns = UE_ms*1000000.
+- Integer-nanosecond engine timestamps remain unchanged. Do not replace this with uniform sampling of integer milliseconds.
+- Example: 398.2 ms becomes 399 ms, leaving 201 ms for Paging/D2R/Guard. The example is not a fixed parameter.
+- UL/DL allocation and statistical dependence across Nodes/windows remain unresolved.
+
+
+### 34.8 One UE direction per window (2026-10-31) [DECIDED]
+
+- Q-UNDERSTAND-05: The user selected A. A DU window's UE prefix uses one direction, either UL or DL.
+- The chosen direction occupies the sampled duration; do not allocate separate 60%–75% durations to UL and DL in the same window.
+- The direction-selection distribution remains unresolved. The existing uniform rule specifies duration, not an assumed 50/50 direction probability.
+
+
+### 34.9 UE direction probability (2026-10-31) [DECIDED]
+
+- Q-INFLUENCE-10: A selected. UL and DL each have probability 0.5, sampled reproducibly using the scenario seed.
+- This is the selected simulator scenario, not a claim about measured traffic or normative TDD configuration.
+- Cross-Node/window sampling dependence remains unspecified; equal marginal probabilities do not imply independence.
+
+
+### 34.10 Shared outer intervals with scenario timing (2026-10-31) [DECIDED]
+
+- Q-INFLUENCE-11: A selected. All Nodes share each outer window ID, start and end; duration stays 600 ms.
+- Window starts and gaps are supplied by the resource scenario. Do not assume contiguous windows or a fixed repetition period.
+- Each Node can have a different sampled UE prefix and therefore a different Tag start within the common window.
+- The initial common interval begins at global t=0. Later numerical starts/gaps and their generation model are not selected by this answer.
+- Illustrative 200 ms gaps are not accepted parameters. Preserve the existing resource observation boundary.
+
+
+### 34.11 Independent UE resource draws (2026-10-31) [DECIDED]
+
+- Q-INFLUENCE-12: A selected. UE duration and direction use separate draws for each Node/window, without intended dependence across Nodes, windows or draw kinds.
+- Use the scenario seed and stable Node/window/draw-kind identities for reproducibility. Keep resource, channel, PHY and policy streams separate.
+- Coincident durations or directions are valid; do not reject or redraw them to force differences.
+- The two supplemental resource model choices are closed. Numerical scenario starts/gaps and formal load calibration remain input/evidence work, not inferred values.
+- These decisions do not authorize module implementation or establish a physically calibrated TDD schedule.

@@ -14,6 +14,8 @@ The table does not change the calculated SNR or SINR.
 The diagram shows a packet query through `ChannelModel.receive()`.
 A `ChannelModel.link()` query returns the link calculation and selected probability without sampling a packet.
 
+For a narrow screen, [open the SVG diagram](assets/reception.en.svg) and zoom in.
+
 ```mermaid
 flowchart TD
     A["Topology, settings, window power, k and n"]
@@ -56,7 +58,7 @@ The research table selects these classes:
 | HIGH | RELIABLE | RELIABLE | RELIABLE |
 
 `RELIABLE` gives success with error probability 0; `UNREACHABLE` gives failure with error probability 1.
-These outcomes follow research rules, even when the FBL reference differs.
+Research rules determine these outcomes, even when the FBL reference differs.
 `RANDOM` uses the FBL probability to sample a packet result.
 If that probability is unavailable, the packet query raises an error instead of sampling.
 A floating-point tail value of 0 or 1 does not change `RANDOM` to another class; sampling uses the logarithmic probabilities.

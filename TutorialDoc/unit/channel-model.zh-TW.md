@@ -13,6 +13,8 @@ FBL 根據鏈路品質、資訊位元數 `k` 與傳輸符號數 `n`，估計封�
 下圖呈現 `ChannelModel.receive()` 查詢一次封包接收的流程。
 若只呼叫 `ChannelModel.link()`，則回傳鏈路計算與採用機率，不進行封包抽樣。
 
+窄視窗閱讀時，可[開啟 SVG 流程圖](assets/reception.zh-TW.svg)並放大查看。
+
 ```mermaid
 flowchart TD
     A["拓撲、設定、窗功率、k 與 n"]

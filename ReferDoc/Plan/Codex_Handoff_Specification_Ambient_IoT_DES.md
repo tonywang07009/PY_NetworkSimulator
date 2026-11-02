@@ -37,6 +37,12 @@
 
 ## 2. 時間、Window、CFA、CW 行為 [DECIDED]
 
+Latest resource contract (2026-10-31, R-01 §34.6–34.11): shared 600 ms outer windows with scenario-supplied starts/gaps. Each Node/window has one UE prefix: ceil(600*r) ms, r uniform over 0.60–0.75; UL/DL each 0.5. Duration/direction draws are separate across Nodes/windows and reproducible by scenario seed and stable identities. Tags use the remainder for Paging/D2R/Guard. Earlier one-time-only UE and unspecified timing-dependence passages are superseded. Numerical starts/gaps remain scenario inputs.
+
+
+2026-10-31 clarification (R-01 §34): The 600 ms DU interval includes UE uplink occupancy. Paging, D2R and Guard use the remaining time within that interval. Window start/spacing and per-Node synchronization remain unresolved.
+
+
 | 介面與不變量 | v1 生效要求 |
 |---|---|
 | 內部時鐘 | 所有事件、期限與排序使用**絕對整數奈秒 `int ns`**；顯示時間可轉 ms/μs，不得以浮點顯示值回寫時間戳 |

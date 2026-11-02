@@ -2,7 +2,7 @@
   "schema_version": 1,
   "diagram_type": "architecture",
   "meta": {
-    "title": "Ambient IoT 模組全貌：拓樸與通道已抽離",
+    "title": "Ambient IoT：資源 Notebook 核心已實作，待人工接受",
     "locale": "zh-TW",
     "output": "docs/architecture/system.html",
     "quality_profile": "showcase"
@@ -12,7 +12,7 @@
       "id": "timeline",
       "type": "backend",
       "label": "ResourceTimeline",
-      "sublabel": "外生 UE／DU 時序",
+      "sublabel": "600 ms 資源生成與當前投影",
       "pos": [
         40,
         40
@@ -21,7 +21,7 @@
         240,
         82
       ],
-      "tag": "後續規劃，未實作"
+      "tag": "核心 src/timeline；Notebook 匯入並示範"
     },
     {
       "id": "channel",
@@ -206,6 +206,17 @@
         "10／30／50 m三區、不重疊、精確配額、每Node至少2 Tags、區內面積均勻。",
         "由同一份部署結果產生表格、部署圖與匯出檔案。",
         "操作請看ReferDoc/Implementation/IABTopology/README.md，程式位於src/iab。"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "600 ms 資源契約：設計已整合",
+      "items": [
+        "外層窗口由情境提供起點／間隔；所有 Node 共用窗口 ID 與邊界。",
+        "UE 占 60–75%，均勻抽樣後向上取整至 ms；UL／DL 各 50%。",
+        "Node／Window／時長與方向分開抽樣；相同 seed 可重現；偶然相同不重抽。",
+        "UE 結束後才進行 Tag 排程；Paging／D2R／Guard 共用剩餘時間。",
+        "詳見 docs/architecture/resource-timeline-design.md；Notebook 已乾淨 kernel 執行；完整 Engine 未實作。"
       ]
     }
   ]

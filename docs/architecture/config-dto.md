@@ -1,5 +1,15 @@
 # Config／DTO 集中定義：討論草案
 
+## 600 ms resource contract integration (2026-10-31)
+
+Use [the resource timeline design](resource-timeline-design.md) for the accepted 600 ms contract.
+Shared outer intervals contain per-Node UE prefixes, followed by Tag Paging/D2R/Guard.
+UE duration is ceil(600*r) ms, with r uniform over 0.60–0.75; UL/DL each have probability 0.5.
+Use separate reproducible draws by Node/window/kind. Scenario starts/gaps remain explicit inputs.
+Existing topology and channel cores are implemented; ResourceTimeline and the event engine remain planned.
+Earlier module ordering and pending-parameter statements below are historical where later decisions supersede them.
+
+
 > **目前首版範圍（2026-10-23）**：依 R-01 第 31 節，本輪全部服務從全域 t=0 開始，輪長取最晚 Deadline；先前獨立指定週期長度／多期依序服務的候選設計已被取代。服務 Deadline 可等於輪末，認列仍為 `t<deadline`。目前優先 [IAB 拓撲模組](iab-topology-scope.md)，不以整份服務契約定稿阻擋拓撲盤點。
 
 日期：2026-10-20。尚未實作。使用者已指定使用標準庫 dataclass，集中於單一 `.py` 管理，類似 C 的 `.h` 共用資料定義；檔名建議 `contracts.py`，實際路徑尚未決定。仍沿用 Notebook 原型、情境測試與人工理解接受後才抽離 `.py` 的順序，未先建立程式檔。

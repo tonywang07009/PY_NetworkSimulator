@@ -1,5 +1,15 @@
 # Ambient IoT DES：模組原型與工具規劃草案
 
+## 600 ms resource integration status (2026-10-31)
+
+Use [the resource timeline design](resource-timeline-design.md) for the accepted 600 ms contract.
+Shared outer intervals contain per-Node UE prefixes, followed by Tag Paging/D2R/Guard.
+UE duration is ceil(600*r) ms, with r uniform over 0.60–0.75; UL/DL each have probability 0.5.
+Use separate reproducible draws by Node/window/kind. Scenario starts/gaps remain explicit inputs.
+Existing topology and channel cores are implemented; ResourceTimeline and the event engine remain planned.
+Earlier module ordering and pending-parameter statements below are historical where later decisions supersede them.
+
+
 > **2026-10-23 優先順序／時間範圍更新**：使用者指定首模組改為 IAB 網路拓撲，先完成[拓撲範圍盤點](iab-topology-scope.md)，不以本文件舊模組排序或全套 Config 定稿阻擋開工。首版一輪全部服務於全域 0 開始，輪長取最晚 Deadline（R-01 第 31 節）；舊多期需求更新與自行填週期長度不屬於首版必需範圍。逐模組原型、情境測試、人類理解後抽離流程維持。
 
 更新：2026-10-20。狀態：架構討論草案；未建立模擬器、Notebook 或 OpenSpec change，未執行模擬器測試。使用者已確認逐模組的交付流程，模組切分及工具選擇仍為本次建議。

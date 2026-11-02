@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="archify 3.1.0">
   <meta name="archify-reader-contract" content="declared-wide-v1">
-  <title>Ambient IoT 模組全貌：拓樸與通道已抽離</title>
+  <title>Ambient IoT：資源 Notebook 核心已實作，待人工接受</title>
   <script>
     // Resolve the theme before first paint so light-preference users don't
     // see a dark flash. The toolbar script below re-applies with UI state.
@@ -5150,7 +5150,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
            data-preset-badge-blueprint="藍圖 / 修訂 01"
            data-preset-badge-editorial="編輯風格 / 現場筆記">
         <div class="pulse-dot"></div>
-        <h1>Ambient IoT 模組全貌：拓樸與通道已抽離</h1>
+        <h1>Ambient IoT：資源 Notebook 核心已實作，待人工接受</h1>
       </div>
     </div>
 
@@ -5160,7 +5160,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     <div class="diagram-container" data-detail-level="read"
          data-preset-badge-editorial-plate="ARCHIFY / 圖版 04">
       <svg viewBox="0 0 1100 670" role="img" lang="zh-TW" aria-labelledby="archify-diagram-title archify-diagram-description" data-animation="trace" data-preset="classic" data-quality-profile="showcase" data-node-ui="" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14">
-        <title id="archify-diagram-title">Ambient IoT 模組全貌：拓樸與通道已抽離</title>
+        <title id="archify-diagram-title">Ambient IoT：資源 Notebook 核心已實作，待人工接受</title>
         <desc id="archify-diagram-description">由 Archify 產生的架構圖。</desc>
         <!-- Definitions -->
         <defs>
@@ -5243,16 +5243,16 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </g>
 
         <!-- Components -->
-        <g id="node-timeline" data-node-id="timeline" data-node-label="ResourceTimeline" tabindex="0" role="button" aria-label="聚焦ResourceTimeline，外生 UE／DU 時序, 架構元件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="外生 UE／DU 時序" data-node-tag="後續規劃，未實作" data-node-context="架構元件">
-          <title>ResourceTimeline · 外生 UE／DU 時序 · 架構元件 · 後續規劃，未實作</title>
+        <g id="node-timeline" data-node-id="timeline" data-node-label="ResourceTimeline" tabindex="0" role="button" aria-label="聚焦ResourceTimeline，600 ms 資源生成與當前投影, 架構元件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="600 ms 資源生成與當前投影" data-node-tag="核心 src/timeline；Notebook 匯入並示範" data-node-context="架構元件">
+          <title>ResourceTimeline · 600 ms 資源生成與當前投影 · 架構元件 · 核心 src/timeline；Notebook 匯入並示範</title>
           <rect x="40" y="40" width="240" height="82" rx="8" class="c-mask"/>
           <rect x="40" y="40" width="240" height="82" rx="8" class="c-backend" data-animate="node" style="--step:1" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(46 46) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="160" y="79" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">ResourceTimeline</text>
-        <text data-detail="context" x="160" y="95" class="t-muted" font-size="9" text-anchor="middle">外生 UE／DU 時序</text>
-        <text data-detail="fine" x="160" y="114" class="t-backend" font-size="7" text-anchor="middle">後續規劃，未實作</text>
+        <text data-detail="context" x="160" y="95" class="t-muted" font-size="9" text-anchor="middle">600 ms 資源生成與當前投影</text>
+        <text data-detail="fine" x="160" y="114" class="t-backend" font-size="7" text-anchor="middle">核心 src/timeline；Notebook 匯入並示範</text>
         </g>
 
         <g id="node-channel" data-node-id="channel" data-node-label="Channel／PHY" tabindex="0" role="button" aria-label="聚焦Channel／PHY，本窗 SNR／SINR 與短封包接收, 架構元件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="本窗 SNR／SINR 與短封包接收" data-node-tag="人工接受；核心位於 src/channel；EH 待實作" data-node-context="架構元件">
@@ -5595,6 +5595,20 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <li>10／30／50 m三區、不重疊、精確配額、每Node至少2 Tags、區內面積均勻。</li>
           <li>由同一份部署結果產生表格、部署圖與匯出檔案。</li>
           <li>操作請看ReferDoc/Implementation/IABTopology/README.md，程式位於src/iab。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot cyan"></div>
+          <h3>600 ms 資源契約：設計已整合</h3>
+        </div>
+        <ul>
+          <li>外層窗口由情境提供起點／間隔；所有 Node 共用窗口 ID 與邊界。</li>
+          <li>UE 占 60–75%，均勻抽樣後向上取整至 ms；UL／DL 各 50%。</li>
+          <li>Node／Window／時長與方向分開抽樣；相同 seed 可重現；偶然相同不重抽。</li>
+          <li>UE 結束後才進行 Tag 排程；Paging／D2R／Guard 共用剩餘時間。</li>
+          <li>詳見 docs/architecture/resource-timeline-design.md；Notebook 已乾淨 kernel 執行；完整 Engine 未實作。</li>
         </ul>
       </div>
     </div>

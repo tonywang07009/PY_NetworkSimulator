@@ -8,7 +8,7 @@ It helps readers study a network deployment and the radio links between its Node
 The current modules create a static network topology.
 They also calculate link quality and packet reception for that topology.
 The channel model is available in the local worktree; its remote delivery is still pending.
-Energy, access, scheduling, and a complete simulation timeline are not yet integrated.
+Energy, access, scheduling, and a full simulation timeline are not yet integrated.
 
 ## Choose a reading path
 
@@ -20,7 +20,7 @@ Energy, access, scheduling, and a complete simulation timeline are not yet integ
 ### Prerequisites
 
 These steps use Linux and Bash. Start with Python 3.10 or later and a local copy of this project.
-Package installation needs network access.
+Network access is necessary for package installation.
 Run the commands from the project root, which contains this README and `src/`.
 
 ### 1. Prepare a Python environment
@@ -91,7 +91,7 @@ For settings, operation, and troubleshooting, use the [IAB topology guide](Refer
 
 The topology export replaces files with the same names.
 A failed or interrupted export can leave partial files.
-Before export, copy the results that you need to keep.
+Before export, copy the results that you want to keep.
 
 ## Architecture and data flow
 
@@ -118,9 +118,11 @@ python -m pytest tests/channel -q
 For a clean-kernel run, use the [topology Notebook runner](tests/iab/execute_topology_notebook.py).
 The channel guide describes its runner and environment.
 
-The setup commands were tested in a new temporary environment on Linux with Python 3.12.12.
-Package installation and `pip check` passed. The topology command produced `5 30`; a channel link query also succeeded.
-JupyterLab 4.6.5 was available, but browser operation and Notebook execution were not tested.
-Other Python versions remain unverified. Package versions are not pinned, so later installations can select different versions.
-Six existing focused tests passed for power-table classes, floating-point tails, and packet sampling during the reception-flow update.
-The full test commands above were not rerun. Mermaid rendering and visual layout remain unverified.
+On 2026-10-31, setup checks passed on Linux with Python 3.12.12 in a new temporary environment.
+The topology command produced `5 30`; a channel query and 227 topology/channel tests passed.
+In an isolated project copy, the topology and channel Notebooks ran 11 and 13 code cells without errors.
+The kernels shut down after execution. JupyterLab opened the channel Notebook in Chrome.
+Ten document pages rendered at viewport widths of 1280 and 390 pixels without page overflow; the Mermaid diagrams rendered.
+Screenshots of the Chinese README, channel unit, and JupyterLab were examined. The channel unit provides SVG diagrams for zooming.
+These checks used a local Markdown preview, not the GitHub renderer.
+Other Python versions and full STE conformance remain unverified. Package versions are not pinned.

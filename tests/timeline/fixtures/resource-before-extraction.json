@@ -1,0 +1,807 @@
+{
+  "scenario_id": "resource-timeline-demo",
+  "node_ids": [
+    "Node-1",
+    "Node-2",
+    "Node-3"
+  ],
+  "starts": [
+    0,
+    800000000,
+    1500000000
+  ],
+  "cases": [
+    {
+      "seed": 42,
+      "windows": [
+        {
+          "window_id": 0,
+          "start_ns": 0,
+          "end_ns": 600000000,
+          "nodes": [
+            {
+              "node_id": "Node-1",
+              "window_id": 0,
+              "start_ns": 0,
+              "ue_end_ns": 398000000,
+              "end_ns": 600000000,
+              "direction": "UL",
+              "raw_duration_ms": 397.58059653591965
+            },
+            {
+              "node_id": "Node-2",
+              "window_id": 0,
+              "start_ns": 0,
+              "ue_end_ns": 380000000,
+              "end_ns": 600000000,
+              "direction": "UL",
+              "raw_duration_ms": 379.5245715458021
+            },
+            {
+              "node_id": "Node-3",
+              "window_id": 0,
+              "start_ns": 0,
+              "ue_end_ns": 429000000,
+              "end_ns": 600000000,
+              "direction": "DL",
+              "raw_duration_ms": 428.4971385713133
+            }
+          ],
+          "scenario_id": "resource-timeline-demo",
+          "seed": 42
+        },
+        {
+          "window_id": 1,
+          "start_ns": 800000000,
+          "end_ns": 1400000000,
+          "nodes": [
+            {
+              "node_id": "Node-1",
+              "window_id": 1,
+              "start_ns": 800000000,
+              "ue_end_ns": 1187000000,
+              "end_ns": 1400000000,
+              "direction": "UL",
+              "raw_duration_ms": 386.55453930955605
+            },
+            {
+              "node_id": "Node-2",
+              "window_id": 1,
+              "start_ns": 800000000,
+              "ue_end_ns": 1192000000,
+              "end_ns": 1400000000,
+              "direction": "UL",
+              "raw_duration_ms": 391.00226558347504
+            },
+            {
+              "node_id": "Node-3",
+              "window_id": 1,
+              "start_ns": 800000000,
+              "ue_end_ns": 1168000000,
+              "end_ns": 1400000000,
+              "direction": "DL",
+              "raw_duration_ms": 367.6482603329816
+            }
+          ],
+          "scenario_id": "resource-timeline-demo",
+          "seed": 42
+        },
+        {
+          "window_id": 2,
+          "start_ns": 1500000000,
+          "end_ns": 2100000000,
+          "nodes": [
+            {
+              "node_id": "Node-1",
+              "window_id": 2,
+              "start_ns": 1500000000,
+              "ue_end_ns": 1920000000,
+              "end_ns": 2100000000,
+              "direction": "DL",
+              "raw_duration_ms": 419.1978647996988
+            },
+            {
+              "node_id": "Node-2",
+              "window_id": 2,
+              "start_ns": 1500000000,
+              "ue_end_ns": 1930000000,
+              "end_ns": 2100000000,
+              "direction": "UL",
+              "raw_duration_ms": 429.1135650516569
+            },
+            {
+              "node_id": "Node-3",
+              "window_id": 2,
+              "start_ns": 1500000000,
+              "ue_end_ns": 1883000000,
+              "end_ns": 2100000000,
+              "direction": "DL",
+              "raw_duration_ms": 382.2764437918787
+            }
+          ],
+          "scenario_id": "resource-timeline-demo",
+          "seed": 42
+        }
+      ],
+      "rows": [
+        {
+          "window_id": 0,
+          "node_id": "Node-1",
+          "direction": "UL",
+          "start_ns": 0,
+          "ue_end_ns": 398000000,
+          "end_ns": 600000000,
+          "raw_duration_ms": 397.58059653591965,
+          "ue_duration_ms": 398,
+          "tag_budget_ms": 202
+        },
+        {
+          "window_id": 0,
+          "node_id": "Node-2",
+          "direction": "UL",
+          "start_ns": 0,
+          "ue_end_ns": 380000000,
+          "end_ns": 600000000,
+          "raw_duration_ms": 379.5245715458021,
+          "ue_duration_ms": 380,
+          "tag_budget_ms": 220
+        },
+        {
+          "window_id": 0,
+          "node_id": "Node-3",
+          "direction": "DL",
+          "start_ns": 0,
+          "ue_end_ns": 429000000,
+          "end_ns": 600000000,
+          "raw_duration_ms": 428.4971385713133,
+          "ue_duration_ms": 429,
+          "tag_budget_ms": 171
+        },
+        {
+          "window_id": 1,
+          "node_id": "Node-1",
+          "direction": "UL",
+          "start_ns": 800000000,
+          "ue_end_ns": 1187000000,
+          "end_ns": 1400000000,
+          "raw_duration_ms": 386.55453930955605,
+          "ue_duration_ms": 387,
+          "tag_budget_ms": 213
+        },
+        {
+          "window_id": 1,
+          "node_id": "Node-2",
+          "direction": "UL",
+          "start_ns": 800000000,
+          "ue_end_ns": 1192000000,
+          "end_ns": 1400000000,
+          "raw_duration_ms": 391.00226558347504,
+          "ue_duration_ms": 392,
+          "tag_budget_ms": 208
+        },
+        {
+          "window_id": 1,
+          "node_id": "Node-3",
+          "direction": "DL",
+          "start_ns": 800000000,
+          "ue_end_ns": 1168000000,
+          "end_ns": 1400000000,
+          "raw_duration_ms": 367.6482603329816,
+          "ue_duration_ms": 368,
+          "tag_budget_ms": 232
+        },
+        {
+          "window_id": 2,
+          "node_id": "Node-1",
+          "direction": "DL",
+          "start_ns": 1500000000,
+          "ue_end_ns": 1920000000,
+          "end_ns": 2100000000,
+          "raw_duration_ms": 419.1978647996988,
+          "ue_duration_ms": 420,
+          "tag_budget_ms": 180
+        },
+        {
+          "window_id": 2,
+          "node_id": "Node-2",
+          "direction": "UL",
+          "start_ns": 1500000000,
+          "ue_end_ns": 1930000000,
+          "end_ns": 2100000000,
+          "raw_duration_ms": 429.1135650516569,
+          "ue_duration_ms": 430,
+          "tag_budget_ms": 170
+        },
+        {
+          "window_id": 2,
+          "node_id": "Node-3",
+          "direction": "DL",
+          "start_ns": 1500000000,
+          "ue_end_ns": 1883000000,
+          "end_ns": 2100000000,
+          "raw_duration_ms": 382.2764437918787,
+          "ue_duration_ms": 383,
+          "tag_budget_ms": 217
+        }
+      ],
+      "observations": [
+        {
+          "node_id": "Node-1",
+          "now_ns": 0,
+          "status": "UE_OCCUPIED",
+          "window_id": 0,
+          "tag_start_ns": 398000000,
+          "window_end_ns": 600000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 359999999,
+          "status": "UE_OCCUPIED",
+          "window_id": 0,
+          "tag_start_ns": 398000000,
+          "window_end_ns": 600000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 450000000,
+          "status": "TAG_AVAILABLE",
+          "window_id": 0,
+          "tag_start_ns": 398000000,
+          "window_end_ns": 600000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 600000000,
+          "status": "NO_WINDOW",
+          "window_id": null,
+          "tag_start_ns": null,
+          "window_end_ns": null
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 800000000,
+          "status": "UE_OCCUPIED",
+          "window_id": 1,
+          "tag_start_ns": 1187000000,
+          "window_end_ns": 1400000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 2100000000,
+          "status": "NO_WINDOW",
+          "window_id": null,
+          "tag_start_ns": null,
+          "window_end_ns": null
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "windows": [
+        {
+          "window_id": 0,
+          "start_ns": 0,
+          "end_ns": 600000000,
+          "nodes": [
+            {
+              "node_id": "Node-1",
+              "window_id": 0,
+              "start_ns": 0,
+              "ue_end_ns": 374000000,
+              "end_ns": 600000000,
+              "direction": "DL",
+              "raw_duration_ms": 373.2988236981925
+            },
+            {
+              "node_id": "Node-2",
+              "window_id": 0,
+              "start_ns": 0,
+              "ue_end_ns": 385000000,
+              "end_ns": 600000000,
+              "direction": "DL",
+              "raw_duration_ms": 384.9173865381113
+            },
+            {
+              "node_id": "Node-3",
+              "window_id": 0,
+              "start_ns": 0,
+              "ue_end_ns": 420000000,
+              "end_ns": 600000000,
+              "direction": "UL",
+              "raw_duration_ms": 419.00405324288687
+            }
+          ],
+          "scenario_id": "resource-timeline-demo",
+          "seed": 7
+        },
+        {
+          "window_id": 1,
+          "start_ns": 800000000,
+          "end_ns": 1400000000,
+          "nodes": [
+            {
+              "node_id": "Node-1",
+              "window_id": 1,
+              "start_ns": 800000000,
+              "ue_end_ns": 1230000000,
+              "end_ns": 1400000000,
+              "direction": "DL",
+              "raw_duration_ms": 429.11348122773063
+            },
+            {
+              "node_id": "Node-2",
+              "window_id": 1,
+              "start_ns": 800000000,
+              "ue_end_ns": 1175000000,
+              "end_ns": 1400000000,
+              "direction": "UL",
+              "raw_duration_ms": 374.12820931806664
+            },
+            {
+              "node_id": "Node-3",
+              "window_id": 1,
+              "start_ns": 800000000,
+              "ue_end_ns": 1201000000,
+              "end_ns": 1400000000,
+              "direction": "UL",
+              "raw_duration_ms": 400.5600854991151
+            }
+          ],
+          "scenario_id": "resource-timeline-demo",
+          "seed": 7
+        },
+        {
+          "window_id": 2,
+          "start_ns": 1500000000,
+          "end_ns": 2100000000,
+          "nodes": [
+            {
+              "node_id": "Node-1",
+              "window_id": 2,
+              "start_ns": 1500000000,
+              "ue_end_ns": 1870000000,
+              "end_ns": 2100000000,
+              "direction": "UL",
+              "raw_duration_ms": 369.51769026582997
+            },
+            {
+              "node_id": "Node-2",
+              "window_id": 2,
+              "start_ns": 1500000000,
+              "ue_end_ns": 1927000000,
+              "end_ns": 2100000000,
+              "direction": "DL",
+              "raw_duration_ms": 426.0376446643281
+            },
+            {
+              "node_id": "Node-3",
+              "window_id": 2,
+              "start_ns": 1500000000,
+              "ue_end_ns": 1862000000,
+              "end_ns": 2100000000,
+              "direction": "DL",
+              "raw_duration_ms": 361.15175012657886
+            }
+          ],
+          "scenario_id": "resource-timeline-demo",
+          "seed": 7
+        }
+      ],
+      "rows": [
+        {
+          "window_id": 0,
+          "node_id": "Node-1",
+          "direction": "DL",
+          "start_ns": 0,
+          "ue_end_ns": 374000000,
+          "end_ns": 600000000,
+          "raw_duration_ms": 373.2988236981925,
+          "ue_duration_ms": 374,
+          "tag_budget_ms": 226
+        },
+        {
+          "window_id": 0,
+          "node_id": "Node-2",
+          "direction": "DL",
+          "start_ns": 0,
+          "ue_end_ns": 385000000,
+          "end_ns": 600000000,
+          "raw_duration_ms": 384.9173865381113,
+          "ue_duration_ms": 385,
+          "tag_budget_ms": 215
+        },
+        {
+          "window_id": 0,
+          "node_id": "Node-3",
+          "direction": "UL",
+          "start_ns": 0,
+          "ue_end_ns": 420000000,
+          "end_ns": 600000000,
+          "raw_duration_ms": 419.00405324288687,
+          "ue_duration_ms": 420,
+          "tag_budget_ms": 180
+        },
+        {
+          "window_id": 1,
+          "node_id": "Node-1",
+          "direction": "DL",
+          "start_ns": 800000000,
+          "ue_end_ns": 1230000000,
+          "end_ns": 1400000000,
+          "raw_duration_ms": 429.11348122773063,
+          "ue_duration_ms": 430,
+          "tag_budget_ms": 170
+        },
+        {
+          "window_id": 1,
+          "node_id": "Node-2",
+          "direction": "UL",
+          "start_ns": 800000000,
+          "ue_end_ns": 1175000000,
+          "end_ns": 1400000000,
+          "raw_duration_ms": 374.12820931806664,
+          "ue_duration_ms": 375,
+          "tag_budget_ms": 225
+        },
+        {
+          "window_id": 1,
+          "node_id": "Node-3",
+          "direction": "UL",
+          "start_ns": 800000000,
+          "ue_end_ns": 1201000000,
+          "end_ns": 1400000000,
+          "raw_duration_ms": 400.5600854991151,
+          "ue_duration_ms": 401,
+          "tag_budget_ms": 199
+        },
+        {
+          "window_id": 2,
+          "node_id": "Node-1",
+          "direction": "UL",
+          "start_ns": 1500000000,
+          "ue_end_ns": 1870000000,
+          "end_ns": 2100000000,
+          "raw_duration_ms": 369.51769026582997,
+          "ue_duration_ms": 370,
+          "tag_budget_ms": 230
+        },
+        {
+          "window_id": 2,
+          "node_id": "Node-2",
+          "direction": "DL",
+          "start_ns": 1500000000,
+          "ue_end_ns": 1927000000,
+          "end_ns": 2100000000,
+          "raw_duration_ms": 426.0376446643281,
+          "ue_duration_ms": 427,
+          "tag_budget_ms": 173
+        },
+        {
+          "window_id": 2,
+          "node_id": "Node-3",
+          "direction": "DL",
+          "start_ns": 1500000000,
+          "ue_end_ns": 1862000000,
+          "end_ns": 2100000000,
+          "raw_duration_ms": 361.15175012657886,
+          "ue_duration_ms": 362,
+          "tag_budget_ms": 238
+        }
+      ],
+      "observations": [
+        {
+          "node_id": "Node-1",
+          "now_ns": 0,
+          "status": "UE_OCCUPIED",
+          "window_id": 0,
+          "tag_start_ns": 374000000,
+          "window_end_ns": 600000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 359999999,
+          "status": "UE_OCCUPIED",
+          "window_id": 0,
+          "tag_start_ns": 374000000,
+          "window_end_ns": 600000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 450000000,
+          "status": "TAG_AVAILABLE",
+          "window_id": 0,
+          "tag_start_ns": 374000000,
+          "window_end_ns": 600000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 600000000,
+          "status": "NO_WINDOW",
+          "window_id": null,
+          "tag_start_ns": null,
+          "window_end_ns": null
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 800000000,
+          "status": "UE_OCCUPIED",
+          "window_id": 1,
+          "tag_start_ns": 1230000000,
+          "window_end_ns": 1400000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 2100000000,
+          "status": "NO_WINDOW",
+          "window_id": null,
+          "tag_start_ns": null,
+          "window_end_ns": null
+        }
+      ]
+    },
+    {
+      "seed": 20261102,
+      "windows": [
+        {
+          "window_id": 0,
+          "start_ns": 0,
+          "end_ns": 600000000,
+          "nodes": [
+            {
+              "node_id": "Node-1",
+              "window_id": 0,
+              "start_ns": 0,
+              "ue_end_ns": 403000000,
+              "end_ns": 600000000,
+              "direction": "DL",
+              "raw_duration_ms": 402.9539511940549
+            },
+            {
+              "node_id": "Node-2",
+              "window_id": 0,
+              "start_ns": 0,
+              "ue_end_ns": 434000000,
+              "end_ns": 600000000,
+              "direction": "UL",
+              "raw_duration_ms": 433.92838133564214
+            },
+            {
+              "node_id": "Node-3",
+              "window_id": 0,
+              "start_ns": 0,
+              "ue_end_ns": 422000000,
+              "end_ns": 600000000,
+              "direction": "DL",
+              "raw_duration_ms": 421.81856797831875
+            }
+          ],
+          "scenario_id": "resource-timeline-demo",
+          "seed": 20261102
+        },
+        {
+          "window_id": 1,
+          "start_ns": 800000000,
+          "end_ns": 1400000000,
+          "nodes": [
+            {
+              "node_id": "Node-1",
+              "window_id": 1,
+              "start_ns": 800000000,
+              "ue_end_ns": 1221000000,
+              "end_ns": 1400000000,
+              "direction": "DL",
+              "raw_duration_ms": 420.59486054208867
+            },
+            {
+              "node_id": "Node-2",
+              "window_id": 1,
+              "start_ns": 800000000,
+              "ue_end_ns": 1187000000,
+              "end_ns": 1400000000,
+              "direction": "DL",
+              "raw_duration_ms": 386.58740086539046
+            },
+            {
+              "node_id": "Node-3",
+              "window_id": 1,
+              "start_ns": 800000000,
+              "ue_end_ns": 1170000000,
+              "end_ns": 1400000000,
+              "direction": "DL",
+              "raw_duration_ms": 369.0644346251964
+            }
+          ],
+          "scenario_id": "resource-timeline-demo",
+          "seed": 20261102
+        },
+        {
+          "window_id": 2,
+          "start_ns": 1500000000,
+          "end_ns": 2100000000,
+          "nodes": [
+            {
+              "node_id": "Node-1",
+              "window_id": 2,
+              "start_ns": 1500000000,
+              "ue_end_ns": 1912000000,
+              "end_ns": 2100000000,
+              "direction": "UL",
+              "raw_duration_ms": 411.40825202310054
+            },
+            {
+              "node_id": "Node-2",
+              "window_id": 2,
+              "start_ns": 1500000000,
+              "ue_end_ns": 1875000000,
+              "end_ns": 2100000000,
+              "direction": "UL",
+              "raw_duration_ms": 374.30601035822093
+            },
+            {
+              "node_id": "Node-3",
+              "window_id": 2,
+              "start_ns": 1500000000,
+              "ue_end_ns": 1873000000,
+              "end_ns": 2100000000,
+              "direction": "UL",
+              "raw_duration_ms": 372.80378088386664
+            }
+          ],
+          "scenario_id": "resource-timeline-demo",
+          "seed": 20261102
+        }
+      ],
+      "rows": [
+        {
+          "window_id": 0,
+          "node_id": "Node-1",
+          "direction": "DL",
+          "start_ns": 0,
+          "ue_end_ns": 403000000,
+          "end_ns": 600000000,
+          "raw_duration_ms": 402.9539511940549,
+          "ue_duration_ms": 403,
+          "tag_budget_ms": 197
+        },
+        {
+          "window_id": 0,
+          "node_id": "Node-2",
+          "direction": "UL",
+          "start_ns": 0,
+          "ue_end_ns": 434000000,
+          "end_ns": 600000000,
+          "raw_duration_ms": 433.92838133564214,
+          "ue_duration_ms": 434,
+          "tag_budget_ms": 166
+        },
+        {
+          "window_id": 0,
+          "node_id": "Node-3",
+          "direction": "DL",
+          "start_ns": 0,
+          "ue_end_ns": 422000000,
+          "end_ns": 600000000,
+          "raw_duration_ms": 421.81856797831875,
+          "ue_duration_ms": 422,
+          "tag_budget_ms": 178
+        },
+        {
+          "window_id": 1,
+          "node_id": "Node-1",
+          "direction": "DL",
+          "start_ns": 800000000,
+          "ue_end_ns": 1221000000,
+          "end_ns": 1400000000,
+          "raw_duration_ms": 420.59486054208867,
+          "ue_duration_ms": 421,
+          "tag_budget_ms": 179
+        },
+        {
+          "window_id": 1,
+          "node_id": "Node-2",
+          "direction": "DL",
+          "start_ns": 800000000,
+          "ue_end_ns": 1187000000,
+          "end_ns": 1400000000,
+          "raw_duration_ms": 386.58740086539046,
+          "ue_duration_ms": 387,
+          "tag_budget_ms": 213
+        },
+        {
+          "window_id": 1,
+          "node_id": "Node-3",
+          "direction": "DL",
+          "start_ns": 800000000,
+          "ue_end_ns": 1170000000,
+          "end_ns": 1400000000,
+          "raw_duration_ms": 369.0644346251964,
+          "ue_duration_ms": 370,
+          "tag_budget_ms": 230
+        },
+        {
+          "window_id": 2,
+          "node_id": "Node-1",
+          "direction": "UL",
+          "start_ns": 1500000000,
+          "ue_end_ns": 1912000000,
+          "end_ns": 2100000000,
+          "raw_duration_ms": 411.40825202310054,
+          "ue_duration_ms": 412,
+          "tag_budget_ms": 188
+        },
+        {
+          "window_id": 2,
+          "node_id": "Node-2",
+          "direction": "UL",
+          "start_ns": 1500000000,
+          "ue_end_ns": 1875000000,
+          "end_ns": 2100000000,
+          "raw_duration_ms": 374.30601035822093,
+          "ue_duration_ms": 375,
+          "tag_budget_ms": 225
+        },
+        {
+          "window_id": 2,
+          "node_id": "Node-3",
+          "direction": "UL",
+          "start_ns": 1500000000,
+          "ue_end_ns": 1873000000,
+          "end_ns": 2100000000,
+          "raw_duration_ms": 372.80378088386664,
+          "ue_duration_ms": 373,
+          "tag_budget_ms": 227
+        }
+      ],
+      "observations": [
+        {
+          "node_id": "Node-1",
+          "now_ns": 0,
+          "status": "UE_OCCUPIED",
+          "window_id": 0,
+          "tag_start_ns": 403000000,
+          "window_end_ns": 600000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 359999999,
+          "status": "UE_OCCUPIED",
+          "window_id": 0,
+          "tag_start_ns": 403000000,
+          "window_end_ns": 600000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 450000000,
+          "status": "TAG_AVAILABLE",
+          "window_id": 0,
+          "tag_start_ns": 403000000,
+          "window_end_ns": 600000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 600000000,
+          "status": "NO_WINDOW",
+          "window_id": null,
+          "tag_start_ns": null,
+          "window_end_ns": null
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 800000000,
+          "status": "UE_OCCUPIED",
+          "window_id": 1,
+          "tag_start_ns": 1221000000,
+          "window_end_ns": 1400000000
+        },
+        {
+          "node_id": "Node-1",
+          "now_ns": 2100000000,
+          "status": "NO_WINDOW",
+          "window_id": null,
+          "tag_start_ns": null,
+          "window_end_ns": null
+        }
+      ]
+    }
+  ]
+}
