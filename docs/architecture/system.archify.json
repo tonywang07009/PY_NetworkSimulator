@@ -2,7 +2,7 @@
   "schema_version": 1,
   "diagram_type": "architecture",
   "meta": {
-    "title": "Ambient IoT：資源 Notebook 核心已實作，待人工接受",
+    "title": "Ambient IoT：拓樸、通道與時間軸已抽離",
     "locale": "zh-TW",
     "output": "docs/architecture/system.html",
     "quality_profile": "showcase"
@@ -194,7 +194,7 @@
       "title": "每模組交付與人工接受",
       "items": [
         "Notebook 原型 → 對應情境測試 → 人工逐段閱讀與接受 → 抽離 .py → 等價複驗。",
-        "拓樸與通道皆已人工接受並抽離.py；Notebook匯入核心；其餘模組與整合仍為規劃。",
+        "拓樸、通道與時間軸皆已接受並抽離 .py；整合仍為規劃。",
         "NO_OP 與 INVALID_ACTION 分開記錄，皆停止本 Window 新排程。"
       ]
     },
@@ -217,6 +217,16 @@
         "Node／Window／時長與方向分開抽樣；相同 seed 可重現；偶然相同不重抽。",
         "UE 結束後才進行 Tag 排程；Paging／D2R／Guard 共用剩餘時間。",
         "詳見 docs/architecture/resource-timeline-design.md；Notebook 已乾淨 kernel 執行；完整 Engine 未實作。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "本次架構維護",
+      "items": [
+        "時間軸計算不預先載入繪圖套件。",
+        "通道重用同窗、同 Tag、同 k/n 的鏈路計算。",
+        "成功換窗清除鏈路計算；逐包抽樣仍分開。",
+        "本圖是本機設計視圖，不代表完整引擎已實作。"
       ]
     }
   ]

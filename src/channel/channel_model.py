@@ -271,6 +271,7 @@ class ChannelModel:
 
         self._current = None
         self._packets = {}
+        self._links = {}
 
     @property
     def config(self):
@@ -320,6 +321,7 @@ class ChannelModel:
 
         self._current = candidate
         self._packets = {}
+        self._links = {}
         return candidate
 
     def link(self, window_id, tag_id, k=64, n=128):
@@ -330,6 +332,12 @@ class ChannelModel:
         if tag_id not in self._tags:
             raise ValueError('unknown tag_id')
 
+        require_positive_int(k, 'k')
+        require_positive_int(n, 'n')
+        key = (tag_id, k, n)
+        if key in self._links:
+            return self._links[key]
+
         tag, distance = self._tags[tag_id]
         offsets = dict(self._current.node_offsets_db)
         for node_index, node in enumerate(self.topology.config.iab_nodes):
@@ -338,9 +346,11 @@ class ChannelModel:
         else:
             # 全部找完仍不符合時，保留原本 next() 的例外行為。
             raise StopIteration
-        return evaluate_link(self.config, distance, self._current.power_level,
-                             offsets[tag.parent_node_id], node_index, window_id=window_id,
-                             node_id=tag.parent_node_id, tag_id=tag_id, zone=tag.zone, k=k, n=n)
+        result = evaluate_link(self.config, distance, self._current.power_level,
+                               offsets[tag.parent_node_id], node_index, window_id=window_id,
+                               node_id=tag.parent_node_id, tag_id=tag_id, zone=tag.zone, k=k, n=n)
+        self._links[key] = result
+        return result
 
     def receive(self, window_id, tag_id, transmission_id, k=64, n=128):
         require_id(transmission_id, 'transmission_id')

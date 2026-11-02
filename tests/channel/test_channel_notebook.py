@@ -163,6 +163,116 @@ def test_packet_replay_rejects_conflicting_parameters(api):
     assert len(set(draws)) == 10
 
 
+def test_same_window_reuses_link_calculation_for_replay_and_distinct_packets(api, monkeypatch):
+    from channel import channel_model
+
+    topology = api.build_topology(api.example_config())
+    model = api.ChannelModel(api.ChannelConfig(), topology)
+    model.window(0, api.PowerLevel.LOW)
+    for tag in topology.tags:
+        if tag.zone == api.TagZone.MID:
+            break
+    integration_calls = []
+    original_quad = channel_model.quad
+
+    def counted_quad(*args, **kwargs):
+        integration_calls.append(1)
+        return original_quad(*args, **kwargs)
+
+    monkeypatch.setattr(channel_model, 'quad', counted_quad)
+    first = model.receive(0, tag.tag_id, 'packet-1')
+    for _ in range(9):
+        assert model.receive(0, tag.tag_id, 'packet-1') is first
+    second = model.receive(0, tag.tag_id, 'packet-2')
+    assert second.link == first.link
+    assert second.uniform_draw != first.uniform_draw
+    assert model.link(0, tag.tag_id) == first.link
+    assert len(integration_calls) == 2
+
+
+@pytest.mark.parametrize('k,n', [(True, 1), (1, True), (64.0, 128), (64, 128.0),
+                                  ([], 128), (64, []), (None, 128), (0, 128),
+                                  (-1, 128), (64, 0), (129, 128)])
+def test_link_reuse_does_not_bypass_packet_length_validation(api, k, n):
+    topology = api.build_topology(api.example_config())
+    model = api.ChannelModel(api.ChannelConfig(), topology)
+    model.window(0, api.PowerLevel.LOW)
+    tag_id = topology.tags[0].tag_id
+    model.link(0, tag_id, 1, 1)
+    first = model.link(0, tag_id)
+    with pytest.raises(ValueError):
+        model.link(0, tag_id, k, n)
+    assert model.link(0, tag_id) == first
+
+
+def test_link_reuse_keeps_tags_and_packet_lengths_separate(api):
+    topology = api.build_topology(api.example_config())
+    model = api.ChannelModel(api.ChannelConfig(), topology)
+    model.window(0, api.PowerLevel.LOW)
+    first_tag, second_tag = topology.tags[:2]
+    first = model.link(0, first_tag.tag_id)
+    other_tag = model.link(0, second_tag.tag_id)
+    assert other_tag.tag_id == second_tag.tag_id
+    assert other_tag != first
+    for k, n in ((32, 128), (64, 256)):
+        changed = model.link(0, first_tag.tag_id, k, n)
+        assert (changed.fbl.k, changed.fbl.n) == (k, n)
+        assert changed != first
+    assert model.link(0, first_tag.tag_id) == first
+    model.receive(0, first_tag.tag_id, 'length-bound', 32, 128)
+    with pytest.raises(ValueError, match='transmission'):
+        model.receive(0, first_tag.tag_id, 'length-bound', 64, 128)
+
+
+def test_link_reuse_tracks_successful_windows_and_preserves_failed_windows(api, monkeypatch):
+    from channel import channel_model
+
+    topology = api.build_topology(api.example_config())
+    model = api.ChannelModel(api.ChannelConfig(), topology)
+    first_window = model.window(0, api.PowerLevel.LOW)
+    for tag in topology.tags:
+        if tag.zone == api.TagZone.MID:
+            tag_id = tag.tag_id
+            break
+    first = model.link(0, tag_id)
+    original_quad = channel_model.quad
+    integration_calls = []
+
+    def counted_quad(*args, **kwargs):
+        integration_calls.append(1)
+        return original_quad(*args, **kwargs)
+
+    monkeypatch.setattr(channel_model, 'quad', counted_quad)
+    assert model.window(0, api.PowerLevel.LOW) == first_window
+    assert model.link(0, tag_id) == first
+    with pytest.raises(ValueError, match='power'):
+        model.window(0, api.PowerLevel.HIGH)
+    old_offsets = dict(first_window.node_offsets_db)
+
+    def colliding_rng(seed, kind, node_id, window_id):
+        return types.SimpleNamespace(uniform=lambda low, high: old_offsets[node_id])
+
+    with monkeypatch.context() as collision_patch:
+        collision_patch.setattr(channel_model, 'local_rng', colliding_rng)
+        with pytest.raises(ValueError, match='collision'):
+            model.window(1, api.PowerLevel.LOW)
+    assert model.link(0, tag_id) == first
+    assert not integration_calls
+
+    model.window(1, api.PowerLevel.LOW)
+    second = model.link(1, tag_id)
+    assert second.window_id == 1
+    assert second.budget != first.budget
+    assert len(integration_calls) == 2
+    with pytest.raises(ValueError, match='current'):
+        model.link(0, tag_id)
+
+    other_model = api.ChannelModel(api.ChannelConfig(), topology)
+    other_model.window(0, api.PowerLevel.LOW)
+    assert other_model.link(0, tag_id) == first
+    assert len(integration_calls) == 4
+
+
 def test_all_nine_reference_links_keep_physics_and_rule_separate(api):
     import csv
     with (ROOT / 'Plan/channel-link-reference.csv').open(encoding='utf-8-sig') as stream:

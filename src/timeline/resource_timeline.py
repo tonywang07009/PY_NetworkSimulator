@@ -7,8 +7,6 @@ import json
 import math
 import random
 
-import matplotlib.pyplot as plt
-
 from .contracts import WINDOW_NS, CurrentResource, NodeResource, ResourceConfig, ResourceWindow, UEDirection
 from .plotting import plot_resources
 
@@ -114,6 +112,8 @@ def export_resources(windows, destination):
     resource_table_rows = resource_rows(windows)
     if not resource_table_rows:
         raise ValueError('cannot export an empty resource timeline')
+
+    import matplotlib.pyplot as plt
 
     destination.mkdir(parents=True, exist_ok=True)
     snapshot_payload = {'scenario_id': windows[0].scenario_id, 'seed': windows[0].seed,

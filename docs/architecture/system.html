@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="archify 3.1.0">
   <meta name="archify-reader-contract" content="declared-wide-v1">
-  <title>Ambient IoT：資源 Notebook 核心已實作，待人工接受</title>
+  <title>Ambient IoT：拓樸、通道與時間軸已抽離</title>
   <script>
     // Resolve the theme before first paint so light-preference users don't
     // see a dark flash. The toolbar script below re-applies with UI state.
@@ -5150,7 +5150,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
            data-preset-badge-blueprint="藍圖 / 修訂 01"
            data-preset-badge-editorial="編輯風格 / 現場筆記">
         <div class="pulse-dot"></div>
-        <h1>Ambient IoT：資源 Notebook 核心已實作，待人工接受</h1>
+        <h1>Ambient IoT：拓樸、通道與時間軸已抽離</h1>
       </div>
     </div>
 
@@ -5160,7 +5160,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     <div class="diagram-container" data-detail-level="read"
          data-preset-badge-editorial-plate="ARCHIFY / 圖版 04">
       <svg viewBox="0 0 1100 670" role="img" lang="zh-TW" aria-labelledby="archify-diagram-title archify-diagram-description" data-animation="trace" data-preset="classic" data-quality-profile="showcase" data-node-ui="" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14">
-        <title id="archify-diagram-title">Ambient IoT：資源 Notebook 核心已實作，待人工接受</title>
+        <title id="archify-diagram-title">Ambient IoT：拓樸、通道與時間軸已抽離</title>
         <desc id="archify-diagram-description">由 Archify 產生的架構圖。</desc>
         <!-- Definitions -->
         <defs>
@@ -5580,7 +5580,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </div>
         <ul>
           <li>Notebook 原型 → 對應情境測試 → 人工逐段閱讀與接受 → 抽離 .py → 等價複驗。</li>
-          <li>拓樸與通道皆已人工接受並抽離.py；Notebook匯入核心；其餘模組與整合仍為規劃。</li>
+          <li>拓樸、通道與時間軸皆已接受並抽離 .py；整合仍為規劃。</li>
           <li>NO_OP 與 INVALID_ACTION 分開記錄，皆停止本 Window 新排程。</li>
         </ul>
       </div>
@@ -5609,6 +5609,19 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <li>Node／Window／時長與方向分開抽樣；相同 seed 可重現；偶然相同不重抽。</li>
           <li>UE 結束後才進行 Tag 排程；Paging／D2R／Guard 共用剩餘時間。</li>
           <li>詳見 docs/architecture/resource-timeline-design.md；Notebook 已乾淨 kernel 執行；完整 Engine 未實作。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot emerald"></div>
+          <h3>本次架構維護</h3>
+        </div>
+        <ul>
+          <li>時間軸計算不預先載入繪圖套件。</li>
+          <li>通道重用同窗、同 Tag、同 k/n 的鏈路計算。</li>
+          <li>成功換窗清除鏈路計算；逐包抽樣仍分開。</li>
+          <li>本圖是本機設計視圖，不代表完整引擎已實作。</li>
         </ul>
       </div>
     </div>

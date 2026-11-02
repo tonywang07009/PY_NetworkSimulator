@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>模擬器 src 架構檢查</title>
+<style>
+:root{color-scheme:light;--ink:#162b35;--muted:#4c606a;--line:#c9d6dc;--paper:#f2f5f4;--accent:#006b58}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.8 system-ui,"Noto Sans TC",sans-serif}main{max-width:1100px;margin:auto;padding:48px 24px}h1{font-size:clamp(30px,5vw,48px);line-height:1.35}h2{font-size:26px;line-height:1.5}h3{font-size:18px}p{margin:.5em 0}a{color:#005c79;text-underline-offset:4px}code{font-size:.86em;overflow-wrap:anywhere}header{padding-bottom:28px;border-bottom:3px solid var(--ink)}.eyebrow{letter-spacing:.1em;color:var(--accent);font-size:13px}.lead{font-size:23px;font-weight:650}.muted,small{color:var(--muted)}nav{display:flex;gap:20px;flex-wrap:wrap;margin:20px 0}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:28px;margin:28px 0}.badge{display:inline-block;border-radius:6px;padding:3px 12px;font-size:14px;font-weight:650;background:#ddf5eb;color:#005340}.badge.amber{background:#fff1cc;color:#744800}.tag{margin-left:8px;font-size:14px;color:var(--muted)}.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0}.flow{padding:18px;background:#f3f6f7;border:1px solid var(--line);border-radius:10px}.flow h3{margin:0 0 14px}.box{border:1px solid #8ba4ae;border-radius:6px;padding:14px;text-align:center;background:white}.box.deep{border:3px solid var(--accent);background:#e6f6f0}.box small{display:block}.arrow{height:26px;width:40px;display:block;margin:auto;fill:none;stroke:#647e89;stroke-width:2}.leak{color:#ad243b}.seam{border-top:2px dashed #7d9c9b;padding-top:8px;margin-top:8px}table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:12px;vertical-align:top}th{color:var(--muted);font-weight:600}.scroll{overflow:auto}ul{padding-left:24px}li{margin:7px 0}.notice{border-left:4px solid #a76a00;background:#fff8e8;padding:14px 18px;margin:18px 0}.files{display:grid;gap:5px;font-size:15px}details{border-top:1px solid var(--line);padding-top:15px;margin-top:20px}summary{cursor:pointer;font-weight:650}.top{border:2px solid var(--accent)}.term-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.term-grid p{padding:10px;background:#f3f6f7}.tree{white-space:pre-wrap;font:14px/1.8 monospace}footer{font-size:14px;margin:32px 0}@media(max-width:700px){main{padding:24px 14px}.card{padding:18px}.compare,.term-grid{grid-template-columns:1fr}table{min-width:520px}h2{font-size:23px}}@media print{.card{break-inside:avoid}body{background:white}main{padding:0}details{display:block}}
+</style></head><body><main>
+<header><div class="eyebrow">PY_NETWORKSIMULATOR · 2026-11-02 · 本機檢查</div>
+<h1>先隔離繪圖依賴，再評估重複計算</h1>
+<p class="lead">本報告提出兩項架構改善候選。</p>
+<p>本輪只檢查程式，尚未實作改善。</p>
+<p class="muted">範圍：src 的 11 個 Python 檔案。</p>
+<nav aria-label="報告導覽"><a href="#terms">術語</a><a href="#candidate-1">候選一</a><a href="#candidate-2">候選二</a><a href="#evidence">驗證</a><a href="#top-recommendation">優先建議</a></nav>
+</header>
+<section class="card" id="terms"><h2>先看術語與範圍</h2>
+<p>本報告用固定術語說明架構。</p>
+<div class="term-grid">
+<p><b>module｜模組</b><br>模組封裝一組行為。</p>
+<p><b>interface｜使用規則</b><br>使用規則包含輸入、順序與錯誤。</p>
+<p><b>implementation｜內部實作</b><br>內部實作負責完成模組行為。</p>
+<p><b>depth｜封裝深度</b><br>少量使用規則可操作更多行為。</p>
+<p><b>seam｜替換位置</b><br>程式可在此位置替換行為。</p>
+<p><b>adapter｜具體實作</b><br>具體實作在替換位置提供行為。</p>
+<p><b>locality｜修改集中度</b><br>同一概念的修改集中於同一處。</p>
+<p><b>leverage｜使用效益</b><br>呼叫者用較少知識取得更多功能。</p>
+</div>
+<p>deep 表示模組能隱藏較多複雜度。</p><p>shallow 表示模組隱藏的複雜度較少。</p>
+<div class="scroll"><table><thead><tr><th>模組</th><th>目前責任</th><th>本輪檢查</th></tr></thead><tbody>
+<tr><td>iab</td><td>產生拓樸與部署分區。</td><td>設定、生成、表格與匯出。</td></tr>
+<tr><td>channel</td><td>計算鏈路與封包接收結果。</td><td>窗狀態、重讀與數值計算。</td></tr>
+<tr><td>timeline</td><td>產生及查詢 DU Window 資源。</td><td>生成、查詢、繪圖與匯出。</td></tr>
+</tbody></table></div>
+<p>DU Window 是固定 600 ms 的資源區間。</p><p>UE 先使用前段，Tag 使用剩餘區間。</p>
+<p>部署分區依 Tag 與所屬 Node 的距離決定。</p>
+<p>本輪另查閱三個 Notebook 與對應測試。</p>
+<p>本輪已查閱 CONTEXT.md 與兩項進行中變更。</p>
+<p>專案未設置 docs/adr 目錄。</p>
+<p>本報告沿用已接受的模型決策。</p>
+<p class="muted">圖例：方框表示模組。箭頭表示依賴或呼叫。</p>
+<p class="muted">虛線表示 seam。綠框表示改善目標。</p>
+</section>
+<article class="card" id="candidate-1"><span class="badge">Strong｜優先建議</span><span class="tag">in-process｜程序內依賴</span>
+<h2>01．讓時間軸計算延後載入繪圖</h2>
+<p>問題：計算模組在匯入時就載入繪圖套件。</p>
+<p>Matplotlib 是產生圖表的套件。</p>
+<p>呼叫者即使只查詢資源，也需要該套件。</p>
+<div class="files"><a href="file:///home/tonywang/Net_simluation/PY_NetworkSimulator/src/timeline/resource_timeline.py#L10"><code>src/timeline/resource_timeline.py:10</code></a>
+<a href="file:///home/tonywang/Net_simluation/PY_NetworkSimulator/src/timeline/plotting.py#L2"><code>src/timeline/plotting.py:2</code></a>
+<a href="file:///home/tonywang/Net_simluation/PY_NetworkSimulator/src/iab/plotting.py#L7"><code>參照：src/iab/plotting.py:7</code></a>
+<a href="file:///home/tonywang/Net_simluation/PY_NetworkSimulator/tests/timeline/test_resource_timeline_notebook.py#L101"><code>tests/timeline/test_resource_timeline_notebook.py:101</code></a></div>
+<div class="compare"><section class="flow"><h3>目前：匯入就需要繪圖套件</h3><div class="box ">呼叫者：只產生或查詢資源</div><svg class="arrow" viewBox="0 0 40 26" aria-hidden="true"><path d="M20 1v20m-6-6 6 6 6-6"/></svg><div class="box ">時間軸 module<br><small>生成、查詢、匯出</small></div><svg class="arrow" viewBox="0 0 40 26" aria-hidden="true"><path d="M20 1v20m-6-6 6 6 6-6"/></svg><div class="box "><span class="leak">預先載入 Matplotlib</span></div></section><section class="flow"><h3>改善後：繪圖時才載入套件</h3><div class="box ">呼叫者：沿用既有 interface</div><svg class="arrow" viewBox="0 0 40 26" aria-hidden="true"><path d="M20 1v20m-6-6 6 6 6-6"/></svg><div class="box ">時間軸 module<br><small>生成與查詢可單獨使用</small></div><svg class="arrow" viewBox="0 0 40 26" aria-hidden="true"><path d="M20 1v20m-6-6 6 6 6-6"/></svg><div class="box deep"><div class="seam">繪圖 seam</div>繪圖或匯出時才載入套件</div></section></div>
+<div class="scroll"><table><thead><tr><th>項目</th><th>檢查結果</th></tr></thead><tbody>
+<tr><td>已觀察</td><td>停用 Matplotlib 時，時間軸匯入失敗。<br>拓樸與通道仍可匯入。</td></tr>
+<tr><td>改善方向</td><td>繪圖函式在使用時才載入套件。<br>匯出函式在使用時才載入繪圖函式。<br>拓樸已採用類似做法。</td></tr>
+<tr><td>depth</td><td>module 隱藏繪圖依賴的載入時機。</td></tr>
+<tr><td>locality</td><td>繪圖依賴集中於繪圖及匯出路徑。</td></tr>
+<tr><td>leverage</td><td>計算呼叫者可單獨使用既有 interface。</td></tr>
+<tr><td>取捨</td><td>繪圖依賴錯誤會延後至繪圖時發生。<br>匯出仍需要 Matplotlib。</td></tr>
+<tr><td>seam／adapter</td><td>保留現有繪圖 seam。<br>目前只有 Matplotlib adapter。<br>本候選不增加新的替換機制。</td></tr>
+</tbody></table></div>
+<p>刪除測試：刪除繪圖模組會失去圖表功能。</p>
+<p>因此，本候選只移除過早載入的依賴。</p>
+<details><summary>受影響範圍與驗證方向</summary>
+<ul><li>保留既有函式路徑與回傳結果。</li><li>保留 Notebook 的獨立繪圖匯入。</li><li>新增停用 Matplotlib 的匯入檢查。</li><li>比較資源快照與既有保存基準。</li><li>重跑圖表、匯出與空時間軸測試。</li><li>保留匯出覆寫及部分檔案風險的說明。</li></ul>
+<p>本候選涉及兩個時間軸來源檔案。</p><p>測試需涵蓋 Notebook 與 Python 入口。</p>
+<p>設定、資料欄位與亂數識別值無須變更。</p>
+</details></article>
+<article class="card" id="candidate-2"><span class="badge amber">Worth exploring｜值得探討</span><span class="tag">in-process｜程序內計算</span>
+<h2>02．讓通道模組重用已完成的計算</h2>
+<p>問題：封包重讀先重算鏈路，再檢查保存結果。</p>
+<p>數值積分用來估計通道的容量與變異。</p>
+<div class="files"><a href="file:///home/tonywang/Net_simluation/PY_NetworkSimulator/src/channel/channel_model.py#L345"><code>src/channel/channel_model.py:345</code></a>
+<a href="file:///home/tonywang/Net_simluation/PY_NetworkSimulator/src/channel/channel_model.py#L107"><code>src/channel/channel_model.py:107</code></a>
+<a href="file:///home/tonywang/Net_simluation/PY_NetworkSimulator/tests/channel/test_channel_notebook.py#L152"><code>tests/channel/test_channel_notebook.py:152</code></a>
+<a href="file:///home/tonywang/Net_simluation/PY_NetworkSimulator/tests/channel/test_channel_extraction.py#L14"><code>tests/channel/test_channel_extraction.py:14</code></a></div>
+<div class="compare"><section class="flow"><h3>目前：每次重讀都先重算</h3><div class="box ">receive：10 次重讀</div><svg class="arrow" viewBox="0 0 40 26" aria-hidden="true"><path d="M20 1v20m-6-6 6 6 6-6"/></svg><div class="box ">link → fbl_reference<br><small>數值積分共 20 次</small></div><svg class="arrow" viewBox="0 0 40 26" aria-hidden="true"><path d="M20 1v20m-6-6 6 6 6-6"/></svg><div class="box ">檢查已保存的封包結果</div></section><section class="flow"><h3>改善目標：模組內部重用結果</h3><div class="box ">呼叫者：沿用既有 interface</div><svg class="arrow" viewBox="0 0 40 26" aria-hidden="true"><path d="M20 1v20m-6-6 6 6 6-6"/></svg><div class="box "><div class="seam">通道 seam</div>保留重讀與衝突規則</div><svg class="arrow" viewBox="0 0 40 26" aria-hidden="true"><path d="M20 1v20m-6-6 6 6 6-6"/></svg><div class="box deep">通道 module<br><small>內部重用鏈路計算</small><small>換窗時處理結果失效</small></div></section></div>
+<div class="scroll"><table><thead><tr><th>項目</th><th>檢查結果</th></tr></thead><tbody>
+<tr><td>已觀察</td><td>同一封包重讀 10 次。<br>程式呼叫 fbl_reference 10 次。<br>程式呼叫 quad 20 次。<br>所有呼叫都回傳同一個結果物件。</td></tr>
+<tr><td>改善方向</td><td>通道 module 內部重用同窗的鏈路結果。<br>重讀仍需檢查傳輸參數衝突。</td></tr>
+<tr><td>depth</td><td>module 隱藏計算結果的重用規則。</td></tr>
+<tr><td>locality</td><td>計算與失效規則集中於通道 module。</td></tr>
+<tr><td>leverage</td><td>呼叫者沿用既有 interface。<br>呼叫者不需自行保存中間計算。</td></tr>
+<tr><td>取捨</td><td>保存中間結果會增加記憶體用量。<br>換窗時必須處理結果失效。<br>加速幅度尚未量測。</td></tr>
+<tr><td>seam／adapter</td><td>保留通道 module 的既有 seam。<br>SciPy 是目前的數值計算 adapter。<br>本候選不增加新的替換機制。</td></tr>
+</tbody></table></div>
+<p>刪除測試：刪除鏈路計算會失去數值診斷。</p>
+<p>因此，本候選保留完整計算與診斷。</p>
+<div class="notice"><p>計算結果目前正確，這是重複計算問題。</p>
+<p>[Needs Verification] 正式負載的效能收益待量測。</p></div>
+<details><summary>受影響範圍與驗證方向</summary><ul>
+<li>追查 link、receive 與所有 Notebook 呼叫。</li>
+<li>保留相同傳輸 ID 的參數衝突檢查。</li>
+<li>驗證換窗成功後的結果失效。</li>
+<li>驗證換窗失敗時的原狀態保留。</li>
+<li>保留 k、n 型別及正整數檢查。</li>
+<li>保留數值極限與浮點尾端診斷。</li>
+<li>比較保存基準與逐包亂數結果。</li>
+<li>量測公開入口的積分呼叫次數。</li>
+</ul><p>本候選不應直接套用全域快取。</p>
+<p>全域快取會擴大共享狀態的管理範圍。</p>
+<p>兩種入口目前匯入同一份核心。</p>
+<p>保存的抽離前基準才是獨立比較證據。</p>
+</details></article>
+<section class="card"><h2>目前保留的設計</h2>
+<div class="scroll"><table><thead><tr><th>設計</th><th>保留理由</th></tr></thead><tbody>
+<tr><td>contracts.py 的不可變資料</td><td>呼叫者需要共用資料格式。<br>刪除後，格式知識會分散至呼叫者。</td></tr>
+<tr><td>不同模組的亂數產生方式</td><td>通道與時間軸使用不同序列化格式。<br>合併可能改變已接受的結果。</td></tr>
+<tr><td>目前的資源查詢迴圈</td><td>查詢會掃描全部資源。<br>本輪未證明它是效能瓶頸。<br>目前不增加索引或狀態物件。</td></tr>
+<tr><td>兩種匯出流程</td><td>它們的檔名與回傳結果不同。<br>目前不增加通用匯出框架。</td></tr>
+</tbody></table></div>
+<p>本輪沒有發現應直接刪除的轉送模組。</p>
+<p>本輪不建立新的 interface 草案。</p>
+</section>
+<section class="card" id="evidence"><h2>驗證結果與證據限制</h2>
+<div class="scroll"><table><thead><tr><th>檢查</th><th>本輪結果</th></tr></thead><tbody>
+<tr><td>完整指定測試集</td><td>264 項通過，34 項發生設定錯誤。<br>34 項都缺少 IPython。</td></tr>
+<tr><td>錯誤範圍</td><td>時間軸 Notebook 入口無法啟動。<br>IPython 提供 Notebook 顯示功能。<br>本輪未安裝或替代該依賴。</td></tr>
+<tr><td>繪圖依賴探測</td><td>獨立子程序停用 Matplotlib。<br>只有時間軸核心匯入失敗。</td></tr>
+<tr><td>重讀探測</td><td>同窗、同 Tag、同傳輸 ID。<br>10 次重讀產生 20 次數值積分。</td></tr>
+<tr><td>來源查詢</td><td>SymDex 本輪沒有可用索引。<br>本輪改用來源檔案與文字搜尋。</td></tr>
+<tr><td>OpenSpec 狀態</td><td>時間軸為 6/7，通道為 9/10。<br>本輪未宣告遠端交付完成。</td></tr>
+</tbody></table></div>
+<p>測試錯誤不能證明核心計算有誤。</p>
+<p>本輪也不能宣告完整測試集通過。</p>
+<p>本輪未量測完整模擬器的效能。</p>
+<p>本輪未執行獨立 Notebook kernel。</p>
+<p>本輪未核驗實體校準或 3GPP 符合性。</p>
+<p>HTML 使用內嵌 CSS 與 SVG。</p><p>HTML 不需要網路或外部套件。</p>
+<details><summary>重現指令與原始證據</summary>
+<pre class="tree">MPLBACKEND=Agg python -m pytest -q tests/iab tests/channel tests/timeline --tb=line
+python /tmp/simulator-architecture-evidence/probe.py</pre>
+<p><a href="file:///tmp/simulator-architecture-evidence/pytest.txt">測試原始結果</a> · <a href="file:///tmp/simulator-architecture-evidence/probe.json">探測結果</a> · <a href="file:///tmp/simulator-architecture-evidence/probe.py">探測程式</a></p>
+<p>所有探測只在本機執行。</p><p>本輪未修改產品來源或測試檔案。</p>
+</details>
+</section>
+<section class="card top" id="top-recommendation"><h2>優先建議：候選一</h2>
+<p>時間軸可沿用拓樸現有的延後載入方式。</p>
+<p>這項改善有明確的依賴隔離驗證。</p>
+<p>它也不需要新增快取狀態。</p>
+<p><a href="#candidate-1">查看候選一與驗證方向</a></p>
+<p>您想先深入哪個候選？</p>
+</section>
+<footer><p>本報告依您的五項清晰寫作原則撰寫。</p>
+<p>本報告使用繁體中文短句與固定術語。</p>
+<p>程式識別字與路徑保留原文。</p>
+<p>這些檢查不代表正式 STE 符合性認證。</p>
+<p>[Needs Verification] 人工閱讀接受仍待確認。</p>
+</footer></main></body></html>

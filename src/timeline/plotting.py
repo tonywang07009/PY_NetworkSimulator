@@ -1,7 +1,7 @@
 """Plot UE occupancy and remaining Tag time from resource snapshots."""
-import matplotlib.pyplot as plt
-
 def plot_resources(windows):
+    import matplotlib.pyplot as plt
+
     figure, axis = plt.subplots(figsize=(11, 4))
     node_ids = tuple(dict.fromkeys(node_resource.node_id for window in windows for node_resource in window.nodes))
     for window in windows:
