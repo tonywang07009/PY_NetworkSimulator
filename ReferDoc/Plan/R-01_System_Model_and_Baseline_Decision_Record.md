@@ -583,6 +583,8 @@ Baseline 與候選方法必須使用同一批服務請求／Deadline、Tag 初�
 
 ### 22.2 Codex 必須設計的最小 DTO（欄位為契約草案，命名可在實作時一致調整）
 
+2026-11-02 unit update: Section 42 supersedes the historical TBS field below. The current Action uses tbs_bytes; the candidate field is legal_tbs_bytes.
+
 | DTO | 從何而來／由誰消費 | 最小必要欄位或內容 | 不應包含 |
 |---|---|---|---|
 | `TagObservationDTO` | Engine/Node 整理；Policy 唯讀 | `tag_id`, 本 Window 當前 `snr_db`, 理想估計 `energy_j`、必要的可排程標記 | Tag 可變電池/模式物件、未來 SNR、未授權 PHY 真值 |
@@ -1042,3 +1044,728 @@ Baseline 與候選方法必須使用同一批服務請求／Deadline、Tag 初�
 - Coincident durations or directions are valid; do not reject or redraw them to force differences.
 - The two supplemental resource model choices are closed. Numerical scenario starts/gaps and formal load calibration remain input/evidence work, not inferred values.
 - These decisions do not authorize module implementation or establish a physically calibrated TDD schedule.
+
+
+## 35. Access/PHY source preparation order (2026-11-02) [DECIDED]
+
+- Q-TRADEOFFS-01: The user selected B. Complete the source-backed Access/PHY configuration before implementing that module.
+- Establish message-format legality, TBS-to-SDU/application mapping, fixed CFA/BD/SFS resources and complete transmission timing from identified sources.
+- Keep missing scenario values and unresolved research abstractions explicit. Do not invent values or accept a synthetic replacement as the physical configuration.
+- Synthetic boundary/error cases can support tests; they do not establish the accepted physical configuration or scientific calibration.
+- This decision does not select numerical parameters, change the earlier accepted channel source strategy, or authorize implementation/publication.
+- Evidence and open mappings: AgentDoc/openspec/discuss/2026-11-02-access-phy-source-map.md. The original interview records the user's answer B.
+
+
+## 36. Individual CFA Paging (2026-11-02) [DECIDED / SEQUENCE OPEN]
+
+- Q-INFLUENCE-13: The user selected B and clarified: "B 我這邊就是逐個paging".
+- Send an individual CFA Paging message to each selected Tag. Its D2R Scheduling Info carries that Tag's configured TBS and fixed resource parameters.
+- Do not use a new multi-grant Paging format. A logical Policy action does not imply one physical Paging message.
+- Account for each Paging message and its corresponding response timing. Keep source-backed message formats and the accepted Policy control boundary.
+- This decision does not select D2R overlap, response start alignment, Guard placement or a one-Tag Action limit.
+- Reconcile those timing details with CW-off-during-Paging, D2R CW coverage and per-batch Guard before implementation.
+- Q-INFLUENCE-14 records the unresolved sequencing alternatives. No product implementation or standards-conformance claim follows from this decision.
+
+
+## 37. Eight orthogonal SFS resources and parallel D2R (2026-11-02) [DECIDED / PHASE ALIGNMENT OPEN]
+
+- Q-INFLUENCE-14: The user selected C and explicitly clarified that SFS resources suffice for eight Tags and are orthogonal.
+- Keep individual Paging per Tag and a logical batch of at most eight selected Tags. One Guard follows the last D2R completion.
+- The fixed resource pool guarantees mutually orthogonal D2R resources for every permitted batch size. Do not treat SFS shortage as an unresolved model choice.
+- Map the selected Tags deterministically to distinct resources. Do not serialize responses because of resource scarcity or introduce intra-batch D2R interference under this ideal assumption.
+- D2R intervals may overlap; they need not start or finish together. The user's parallel-response clarification supersedes the earlier serial interpretation of option C.
+- This is an explicit System Model assumption. It does not establish measured hardware orthogonality, zero noise or zero external/inter-Node interference.
+- Preserve source-backed legal parameter domains, complete timing, window/deadline limits and energy causality. SFS sufficiency does not remove those separate constraints.
+- Q-INFLUENCE-15 must align individual Paging with the CW/D2R phase. Do not silently change the previous CW-off-during-Paging rule.
+- The numerical BD/SFS profile remains to be mapped. Do not require new proof of the accepted ideal capacity before continuing design.
+
+
+## 38. Individual Paging before the parallel D2R phase (2026-11-02) [DECIDED / NUMERICAL MAPPING OPEN]
+
+- Q-INFLUENCE-15: The user selected A. Complete all individual Paging messages in a batch before CW and D2R begin.
+- Keep the dedicated CW off throughout Paging. Each Tag receives its own Scheduling Info and TBS under section 36.
+- The batch contains at most eight selected Tags. Its assumed sufficient orthogonal SFS resources permit parallel D2R under section 37.
+- Do not serialize D2R responses or add a per-Tag Guard. Do not infer simultaneous D2R starts from permitted parallel operation.
+- Turn CW off when the last committed D2R ends. Apply one complete Guard, then produce the updated Observation and call Policy again.
+- Compute each Tag's response timing from its controlling message and applicable PHY parameters. The numerical profile must preserve the accepted phase order.
+- Source mapping must not invent additional response deferral. Exact offsets, legal BD/SFS values, Guard length and integer-ns conversion remain unresolved.
+- This section settles the phase questions left open in sections 36-37. It does not establish numerical feasibility, calibrated receiver behavior or implementation acceptance.
+
+
+## 39. Actual MAC SDU as application payload (2026-11-02) [DECIDED]
+
+- Q-INFLUENCE-16: The user accepted A after clarifying its meaning. In the first simulator, treat the actual MAC SDU as application data.
+- Abstract NAS/security and other upper-layer encapsulation. This is the accepted research abstraction, not a complete standardized NAS message model.
+- Exclude mandatory MAC fields, padding, CRC, coding redundancy and repetitions from new application data.
+- A successfully received unique SDU of L bytes supplies 8*L new application bits before service eligibility and demand caps. Empty, failed or duplicate data supplies no new bits.
+- Preserve the accepted strict deadlines, service eligibility, sharing, simultaneous allocation, demand caps and physical-goodput deduplication.
+- Keep actual SDU length distinct from its capacity. TBS 16 bytes permits 14 SDU bytes for the selected MAC format, but does not require filling them.
+- A unique successful 14-byte SDU supplies 112 new bits. If a service needs only 40 of those qualifying bits, credit 40 and record 72 as excess for that service.
+- Retain the full transmitted TB and PHY overhead when calculating airtime and energy. Do not shorten a transmission to its credited service amount.
+- This choice does not select workload/data filling, payload identity, segmentation, legal TBS candidates or numerical PHY parameters.
+
+
+## 40. Reduced TBS candidates with a 64-byte cap (2026-11-02) [DECIDED / INITIAL MEMBERS OPEN]
+
+- Q-INFLUENCE-17: The user selected B and set the maximum TBS to 64 bytes. TBS remains the complete TB, including mandatory MAC fields.
+- Use an explicitly listed reduced subset for the application-data Policy. The maximum Action value is 512 complete-TB bits.
+- Keep the exact candidate set shared by all compared policies and saved in each experiment's configuration.
+- The user permits adding discrete choices later if experiments show insufficient resolution. Keep the current 64-byte cap unless separately changed.
+- The candidate list can change without changing the accepted Tag/TBS Action structure. Do not combine different candidate sets into one supposedly identical experiment configuration.
+- With the selected two-byte mandatory MAC format, a 64-byte TB holds at most 62 SDU bytes. This is capacity, not a full-SDU or successful-delivery guarantee.
+- The original subset was illustrative. Q-INFLUENCE-18 must resolve the exact initial members; {8,16,32,64} bytes is currently a proposal.
+- This choice does not select data filling, numerical PHY values, timing, energy parameters or implementation acceptance.
+
+
+## 41. Initial complete-TB candidate set (2026-11-02) [DECIDED]
+
+- Q-INFLUENCE-18: The user selected A. Use complete-TB candidates {8,16,32,64} bytes, including mandatory MAC fields.
+- Preserve the existing Action representation: {64,128,256,512} complete-TB bits.
+- Share this explicit set across compared policies and save it in each experiment's configuration.
+- With the accepted two-byte MAC format, maximum SDU capacities are {6,14,30,62} bytes. Actual application data need not fill that capacity.
+- Preserve success, uniqueness, service eligibility, demand caps and full packet time/energy accounting under section 39.
+- Retain the 64-byte cap and later experiment-driven expansion under section 40. This section resolves its initial-members gap.
+- This choice does not select PHY/R2D/Guard parameters, payload filling, segmentation, FBL mapping or implementation acceptance.
+
+
+## 42. Byte-valued discrete TBS actions (2026-11-02) [DECIDED]
+
+- The user requested actual byte values for the discrete TBS choices to keep the training decision bounded.
+- Use tbs_bytes in {8,16,32,64} for each selected Tag's complete TB, including mandatory MAC fields.
+- The Policy Action fields are tag_id and tbs_bytes. Expose the candidate set as legal_tbs_bytes in the Observation/configuration contract.
+- This supersedes the bit-valued Action representation in sections 40-41 and earlier DTO drafts. The physical TB sizes and 64-byte cap are unchanged.
+- Keep four TBS choices per selected Tag. Resolve any internal model category encoding to the actual byte value before Action validation.
+- At the Access/PHY boundary, derive complete-TB bits as 8*tbs_bytes. Keep service demands and credited data in bits.
+- Preserve the accepted Channel interfaces. This conversion does not select the unresolved FBL k/n or receiver mapping.
+- Validate the original byte-valued Action against the configured candidates. Do not accept an old bit count or category index as a byte size.
+- Keep the same candidate set for compared policies and record it in each experiment. Later expansion follows section 40.
+- Four TBS choices do not mean four complete scheduling actions; Tag selection and NO_OP remain separate existing decisions.
+- Actual training complexity reduction remains [Needs Verification]. No training implementation or runtime acceptance is implied.
+
+
+## 43. Finite available application data per Tag (2026-11-02) [DECIDED / WORKLOAD TIMING OPEN]
+
+- Q-INFLUENCE-19: The user selected B and cited Tag charging performance as a model concern.
+- Track finite available application data per Tag. Do not assume every selected TBS has enough new data to fill its SDU capacity.
+- Keep available data and battery energy separate. Charging alone does not create application data; data availability alone does not establish energy feasibility.
+- Actual SDU length cannot exceed available eligible data or the selected TB's SDU capacity. Keep detailed record packing/segmentation rules unresolved until AP-02.
+- Use padding for unused TB capacity under the selected MAC format. Padding contributes no new application data.
+- Preserve complete selected-TB airtime and energy cost, successful unique-data accounting, service caps and the accepted byte-valued TBS set.
+- Do not infer energy-based partial transmission, automatic TBS shrinking, data-arrival timing or queue-removal behavior from finite data supply.
+- Q-INFLUENCE-20 must select the finite workload timeline. Initial amounts, identity, retransmission and segmentation remain separate open inputs.
+
+
+## 44. Full chosen-TBS energy feasibility (2026-11-02) [DECIDED / ADMISSION BASIS OPEN]
+
+- The user clarified that the energy available to a selected TBS must support transmission of its complete length.
+- Policy must consider energy feasibility when selecting Tag/TBS. The shared Validator must check the full plan before execution.
+- Include necessary startup and MAC/PHY overhead, along with the accepted phase energy costs and whole-trajectory causality.
+- Do not silently shrink TBS, truncate the physical packet or commit partial state when the selected transmission lacks sufficient energy.
+- Preserve the existing atomic INVALID_ACTION behavior. Energy feasibility alone does not guarantee successful PHY reception.
+- The five-byte illustration does not change the accepted candidate set {8,16,32,64} complete-TB bytes.
+- Q-INFLUENCE-21 must distinguish stored-energy-only admission from causal inclusion of same-operation CW harvesting. Runtime harvesting remains allowed under either choice.
+- Q-INFLUENCE-20 remains unanswered and deferred. A data-arrival model is not a prerequisite for stating this existing energy feasibility invariant.
+
+
+## 45. Stored-energy-only admission; actual runtime energy update (2026-11-02) [DECIDED]
+
+- Q-INFLUENCE-21: The user selected A. Existing stored energy must cover the full selected operation without relying on energy harvested later in it.
+- Keep the complete-TBS, startup/overhead, full-plan and atomic rejection rules in section 44. This section resolves its admission-basis gap.
+- Runtime harvesting remains permitted under the earlier simultaneous backscatter/EH model. Do not use later harvesting to reduce the admission threshold.
+- At energy event boundaries, settle actual consumption and actually harvested energy with causal timing and battery-capacity saturation.
+- The user asked whether updating the battery means a decrease. This is a clarification question, not approval to remove harvesting or require a strictly decreasing battery.
+- Without the dedicated CW, subtract the applicable mode consumption and add no energy from that CW. During CW-covered D2R, account for both actual consumption and harvesting.
+- Net energy may decrease, remain equal or increase within capacity. Do not count future harvesting early or hide a negative-energy failure by clipping it to zero.
+- Numerical energy and PHY parameters remain to be supplied. No fixed battery trajectory, runtime verification or physical calibration is implied.
+
+## 46. Harvest during UE communication; separate D2R consumption (2026-11-02) [DECIDED / RF SOURCE OPEN]
+
+- The user requests harvesting during DU-served UE UL/DL, replacing simultaneous D2R harvesting. Keep stored-energy-only admission from section 45.
+- Use the UE communication phase as the harvesting phase. During D2R, deduct complete operation consumption without adding harvested energy. Keep the external CW required for backscatter; CW presence no longer implies charging.
+- This supersedes the simultaneous backscatter/EH statements in sections 44-45 and older current-state summaries. Keep individual Paging, parallel orthogonal D2R, the final Guard and byte-valued TBS decisions.
+- Q-INFLUENCE-22 must select the UE-phase RF source: UE communication signals themselves, or an additional dedicated energy carrier. Do not invent a UE-to-Tag link or silently turn on dedicated CW during UE traffic.
+- In the communication-signal option, DL originates at the Node and UL at the UE. Account for source geometry, transmit activity, antenna/band compatibility and received RF power. UE occupancy is not proof of continuous RF emission.
+- The accepted 600 ms window and 60%-75% UE prefix imply 360-450 ms before existing integer-time treatment. Treat the user's 300 ms as illustrative, not a timing change.
+- The reviewed TR 38.769 V19.0.0 clauses 1 and 5.1 describe stored energy and externally supplied backscatter for Device 1. They do not establish a prohibition on simultaneous harvesting. A normative Type-1 prohibition remains [Needs Verification].
+- Small modulation power and improved harvesting at higher GHz are hypotheses, not accepted numerical inputs. Include control, clock and other operating costs; frequency alone does not guarantee greater RF-to-DC efficiency.
+- Evidence: AgentDoc/openspec/discuss/2026-11-02-ue-phase-energy-evidence.md. No implementation, physical calibration or conformance acceptance follows.
+
+## 47. Harvest communication RF during UE traffic (2026-11-02) [DECIDED / CONVERSION MODEL OPEN]
+
+- Q-INFLUENCE-22: The user selected A and requested high-quality online simulation literature.
+- Harvest communication RF itself: Node-to-Tag in DL and UE-to-Tag in UL. Keep dedicated energy CW off during UE traffic.
+- Preserve section 46: no D2R/Paging/Guard EH; retain the external backscatter carrier and stored-energy-only full-operation admission.
+- Source power, geometry, compatible frequency/passband, actual activity, conversion response and mode costs remain unresolved numerical inputs.
+- Literature review: AgentDoc/openspec/discuss/2026-11-02-ue-rf-harvesting-literature.md. Research papers are not normative TS requirements.
+- The review recommends a source-backed nonlinear RF-to-DC curve. Q-INFLUENCE-23 asks linear versus nonlinear conversion; it is not answered.
+- Do not import Type-C active-transmission costs, mW harvester fit parameters, simultaneous backscatter/EH or other papers' storage assumptions.
+- No numerical frequency, harvested power, conversion efficiency or circuit consumption is accepted. No simulation, training or physical calibration is claimed.
+
+## 48. Nonlinear conversion and persistent stored energy (2026-11-02) [DECIDED / HARDWARE PARAMETERS OPEN]
+
+- Q-INFLUENCE-23: The user selected B and explicitly assumes storage across time slots is feasible.
+- Use a hardware-supported nonlinear RF-to-DC curve as the main conversion model. Select the numerical fit and valid operating conditions from identified evidence.
+- Preserve residual energy across slots, windows and cycles. Only the simulation-run initial condition starts full; a boundary does not reset the battery.
+- Storage remains finite and bounded by capacity. Deduct applicable mode/startup consumption and integrate actual UE-phase harvesting with causal timing.
+- Stored energy can accumulate across multiple slots. A selected TBS still requires enough already stored energy for its complete operation.
+- Keep communication RF as the UE-phase source and no charging during D2R/Paging/Guard. Retain the D2R backscatter carrier.
+- Cross-slot storage feasibility is an accepted research assumption, not hardware validation or proof of energy-neutral operation.
+- This choice does not imply infinite storage, zero mode consumption, zero leakage, a fixed conversion efficiency or specific nonlinear fit parameters.
+- Q-INFLUENCE-24 asks whether to omit additional storage leakage in the first model or include an evidence-backed leakage term. Capacity, curve data and numerical circuit costs remain open.
+- No implementation, runtime test, paper reproduction or physical calibration is accepted.
+
+## 49. Omit additional storage leakage (2026-11-02) [DECIDED]
+
+- Q-INFLUENCE-24: The user selected A. Omit a separate storage self-discharge/leakage term in the first scheduling model.
+- Keep all applicable idle, receive, startup and D2R consumption. This choice does not make a waiting Tag energy-free.
+- Preserve finite capacity, cross-slot/window/cycle residual energy, run-start-only full initialization and causal event-based accounting.
+- Keep the nonlinear RF-to-DC model. Do not remove losses already represented by its hardware-supported conversion curve.
+- Preserve UE-communication RF harvesting, no D2R/Paging/Guard EH and stored-energy-only full-operation admission.
+- Q-INFLUENCE-25 asks whether the configured UE prefix represents continuous RF activity or includes explicit transmission gaps. The prefix duration alone does not settle this source behavior.
+- This is a research simplification, not a measured leakage result. Numerical curve, capacity, source power and circuit costs remain open.
+- No implementation, runtime test or physical calibration follows from this decision.
+
+## 50. Continuous RF during the UE prefix; remaining decision inventory (2026-11-02) [DECIDED]
+
+- Q-INFLUENCE-25: The user selected A and requested the remaining decision count before the next question.
+- Assume continuous RF activity during the configured UE prefix: the Node transmits in DL and the UE transmits in UL.
+- This sets source activity, not maximum transmit power, a numerical received power, a compatible harvesting band or sufficient energy.
+- Preserve the accepted prefix duration/direction draws, communication-RF source, nonlinear conversion, finite persistent storage and omitted additional leakage.
+- Preserve no D2R/Paging/Guard EH, the D2R reflection carrier and stored-energy-only full-operation admission.
+- Current inventory: nine packages for Access/PHY/data/energy (AP-01 through AP-06 and EN-01 through EN-03).
+- Four later packages cover scenario/integration, baseline, fairness and experiment design. The current first-version inventory totals thirteen packages.
+- These are bounded work packages, not thirteen guaranteed interview questions. Six current packages need agent-prepared source/profile work before consolidated discussion.
+- Keep CLM as future work outside this count. Keep engineering checks, formula derivations and existing delivery work separate from model decisions.
+- No new substantive question is opened for this inventory request. Influence remains 25; Q-INFLUENCE-20 stays unanswered and deferred.
+- Reference: Plan/decision-inventory.md. Numerical profiles, runtime integration and physical calibration remain incomplete.
+
+## 51. Initial-only finite application data (2026-11-02) [DECIDED]
+
+- Q-INFLUENCE-20: The user selected A and stated that this had already been discussed. Retain that correction and do not repeat the supply-model question.
+- Each Tag's finite application data is available at global t=0. No new application data arrives during the run.
+- Initial byte amounts are explicit scenario inputs; this answer selects no numeric amount or distribution.
+- Waiting, charging and slot/window boundaries do not create or refill application data.
+- Preserve complete byte-valued TBS costs, padding rules, successful unique-data credit and all accepted energy decisions.
+- AP-01's supply model is closed. Move the remaining numerical workload inputs into scenario/experiment preparation instead of reopening that choice.
+- The remaining inventory is eight current packages plus four later packages, twelve total excluding future CLM.
+- AP-02 still needs data-unit, segmentation, eligibility and failed-attempt rules. Do not reopen accepted duplicate suppression or sharing.
+- Q-INFLUENCE-26 asks only whether application data can be split across multiple transmissions. Its answer is pending.
+- Existing records before this update showed Q-INFLUENCE-20 as unanswered/deferred. Preserve their chronology; this update records the answer and the user's recollection.
+- No implementation, workload parameter values, runtime test or physical calibration is accepted.
+
+## 52. Selected-TBS packet unit and aggregated service demand (2026-11-02) [DECIDED / FAILURE RETENTION OPEN]
+
+- Q-INFLUENCE-26: The user supplies a custom answer: use one selected-TBS transmission as the processing unit and aggregate valid Tag returns against service demand.
+- Do not force this answer into the earlier fixed-record/byte-splitting alternatives. No fixed-size sensor-record framing or record reassembly layer is required.
+- Each attempt sends its complete selected TB. Derive actual application SDU bytes from available data and TB capacity; padding and MAC/PHY overhead are not useful data.
+- Successful unique payload that is eligible for an active service and completes before its exclusive deadline reduces that service's remaining demand.
+- For a completion set, R_i_after = max(0, R_i_before - sum(b_i,k)), where b_i,k is qualifying unique application data in bits.
+- Failed, duplicate, ineligible or late payload contributes zero new bits. Full TB/PHY time and energy remain incurred for an executed attempt.
+- For simultaneous excess contributions, retain the accepted proportional/largest-remainder allocation and Tag-ID tie rule. Shared-service credit and global physical-goodput deduplication remain unchanged.
+- Sequential-completion illustration only: service demand is 20 bytes. Two different Tags each return a 16-byte TB with 14 valid new application bytes. Service remaining demand is 20 -> 6 -> 0 bytes; the second return earns six bytes for that service.
+- The illustration assumes sufficient actual data and successful eligible returns. It selects no workload amounts, PHY timing or energy parameters.
+- Preserve finite initial-only data and all accepted storage/admission rules. This clarification does not authorize infinite fresh data or cancel the finite-supply decision.
+- Q-INFLUENCE-27 must select retention versus discard of data from failed attempts at the Tag. Both options leave service demand unchanged on failure.
+- AP-02 remains open for that failure rule and traceable data identity. Use existing eligibility/uniqueness requirements; do not create a record format without a concrete need.
+- No implementation, runtime test or physical calibration follows.
+
+## 53. Retain data after failed transmission (2026-11-02) [DECIDED]
+
+- Q-INFLUENCE-27: The user selected A. Retain data that was not successfully delivered so later legal scheduling can send it.
+- A failed return supplies no new service credit and does not reduce the service remaining demand. Charge actual full-attempt time and energy.
+- Retry requires a later valid Policy action and the full chosen-TBS energy admission check. Do not introduce immediate automatic retransmission.
+- Track content identity across attempts. Only successful unique eligible application data reduces a service's remaining demand, subject to its deadline and cap.
+- Preserve selected-TBS transmission units, finite initial-only data, padding and full physical packet costs. Do not impose a fixed retry TBS or a new application record format.
+- This answer does not select an ACK exchange, retry limit or additional protocol overhead.
+- AP-02 now has the packet-unit and failure-retention decisions. Prepare the identity/accounting contract from existing eligibility, sharing and deduplication rules before closing its remaining review work.
+- No new question is opened while recording this answer. Influence remains 27. Remaining work packages stay eight current plus four later until the AP-02 contract review is complete.
+- No implementation, runtime test or physical calibration follows.
+
+## 54. No FEC with half-tau bit duration (2026-11-02) [DECIDED / EIGHT-RESOURCE MAPPING OPEN]
+
+- Q-INFLUENCE-28: The user selected A and requested bit duration 1/2tau, interpreted as tau/2.
+- Use no FEC and T_bit=200/3 microseconds. Retain proposed CFA/BPSK, repetition 1, short ambles and no additional midamble.
+- Preserve the interval-field choice S*48. MAC defines S=4 at tau/2, so the actual interval becomes 192 bits.
+- Derived pure D2R durations for {8,16,32,64} TB bytes are {29/5,151/15,286/15,183/5} ms.
+- Do not simply divide every old packet duration by four: the midamble interval also changes.
+- The allowed SFS factors at tau/2 are {1,2,4,8,16,32}. The old candidate's 64/128 factors cannot be retained.
+- Preserve the user's eight orthogonal resources and parallel responses as an ideal model assumption. Concrete mapping to legal physical resources remains unresolved.
+- Do not invent SFS values, extra carriers or a standards-conformance claim. Do not reduce eight Tags or serialize their responses without a separate model revision.
+- Evidence: AgentDoc/openspec/discuss/2026-11-02-fixed-d2r-profile-candidates.md, dated accepted-profile update.
+- Full Paging/response/Guard timing, ns conversion, FBL mapping and physical energy/reliability remain open. AP-03 is not closed.
+- Influence remains 28; no new substantive question is opened for this clarification. No implementation or calibration is accepted.
+
+## 55. Enable FEC while retaining half-tau BD (2026-11-02) [DECIDED / RESOURCE AND RECEIVER MAPPING OPEN]
+
+- The user explicitly requests FEC to improve packet-return reliability. This supersedes only the no-FEC choice in section 54.
+- Keep tau/2 BD, CFA/BPSK, repetition 1, short ambles, interval 192 bits and no additional midamble.
+- Derive coded bits as E=3*(8*N+16) for the accepted TB sizes; V=E+(1+floor(E/192))*7.
+- Pure D2R durations for {8,16,32,64} TB bytes are {254/15,151/5,851/15,549/5} ms.
+- Include actual coded airtime and applicable mode/processing costs in future feasibility checks. Coding redundancy earns no service credit.
+- FEC is the selected protection mechanism, not a guarantee of delivery. Measured coding gain, receiver performance and FBL mapping remain [Needs Verification]; avoid double-counting coding gain.
+- Preserve finite initial-only data, retained failed data, byte-valued TBS and stored-energy-only full-operation admission.
+- Preserve eight ideal orthogonal resources. The concrete mapping remains unresolved because tau/2 permits only six SFS values.
+- Full Paging/response/Guard timing, ns rounding and energy calibration remain open. No new question is opened; Influence remains 28.
+- Updated derivation: AgentDoc/openspec/discuss/2026-11-02-fixed-d2r-profile-candidates.md. No implementation or physical validation follows.
+
+## 56. Accept the D2R airtime configuration table (2026-11-02) [DECIDED / TIMING ONLY]
+
+- The user accepts the current FEC/tau/2 results as the D2R timing configuration table.
+- Canonical table: ReferDoc/Plan/D2R_Timing_Configuration.md. Preserve the fixed fields from section 55.
+- Exact durations for {8,16,32,64} complete-TB bytes are {254/15,151/5,851/15,549/5} ms.
+- Display decimals are not approved integer-ns event times. AP-06 rounding remains open.
+- The table covers pure D2R, not Paging, response offset or Guard. Full-batch and energy feasibility remain separate.
+- Eight-resource physical mapping and receiver/FBL reliability remain unresolved. Do not close the complete PHY profile on timing-table acceptance alone.
+- Influence remains 28; no new question, implementation or physical calibration is accepted.
+
+## 57. Change D2R bit duration to tau (2026-11-02) [DECIDED / RESOURCE MAPPING OPEN]
+
+- The user requests tau instead of tau/2. Retain FEC and all other selected format fields.
+- T_bit=400/3 microseconds. Retaining the interval-field index S*48 gives S=2 and I_bit=96 bits.
+- For TB bytes N, E=3*(8*N+16), V=E+(1+floor(E/96))*7 and T_D2R=V*(400/3) microseconds.
+- Current exact pure durations for {8,16,32,64} bytes are {174/5,934/15,586/5,3406/15} ms.
+- Update the accepted canonical D2R_Timing_Configuration.md in place. Older tau/2 times remain historical only.
+- Legal SFS factors at tau are {1,2,4,8,16,32,64}: seven values. The concrete mapping for eight assumed orthogonal resources remains open.
+- Do not use SFS=128 at tau or silently reduce the batch limit. Preserve the user's ideal eight-Tag parallel assumption.
+- Pure 64-byte D2R is about 227.067 ms, exceeding some available 150-240 ms window remainders before Paging/offset/Guard. Retain full-batch feasibility checks.
+- No integer-ns rounding, physical energy/reliability result or full standards conformity is accepted. Influence remains 28; no new question.
+
+## 58. Seven-Tag batch limit and seven-SFS mapping (2026-11-02) [DECIDED]
+
+- The user reduces the batch limit from eight to seven Tags. This supersedes older eight-Tag/eight-resource rules.
+- A nonempty Action contains 1-7 distinct eligible Tags. Eight items are INVALID_ACTION under the existing atomic rejection contract.
+- Keep items=[] as the existing legal NO_OP. This limit is per batch, not a limit on deployed Tags or total service participants.
+- At tau BD use fixed SFS pool {1,2,4,8,16,32,64}. Assign selected Tags in stable Tag-ID order to ascending pool entries.
+- Preserve the accepted ideal mutual orthogonality and parallel D2R assumption for the seven resources. Common start/end times are not required.
+- Keep individual Paging before D2R, one Guard after the last D2R end, FEC and the current pure timing table.
+- The numerical resource-pool mismatch is resolved; AP-03 configuration is closed. Orthogonality measurements, receiver/FBL validation and full-batch feasibility remain separate.
+- Boundary checks to implement: 0 NO_OP; 1/6/7 valid counts subject to other constraints; 8 rejected without batch side effects. Duplicate IDs remain invalid.
+- Source review found no implemented Access Action/Validator consumer in src/tests; update planned contracts only, without claiming runtime enforcement.
+- Remaining inventory: seven current packages and four later packages, eleven total. No new question; Influence remains 28.
+
+## 59. Batch-Paging response reference (2026-11-02) [DECIDED / R2D PROFILE OPEN]
+
+- Q-INFLUENCE-29: The user selected A. Use the final batch-Paging end as the common reference for each Tag's response delay.
+- Define P_batch=max(Paging_i_end), D2R_i_start=P_batch+d_i and D2R_i_end=D2R_i_start+T_D2R_i.
+- Preserve all individual Paging before CW/D2R and one full Guard after the last D2R end. Tags need not start or finish together.
+- This is an explicit simulator timing abstraction, not unchanged TS 38.291 per-Tag PRDCH response timing.
+- Retain seven Tags/SFS, tau/FEC packet durations, actual wait-mode costs and full-operation stored-energy admission. No new harvesting is implied.
+- Numerical R2D format, Paging ID length, d_i profile, CW coverage placement, Guard and integer-ns conversion remain to be completed.
+- Q-INFLUENCE-30 asks M=24/minimum-three-PRB vs M=6/minimum-one-PRB R2D profile. The source-backed comparison is in the batch timing evidence.
+- No model choice for that next question or full batch feasibility is accepted.
+
+## 60. Fixed M=24 R2D control profile (2026-11-02) [DECIDED / PAGING ID OPEN]
+
+- Q-INFLUENCE-30: The user selected A. Fix 24 chips per OFDM symbol for the applicable R2D portions, with at least three PRBs.
+- Retain the separate SIP mapping, final batch-Paging response reference, seven SFS resources and tau/FEC D2R timings.
+- Actual CFA Paging TBS depends on its complete fields and Paging ID. The earlier 32-byte example is not an accepted Paging size.
+- Q-INFLUENCE-31 compares compact 32-bit vs longer 96-bit identification content, within fully specified proposed permanent-ID/no-domain layouts.
+- Their full Paging IDs would be 42/106 bits, Paging TBs 27/35 bytes and total R2D lengths 24/30 OFDM symbols. No ID option is accepted yet.
+- Retain the mandatory MAC security field in duration accounting. Do not infer a complete security implementation or calibrated reception capability.
+- CP alignment, Guard, full batch energy/time and integer-ns conversion remain open. Evidence: batch-response timing discussion.
+- No runtime implementation, new physical powers or reliability guarantee follows.
+
+## 61. Compact permanent-ID Paging profile (2026-11-02) [DECIDED / CP AND GUARD OPEN]
+
+- Q-INFLUENCE-31: The user selected A. Use permanent-ID addressing with 32-bit identification content and no optional domain fields.
+- The full Paging ID is 42 bits; CFA Paging TB is 27 bytes. M=24 mapping gives 24 OFDM symbols including framing/padding.
+- Canonical fields and derivation: ReferDoc/Plan/Paging_R2D_Timing_Configuration.md. Keep the mandatory 128-bit MAC security field in airtime accounting.
+- With PHY CP included, one 24-symbol Paging is 1.7140625 to 1.714583333... ms depending on CP phase.
+- Seven back-to-back messages total exactly 12 ms only under a continuous 168-symbol CP sequence with no gaps. This is a conditional derivation, not selected global alignment.
+- Do not infer a CP phase, inter-Paging gap, fixed Guard value or integer-ns rounding from the ID answer.
+- Preserve common final-Paging response reference, seven-SFS/tau/FEC D2R profile and full-operation energy admission.
+- No new question is opened for recording this answer. Influence remains 31; no runtime or calibration acceptance follows.
+
+## 62. Fix the Paging configuration and batch-local timing (2026-11-02) [DECIDED / GUARD OPEN]
+
+- The user accepts the current Paging configuration as the fixed design. Retain 27-byte TB, 42-bit ID, M=24 and minimum three PRBs for the applicable portions.
+- Use continuous CP phase across sequential Paging messages and zero inter-message gap. Seven messages give exactly 12 ms.
+- Fix the simulator's batch-local timing origin at symbol n=0, with long CP when n modulo 7 is zero. Do not reset CP for each message.
+- The canonical Paging_R2D_Timing_Configuration.md gives exact per-message and cumulative durations for 1-7 Tags.
+- Do not assign each message the average 12/7 ms or reserve seven-message time for smaller batches. Empty NO_OP creates no Paging.
+- This batch-local convention does not prove external NR frame alignment or authorize hidden alignment waits. Keep that integration boundary explicit.
+- Preserve the final-Paging response reference and seven-SFS/tau/FEC D2R profile. Guard, response-table verification and full-batch energy/time remain open.
+- Integer-ns conversion remains AP-06 work; do not independently round displayed durations. No new question; Influence stays 31.
+- No implementation, R2D/PHY reliability validation or complete standards conformance is accepted.
+
+## 63. Fixed 200-us Guard (2026-11-03) [DECIDED / HARDWARE ASSUMPTION]
+
+- Q-INFLUENCE-32: The user selected A. Set G=200 microseconds=0.2 ms=200000 ns for each executed nonempty batch.
+- This uses the worst-case TS 38.191 post-D2R device monitoring interval for the accepted tau/SFS pool as its reference.
+- Explicitly assume Reader/CW recovery finishes within G. This is not a measured hardware result or a universal normative whole-batch Guard.
+- Let e_last=max(D2R_i_end). CW_OFF=e_last and Guard=[e_last,e_last+G). Next Policy decision/Paging must wait until GUARD_END.
+- Add exactly one full Guard per executed batch, never one per Tag. Empty NO_OP creates no Guard.
+- No harvesting during Guard; keep actual mode consumption. Require e_last+G <= window_end without clipping or shortening G.
+- Each service retains its strict D2R-end deadline and payload accounting; Guard is not data reception time.
+- The value G is exactly representable in integer ns. General rational Paging/D2R event conversion remains unresolved under AP-06.
+- Paging, seven SFS resources, tau/FEC D2R and common batch-Paging response reference remain fixed.
+- Guard selection is closed; response-table verification, full-batch time/energy, external NR alignment and receiver reliability remain separate work.
+- No new interview question is opened. Influence remains 32. No runtime or hardware acceptance is claimed.
+
+## 64. First-version reception without FBL (2026-11-03) [SUPERSEDED BY SECTION 66]
+
+- Q-INFLUENCE-33: The user selected revised A. Disable FBL in the first-version reception path.
+- This supersedes the RANDOM-class FBL rule in section 33.14 for the first version.
+- Keep the accepted CW-power/Tag-zone table. RELIABLE has success probability 1; UNREACHABLE has probability 0.
+- RANDOM uses one configured constant packet-success probability p_rx. Its value remains unselected.
+- Within RANDOM, p_rx is independent of TBS and instantaneous SINR. Keep the existing power-to-class mapping.
+- Preserve CRC/FEC overhead in physical duration and operation energy. No extra coding gain or decoder simulation is assumed.
+- All transmissions still require valid access, stored energy, time, data and deadline checks.
+- The model cannot establish within-class TBS/SINR-dependent decoder reliability or measured FEC performance.
+- Preserve failed-data retention, actual payload accounting and reproducible per-attempt random sampling.
+- This is a model decision, not source deletion or implementation acceptance. Existing channel code still computes FBL until implementation.
+- Q-INFLUENCE-34 selects p_rx. Influence total 34; other facet counts unchanged.
+
+## 65. Align reception with the accepted three-level CW table (2026-11-03) [TABLE RETAINED / RANDOM RULE SUPERSEDED BY SECTION 66]
+
+- Q-INFLUENCE-34: The user supplied a custom answer: align reception directly with the prior three-level power allocation.
+- Interpret the three levels as CW power LOW/MEDIUM/HIGH, consistent with section 33.9-33.14; do not substitute Tag battery charge.
+- LOW: near RELIABLE, middle RANDOM, far UNREACHABLE.
+- MEDIUM: near and middle RELIABLE, far RANDOM.
+- HIGH: all three zones RELIABLE.
+- RELIABLE succeeds and UNREACHABLE fails, conditional on legal transmission and sufficient stored energy/time.
+- The prior table specifies RANDOM as a probability strictly between 0 and 1, not a numerical rate.
+- Do not introduce the proposed 50 percent or treat the qualitative table as a complete numerical sampler.
+- FBL remains disabled for the first version. Resolve RANDOM numerical entries through the table/scenario before implementation.
+- A single shared constant versus distinct RANDOM entries is not established by this answer; do not invent either.
+- This clarification supersedes section 64's claim that one shared constant is already required.
+- Keep CRC/FEC time/energy overhead, data retention and credit rules. CW level and stored-energy admission remain separate.
+- Q-INFLUENCE-34 is answered by the table-alignment rule; numerical RANDOM configuration remains open, not silently accepted.
+- Influence stays 34. No new question or runtime change.
+
+## 66. Restore the original power-table/FBL hybrid (2026-11-03) [DECIDED / PHY MAPPING OPEN]
+
+- Q-INFLUENCE-35: The user selected A. The repeated A confirms the same decision; do not count another answer or question.
+- Restore section 33.14 semantics: RELIABLE success probability 1, UNREACHABLE success probability 0, RANDOM success probability 1-epsilon_FBL(rho,k,n).
+- Preserve LOW near/middle/far=RELIABLE/RANDOM/UNREACHABLE, MEDIUM=RELIABLE/RELIABLE/RANDOM and HIGH=all RELIABLE.
+- This supersedes section 64's no-FBL design and section 65's unresolved fixed RANDOM numerical entries.
+- No independent constant packet-success probability is needed. The proposed 50 percent is rejected as unnecessary.
+- Link budget supplies SINR/rho; FBL supplies packet error; one per-attempt Bernoulli draw supplies the outcome.
+- Do not multiply a second FBL-derived probability or add an arbitrary FEC gain.
+- Preserve feasibility checks for stored energy, time, access and data, plus existing payload/deadline accounting.
+- CRC/FEC overhead remains in time and energy. FBL represents ideal coded-link performance, not validated specific-decoder BLER.
+- Formal selected-TBS k/n/rho mapping remains AP-05 preparation. Existing illustrative k=64,n=128 is not accepted for all TBS values.
+- Existing source already has this hybrid classification. This decision requires no classification rewrite or fixed-probability feature.
+- Influence remains 35; other counts unchanged. No new question, source change or runtime acceptance.
+
+## 67. Whole-TB ideal FBL mapping (2026-11-03) [DECIDED / RECEIVER ASSUMPTIONS]
+
+- Q-INFLUENCE-36: The user selected A. Use k=8*N and n=3*(8*N+16) for complete-TB bytes N.
+- N=8/16/32/64 maps to (k,n)=(64,240)/(128,432)/(256,816)/(512,1584).
+- Treat full TB bits as free information; CRC is deterministic redundancy within the ideal combined-code reference.
+- Fixed MAC fields, padding and actual SDU length do not change reference k for a chosen TBS. Service credit still uses actual SDU only.
+- Assume ideal matched filtering combines each coded-bit chip template into one binary-input AWGN observation; known ambles do not add n.
+- At the selected tau, data-group symbol rate is 7500/s. Prepare rho=2*SINR*B_eq/7500 with consistent integrated noise/interference powers.
+- Bandwidth/noise calibration remains source work; the old synthetic 10000/s default does not validate the selected profile.
+- Do not add a second CRC/FEC probability or arbitrary spreading/coding gain. Actual TS decoder reliability remains unverified.
+- Preserve section 66's power-table overrides and all energy/time/accounting rules. No source implementation is accepted.
+
+## 68. Align duration conversion with UE occupancy (2026-11-03) [DECIDED / IMPLEMENTATION PENDING]
+
+- The user directs item 2 to use the existing UE occupancy conversion method and proceeds to energy-source discussion.
+- Verified source: src/timeline/resource_timeline.py, round_ue_duration_ns: ceil(duration_ms)*1000000.
+- Round upward to whole milliseconds, then represent in ns. This is not nearest-ns rounding.
+- Preserve exact rational physical durations separately from rounded scheduler occupancy.
+- A complete D2R operation occupies 35/63/118/228 ms for N=8/16/32/64. Do not round each coded bit or chip separately.
+- Preserve the accepted continuous Paging sequence: convert cumulative prefix boundaries, not the sum of separately rounded Paging packet lengths.
+- Seven Paging messages remain 12 ms; independently rounding each to 2 ms and totaling 14 ms violates the fixed sequence.
+- Guard remains the explicitly fixed 200000 ns. Do not apply a generic whole-ms conversion to that exact fixed interval.
+- Keep full Guard/window/deadline checks; no clipping at window end. Account for rounding slack with the declared mode-energy ledger; do not create extra payload or harvesting.
+- The existing UE helper validates 360-450 ms. Reuse its rule, not that UE-only input range, for other durations.
+- Event-boundary derivation and implementation checks remain agent-owned preparation; no new choice is required for arithmetic.
+- Q-INFLUENCE-36 is closed. Q-INFLUENCE-37 begins energy-source scope; Influence 37, other facet counts unchanged.
+
+## 69. Serving-cell communication RF sources only (2026-11-03) [DECIDED / SOURCE PROFILE OPEN]
+
+- Q-INFLUENCE-37: The user selected A. Count harvesting contributions from the Tag's serving DU and the UE sources configured for that DU's communication.
+- During local DL, use the serving DU-to-Tag link. During local UL, use the configured transmitting UE-to-Tag links.
+- Exclude neighbor DU/UE harvesting contributions under this first-version source-scope assumption.
+- This does not alter the separately accepted reception-interference configuration or impose a new UE count/location model.
+- Preserve continuous communication RF activity during the UE prefix, dedicated CW off then and no D2R/Paging/Guard harvesting.
+- Source-to-Tag harvesting links are one-way. Use actual UE geometry for UL; do not reuse the DU distance or squared backscatter gain.
+- Carrier, source transmit powers, compatible harvester input, antenna parameters and UE geometry remain unselected.
+- The accepted 915-MHz channel-entry value is a prototype reference, not an accepted formal cellular harvesting band.
+- Q-INFLUENCE-38 discusses a 915-MHz equivalent research carrier versus an explicit NR-band source profile.
+- Influence 38; other counts unchanged. No source/runtime changes or measured hardware claims.
+
+## 70. Equivalent 915-MHz communication carrier (2026-11-03) [DECIDED / COEXISTENCE EXPLORATION SEPARATE]
+
+- Q-INFLUENCE-38: The user selected A while asking about simultaneous n78/3.5-GHz and 915-MHz operation.
+- For the first-version harvesting profile, use one equivalent 915-MHz communication carrier for UL and DL.
+- This is a research abstraction, not a declaration of a formal NR band assignment or a validated harvester.
+- Preserve serving-cell source scope, continuous UE communication activity and separate one-way UL/DL harvesting links.
+- Do not add a dedicated energy CW during UE traffic or change D2R harvesting based on the feasibility question.
+- Treat concurrent 3.5-GHz/915-MHz operation as exploration pending a separate model change decision.
+- Concurrent RF emission is possible with suitable RF paths; separated bands do not prove zero interference or remove 915-MHz CW leakage into its backscatter receiver.
+- Source powers, UE geometry, antenna/passband support and nonlinear conversion hardware remain open.
+- Influence remains 38; no new decision question or runtime change.
+
+## 71. UE-to-Tag RF transition interval (2026-11-03) [USER CLARIFICATION / VALUE OPEN]
+
+- The user clarifies that the system model includes a short interval after UE transmission for switching to the Tag operating frequency.
+- Record UE-end -> RF transition/settling -> existing Tag-band Paging/CW/D2R procedure. No concurrent UE/Tag transmission is required.
+- Reserve the interval inside the 600-ms window before the first operation requiring the Tag RF configuration.
+- Count it once per actual UE-to-Tag transition, not per Tag. Keep it separate from response offsets and the 200-us batch-end Guard.
+- The transition duration is not numerically selected. Do not use a PLL-only example as a complete-system latency bound.
+- During transition, require no useful transmission before RF readiness and no harvesting credit without an actual compatible source; retain mode consumption.
+- ReferDoc/Plan/RF_Hardware_and_Frequency_Switching_Evidence.md records peer-reviewed hardware results, official RF features and direct source links.
+- The evidence supports a declared system-level assumption, not automatic publication acceptance, complete standards conformance or measured exact frequency-pair performance.
+- Keep the accepted equivalent 915-MHz carrier and serving-cell harvesting scope. The 3.5-GHz/915-MHz discussion does not replace them.
+- Future Notebook notes must show the interval and its effect on the remaining Tag time. No code exists for it merely because this requirement is recorded.
+- Influence stays 38; no new interview question. Source/profile preparation retains the unspecified transition parameter.
+
+## 72. Window-dependent DU power and configured UE power (2026-11-03) [DECIDED / CW COUPLING OPEN]
+
+- Q-INFLUENCE-39: The user supplies a custom answer. DU communication transmit power is configured per DU Window; UE transmit power is a fixed configuration.
+- Use the applicable DU communication power during local DL. Use that DU's configured UE power during local UL.
+- The per-Window DU value stays fixed within the corresponding communication interval. No continuous or within-Window power-control algorithm is introduced.
+- Fixed UE configuration does not imply equal power for all UEs. Numerical values remain unselected.
+- Power inputs come from the scenario/configuration, not the Tag/TBS scheduling Policy. Do not expose the full future power trace.
+- Preserve the existing CW per-Window fixed-power rule. Whether communication and CW share the same LOW/MEDIUM/HIGH Window state remains unresolved.
+- Do not assume identical dBm for DU communication and CW from this answer.
+- Continuous UE-prefix RF activity still selects the physical transmitter by direction; this does not authorize concurrent DU DL and UE UL.
+- Preserve serving-cell harvesting, equivalent 915-MHz frequency, logical UEs without coordinates and the UE-to-Tag RF transition.
+- Q-INFLUENCE-40 asks about common Window power states versus independent communication/CW plans. Influence 40; other counts unchanged.
+- No numerical source profile, source code, runtime tests or implementation acceptance.
+
+## 73. Shared DU communication/CW Window power state (2026-11-03) [DECIDED / NUMERICAL MAPPINGS OPEN]
+
+- Q-INFLUENCE-40: The user selected A. Each Window has one shared LOW/MEDIUM/HIGH state for DU communication and D2R CW.
+- Configure a DU communication-power mapping and a CW-power mapping for that state. The two dBm values need not be equal.
+- Use DU communication power during local DL; use CW power only in its accepted dedicated-carrier phase.
+- UE transmit power remains fixed configuration across Windows. Do not apply the DU power tier to UE power automatically.
+- The state comes from the existing external Window power plan, not the Tag/TBS Policy. Do not expose a full future trace.
+- Preserve one-step announced CW information; reconcile any derived knowledge from the common state during Observation preparation.
+- Numerical mappings, UL link gains and source/hardware calibration remain unselected.
+- The user's additional RedCap/SUL idea is a source-profile discussion, not approval for a new energy-only transmitter.
+- Q-INFLUENCE-41 clarifies ordinary SUL communication harvesting versus a dedicated UE energy signal. Influence 41; other counts unchanged.
+
+## 74. Ordinary SUL uplink as the UE harvesting source (2026-11-03) [DECIDED / CAPABILITY PROFILE ASSUMPTION]
+
+- Q-INFLUENCE-41: The user selected A. Model scheduled ordinary UE uplink communication on SUL; Tags harvest that same RF emission.
+- Declare a RedCap UE profile with the required SUL capabilities and compatible network configuration. Do not claim every RedCap UE supports the selected combination.
+- This does not add a dedicated UE energy tone, extra energy-only transmission interval or concurrent normal-UL/SUL transmission.
+- Preserve configured fixed UE transmit power and continuous local UE-prefix activity as explicit simulation assumptions, not standard consequences of SUL.
+- Preserve shared per-Window DU communication/CW tiers with separate numerical mappings and serving-cell source scope.
+- The equivalent 915-MHz research carrier remains in effect. This answer does not select a real n81 channel center, bandwidth or complete modem capability set.
+- Numerical powers, one-way link gains, RF transition duration and compatible nonlinear harvesting/storage/circuit parameters remain open profile inputs.
+- Influence stays 41; no new question. No source/runtime changes or complete standards-conformance acceptance.
+
+## 75. Source/RF research baseline accepted (2026-11-03) [DECIDED / SYNTHETIC PROFILE]
+
+- Q-INFLUENCE-42: The user selected A. Adopt source-rf-synthetic-v0.1 from EN01_Source_RF_Profile_Candidate.md.
+- DU communication powers are 18/24/30 dBm for LOW/MEDIUM/HIGH. Retain CW powers -2/10/22 dBm for the same shared Window states.
+- UE ordinary SUL transmit power is fixed at 20 dBm per configured UE in this baseline.
+- DL harvesting uses the accepted 915-MHz nominal one-way free-space reference: g0=0.0006797973850689421, exponent 2, isotropic antennas, distance domain 1-50 m.
+- UL harvesting uses a common fixed effective power gain of -50 dB. This intentionally supplies equal UL RF input across Tags without UE coordinates; it is not measured geometry.
+- Reserve T_switch=1 ms=1000000 ns after UE communication and before Tag-band operations. It is a research timing budget, not a measured hardware bound.
+- Retain the compatible-band ideal-capture abstraction, phase/mode energy accounting and no D2R/Paging/Guard/transition harvesting.
+- Keep source values and RF-to-DC data separate. Incident RF energy is not battery credit; nonlinear conversion, storage and mode costs remain EN-02 work.
+- Retain full-batch feasibility: the seven-Tag/64-byte case has a 241.2-ms lower bound before offsets and cannot fit the 240-ms maximum post-UE remainder.
+- These accepted research assumptions do not establish an empirical joint-channel model, actual NR carrier compliance or receiver/harvester hardware calibration.
+- EN-01 configuration choice is closed for the first version. Two current groups remain: Tag hardware/energy profile and low-energy recovery.
+- Q-INFLUENCE-43 opens the nonlinear-curve representation choice. Influence 43; other counts unchanged. No runtime code or default changes.
+
+## 76. User-designated charging-model paper (2026-11-03) [SOURCE SELECTED / FULL TEXT REQUIRED]
+
+- Q-INFLUENCE-43: The user supplies a custom instruction: refer to the charging-model form in Throughput Optimization for Ambient IoT Systems in Indoor Factory Environments.
+- Replace the generic interpolation-versus-logistic choice with this named source. Do not ask the user to select A or B again.
+- Verified publisher record: 2025 Seventeenth International Conference on Wireless Communications and Signal Processing (WCSP), conference 23-25 October 2025; indexed in IEEE Xplore on 28 January 2026.
+- DOI: 10.1109/WCSP68525.2025.1010215; IEEE record https://ieeexplore.ieee.org/abstract/document/11352069 .
+- Only publisher metadata/abstract is currently available. It does not expose the charging equation, coefficients or storage update.
+- Local ReferDoc search and connected Drive title/name searches did not identify a copy. IEEE full-text and DOI routes did not supply the original equations.
+- Do not identify the model as linear, logistic, piecewise, saturation-aware or otherwise based only on its title/abstract.
+- Obtain the paper PDF or the model-equation pages before adopting an exact formula, parameters or numerical Tag profile.
+- On inspection, map RF input, DC output, energy integration, capacity and mode consumption separately, preserving units and evidence.
+- Any conflict with the earlier nonlinear choice must be made explicit; do not silently substitute a generic formula for the named paper.
+- The current UE-prefix-only harvesting, persistent finite storage and stored-energy admission remain accepted unless the user explicitly revises them.
+- Naming the source does not adopt its factory propagation, scheduling objective, algorithm or all scenario parameters.
+- Influence stays 43; no new substantive question. No exact charging formula, Tag capacity/mode costs, code or runtime calibration is accepted.
+
+## 77. Requested WCSP Sigmoid verified from original PDF (2026-11-03) [FORM VERIFIED / ADAPTATION OPEN]
+
+- The user supplies the local original PDF named in section 76. It was read and equation pages visually checked.
+- Source: Throughput Optimization for Ambient IoT Systems in Indoor Factory Environments, WCSP 2025, DOI 10.1109/WCSP68525.2025.1010215.
+- Section II-B, PDF page 2, equation (3) is the unnormalized Sigmoid P_har=M/(1+exp(-s*(P_in-z))). This fixes the requested model family.
+- PDF page 3, equation (5) carries residual energy with a capacity cap and inactive-only harvesting. Our accepted UE-prefix-only harvesting indicator and all mode/startup costs must remain explicit.
+- Table I, PDF page 5, lists M,s,z=(0.24,150,0.014), E0=Emax=10^-3 J and carrier 837 MHz. Individual M/s/z units are not specified in the row; none of those numerical hardware values are adopted.
+- The raw Sigmoid has positive output at zero RF input. Under a W-based interpretation the listed values give about 26.18 mW at zero input, incompatible with direct passive use over our low-power domain.
+- A proposed zero-input correction retains the Sigmoid family, but coefficients must still be refitted/reselected and checked for 0<=P_DC<=P_RF. Normalization alone does not validate the table values.
+- ReferDoc/Plan/WCSP2025_Charging_Model_Mapping.md records exact equations, source hash, unit diagnostics, simulator mapping and evidence limits.
+- Q-INFLUENCE-44 asks about this zero-input-corrected/reparameterized Sigmoid adaptation. No answer or numerical Tag curve/capacity/mode profile is accepted.
+- Influence 44; other facet counts unchanged. No code/default changes or exact-paper simulation reproduction.
+
+## 78. Zero-input-corrected charging Sigmoid accepted (2026-11-03) [DECIDED / PARAMETERS OPEN]
+
+- Q-INFLUENCE-44: The user answers "採用". Adopt the zero-input-corrected, reparameterized Sigmoid from WCSP2025_Charging_Model_Mapping.md.
+- L(P)=M/(1+exp(-s*(P-z))), Omega=1/(1+exp(s*z)), F(P)=(L(P)-M*Omega)/(1-Omega), P>=0.
+- This is our adaptation of the selected paper, not its printed equation. Zero input gives zero DC output.
+- Select new compatible parameters and enforce 0<=F(P)<=P over the declared input domain. Do not adopt the original table values or silently clip outputs.
+- Use linear watts for input, M and z; s has units W^-1. Numerical converter parameters, capacity and mode/startup costs remain open.
+- Preserve UE-prefix-only harvesting, finite persistent storage and stored-energy-only full-operation admission.
+- Prepare the numerical energy profile together. Do not ask the user to decide each fit coefficient.
+- EN-02 and EN-03 remain the two current groups; four later study groups remain. Influence stays 44.
+- No simulator code/default changes, fitted hardware profile, runtime validation, commit, push or publication.
+
+## 79. Capacity and mode-power literature review (2026-11-03) [EVIDENCE / NO NEW NUMERICAL DECISION]
+
+- The user requests alignment with the WCSP source or directly usable high-quality literature.
+- WCSP Table I supplies 1-mJ maximum/initial energy. It remains a comparison candidate, not an accepted numerical capacity.
+- Equation (4) supplies an aggregate reflection-consumption formula. No numeric alpha or separate idle/receive/startup profile was identified.
+- SIGCOMM 2013 powers cover analog components; ISCAS 2022 reports simulated wake-up circuitry. Neither establishes whole-Tag mode totals.
+- ISSCC 2023 supplies fabricated-chip mode powers and a storage capacitor, but its 25-uW active mode does not match our approximately 1-uW Device-1 scope.
+- An initially full 1 mJ supports 1000 seconds at constant total 1 uW without harvesting or extra startup energy. Check experiment duration before capacity selection.
+- Keep mode/startup costs explicit. Do not combine unrelated component minima and claim measured Device-1 performance.
+- Exact sources, transfer limits and arithmetic are in WCSP2025_Charging_Model_Mapping.md. EN-02 numerical profile and EN-03 recovery remain open.
+- Influence stays 44. No new implementation, numerical acceptance, runtime validation or publication.
+
+## 80. Complete numerical Tag energy research candidate (2026-11-03) [PROPOSED / Q-INFLUENCE-45 OPEN]
+
+- The user requests recommended numbers for recursive energy updates. Prepare tag-energy-synthetic-v0.1 in EN02_Tag_Energy_Profile_Candidate.md.
+- Candidate: E_max=E_0=1 uJ, quiescent 10 nW, receive/D2R total 1 uW each, activation 1 nJ when needed.
+- Candidate converter: M=10 uW, s=2e5 W^-1, z=10 uW in the accepted zero-corrected Sigmoid.
+- All new values are disclosed research assumptions, not a measured/fitted hardware profile or original-paper coefficients.
+- Analytic derivative bound below 1 establishes passive conversion globally; zero input, saturation and four TBS energy examples were checked.
+- Retain causal startup debit, no future-harvest admission, actual-mode integration and no hidden negative-energy clipping.
+- Q-INFLUENCE-45: A adopt complete 1-uJ candidate; B same candidate with 1-mJ WCSP comparison capacity. No answer or new numerical acceptance.
+- Influence 45; other counts unchanged. Constant mode power across SFS, retained-clock cost and physical startup remain uncalibrated.
+- No simulator implementation, runtime integration, hardware measurement, commit, push or publication.
+
+## 81. Numerical Tag energy research baseline accepted (2026-11-03) [DECIDED / SYNTHETIC PROFILE]
+
+- Q-INFLUENCE-45: Original answer "a" selects A, complete tag-energy-synthetic-v0.1.
+- Adopt E_max=E_0=1 uJ, 10-nW quiescent power, 1-uW receive/D2R total mode powers and 1-nJ activation energy when needed.
+- Adopt M=10 uW, s=2e5 W^-1 and z=10 uW in the accepted zero-input-corrected Sigmoid.
+- EN02_Tag_Energy_Profile_Candidate.md is now the accepted numerical reference; its filename remains stable.
+- These are synthetic research settings. Do not claim measured Device-1 hardware, fitted conversion or validated clock/FEC/SFS/startup behavior.
+- Keep phase permissions, finite persistent storage, causal activation debit and full-operation stored-energy admission.
+- EN-02 numerical selection is closed for the first version. Calibration/implementation remain separate evidence work.
+- EN-03 is the remaining current model group, followed by SI-01/BL-01/FA-01/EX-01.
+- Q-INFLUENCE-46 opens ideal passive depletion recovery versus hardware-based recovery modeling. Influence 46; no answer to that question.
+- No code/default changes, simulator runtime tests, hardware validation, commit, push or publication.
+
+## 82. Ideal passive depletion recovery accepted (2026-11-03) [DECIDED / RESEARCH ABSTRACTION]
+
+- Q-INFLUENCE-46: The user selects A. At zero usable energy, stop normal receive/D2R/quiescent activity and enter passive recovery.
+- Recovery adds no separate circuit draw or cold-start threshold. Integrate only phase-permitted H*F(P), with finite capacity and persistent stored energy.
+- With no allowed source, recovery energy remains unchanged. Do not charge during Paging, D2R, Guard or RF transition.
+- At existing legal Policy decisions, eligibility requires enough stored energy for a complete currently legal operation, including applicable activation cost.
+- Becoming eligible does not itself spend startup energy or start an operation. A valid selection activates the normal accepted ledger.
+- If no complete operation fits, stay in recovery even with positive accumulated energy. Do not force full recharge or create asynchronous scheduling.
+- Normal quiescent power remains 10 nW outside recovery. Detect depletion explicitly rather than hiding negative energy through clipping.
+- From zero, the accepted 1-uW UL input over 400 ms stores 0.10285294284 uJ in recovery before activation.
+- Zero recovery overhead and ideal cold start are synthetic assumptions, not calibrated hardware properties.
+- EN-03 model choice is closed. Four later study groups remain: SI-01, BL-01, FA-01 and EX-01.
+- Q-INFLUENCE-47 opens the reference scenario's numerical Window spacing. Influence 47; no answer to that question.
+- No source/default changes, simulator runtime tests, hardware validation, commit, push or publication.
+
+## 83. Reference Window spacing accepted (2026-11-04) [DECIDED / SCENARIO PROFILE]
+
+- Q-INFLUENCE-47 B: adopt Windows [k*1000,k*1000+600) ms, integer k>=0, with 400-ms gaps.
+- The user cites practicality. This is a research setting, not measured or normative timing.
+- Preserve shared outer timing, independent local UE draws, phase permissions and energy costs.
+- Gaps add no harvesting or Tag communication. Preserve absolute deadlines and stored energy.
+- Q-INFLUENCE-48 opens final Guard cleanup after evaluation end versus an added Guard-before-end admission constraint. No answer.
+- Influence 48; other counts unchanged. No code/default change, runtime validation, hardware calibration or publication.
+
+## 84. Final Guard cleanup accepted (2026-11-04) [DECIDED]
+
+- Q-INFLUENCE-48 B permits an already-required Guard tail after T_end=max(service deadlines), within the existing outer Window.
+- Require batch D2R ends before T_end. Preserve strict per-service credit deadlines and complete Guard time/energy admission.
+- At T_end, stop credit, Policy calls and new Paging. Only existing Guard cleanup and its reserved energy accounting may continue.
+- Record evaluation end and physical cleanup end separately. Do not extend service opportunity, harvest or start another batch during cleanup.
+- SI-01 numerical workload remains open. Q-INFLUENCE-49 proposes initial 64 versus 256 valid application bytes per Tag; these are synthetic reference inputs.
+- Influence 49; other counts unchanged. No answer to Q49, implementation, simulator test or publication.
+
+## 85. Ample initial application data for full selected-TBS payload (2026-11-04) [DECIDED / REFERENCE SUPPLY]
+
+- Q-INFLUENCE-49 custom answer: the user assumes initial Tag data can support maximum returned payload.
+- In this supply discussion, use ample initial data so each selected TBS can carry its maximum valid application payload.
+- Preserve finite t=0-only supply. Construct a conservative finite amount from the run horizon and legal transmission bounds; do not refill during the run.
+- The 64/256-byte inventory candidates are superseded. Their derived values are no longer a user decision.
+- Valid payload maxima remain 6/14/30/62 bytes for complete TBS 8/16/32/64 bytes.
+- Preserve Policy TBS selection, full-operation energy/time admission, failed-data retention and service credit caps. No forced first 64-byte transmission is selected.
+- Scenario discussion records a conservative finite input bound; it is not measured hardware memory or a feasible transmission count.
+- Influence stays 49; no new question. Numerical service workload remains open. No implementation or publication.
+
+## 86. Small reference service table proposed (2026-11-04) [PROPOSED / Q-INFLUENCE-50 OPEN]
+
+- Remaining study groups are SI-01 scenario/integration, BL-01 Baseline, FA-01 fairness and EX-01 experiments.
+- Prepare an explicit two-service reference table in docs/architecture/service-config-example.md, preserving the already accepted Notebook input method.
+- Proposed S1: Tag-001/002/003, 128 valid application bytes, exclusive deadline 15 s.
+- Proposed S2: Tag-003/004/005, 256 valid application bytes, exclusive deadline 20 s.
+- These are synthetic small-integration inputs, not measured service requirements, accepted defaults or representative full-network load.
+- Retain actual topology ownership/zones, simultaneous t=0 service starts, ample finite data and existing shared-credit rules.
+- Q-INFLUENCE-50: A adopt the complete reference table; B adjust it to the intended workload. No answer or numerical service acceptance.
+- Influence 50; other counts unchanged. No implementation, runtime feasibility, performance result or publication.
+
+## 87. Reference services accepted; energy module preparation (2026-11-04) [DECIDED / IMPLEMENTATION GATE OPEN]
+
+- Q-INFLUENCE-50 A accepts S1 Tag-001/002/003, 128 valid bytes, 15-s deadline, and S2 Tag-003/004/005, 256 valid bytes, 20-s deadline.
+- Keep t=0 starts, actual topology ownership, shared credit and the 20-s evaluation horizon. This is a small synthetic reference workload.
+- The user will supply the Baseline algorithm later; do not design or implement it now.
+- Consolidate accepted configuration and first Tag energy module scope in Tag_Energy_Implementation_Readiness.md.
+- Tag conversion, storage/mode recursion, full-operation energy budget and passive recovery can be verified without a Baseline using explicit event inputs.
+- Requested output follows workflow: teaching Notebook, tests, architecture, code trace, human acceptance and only then source extraction.
+- Existing changes retain GitHub delivery and an unresolved merge gate. No scoped local-first exception has yet been confirmed.
+- Influence stays 50. No new change/specification, tests or production implementation has started; no commit, push or publication.
+
+## 88. Local-first Tag energy scope and charging trace (2026-11-04) [AUTHORIZED / DESIGN TRACE]
+
+- The user answers "可以,先trace 充電模組", authorizing the local-first Tag energy exception and requesting charging trace first.
+- Keep prior changes' unmerged delivery state; no remote action or complete-workflow claim is authorized.
+- Trace the accepted RF input, corrected Sigmoid, phase gate, mode cost, capacity and depletion/recovery flow before implementing the runtime.
+- docs/architecture/tag-energy-trace/ contains bilingual explanation, source/status mapping and independently recalculated scalar examples.
+- Existing Timeline current projection lacks direction/source power; existing channel link_budget is two-way Reader receive power, not harvesting input.
+- The Archify design-only dataflow passed validate/deliver/strict check/automated-browser check. This is not charging runtime evidence.
+- Influence stays 50. No new model question, energy Notebook, production energy code or new OpenSpec change yet. Baseline remains deferred.
+
+## 89. Charging trace Notebook conversion (2026-11-04) [LOCAL PROTOTYPE / ACCEPTANCE PENDING]
+
+- The user requests the existing charging trace as a Jupyter Notebook matching the notebooks directory.
+- notebooks/04_tag_energy.ipynb now contains the scalar conversion, explicit energy cases, depletion example, phase table, plots and independent checks.
+- This is not the full Energy/Engine module. Baseline remains deferred; no early src extraction is performed.
+- OpenSpec add-tag-charging-trace-notebook records scope, tests and execution evidence. 24 tests and all 13 clean-kernel code cells pass.
+- Human acceptance remains pending. Existing remote deliveries and publication authorization are unchanged. Influence stays 50.
+
+## 90. PScatter source selected for Tag state design (2026-11-04) [SOURCE REVIEW / ADAPTATION OPEN]
+
+- The user supplies Energy-Efficient Paging for Duty-Cycled LTE Backscatter, IEEE INFOCOM 2025, DOI 10.1109/INFOCOM55648.2025.11044777.
+- Verified the local original, section III-B/Fig. 5 and Tables I/III. ReferDoc/Plan/PScatter_Tag_State_Mapping.md preserves exact source/evidence and limits.
+- The design distinguishes Static/Wakeup/Paging Active/Sleep and Timing/Modulate. Our accepted ENERGY_RECOVERY remains a separate energy state.
+- IC power values are circuit simulation and do not match the accepted Device-1 numerical profile. No numerical override is selected.
+- Preserve the Fig. 5(b) arrow/prose ambiguity and the architecture difference: paper UE-forwarded paging versus our DU/Reader Tag Paging.
+- Q-INFLUENCE-51 proposes existing-activation state adaptation versus an explicit new wake-up/synchronization procedure. No answer or accepted complete FSM.
+- Influence 51; charging Notebook remains unchanged. No new runtime, Baseline, commit, push or publication.
+
+## 91. Scheduled activation retained in PScatter state adaptation (2026-11-04) [DECIDED / DESIGN]
+
+- Q-INFLUENCE-51 A: borrow PScatter's control-state separation while retaining existing scheduled activation.
+- WAKING debits the accepted 1 nJ only when activation is needed for an actually selected admitted operation.
+- Add no wake-up packet, 80-us transmission, independent synchronization interval, UE relay or physical detector claim.
+- Retain current CFA Paging, response timing, numerical energy profile and full-operation stored-energy/time admission.
+- docs/architecture/tag-state-design.md maps STATIC/WAKING/PAGING_RX/WAIT_D2R/BACKSCATTER/SLEEP/ENERGY_RECOVERY and their existing energy costs.
+- Resource harvesting phase and Tag state remain separate. Ordinary Sleep costs 10 nW; passive recovery has zero separately modeled draw.
+- Influence stays 51; no new model question. This design does not itself implement a full state runtime or accept the current Notebook.
+- No new tests, Notebook changes, Baseline, source extraction, commit, push or publication.
+
+### 91.1 Explanation criterion (2026-11-04)
+
+The user confirms that these are assumed research settings and requests a defensible supervisor explanation.
+Record source, reason and evidence boundary without changing accepted numbers or claiming measured hardware.
+The rationale is in docs/architecture/tag-state-design.md. Sensitivity experiments remain future evidence, not completed validation.
+Influence stays 51; no new preference question, code or Notebook change.
+
+## 92. Remaining-decision audit and executable state trace (2026-11-04)
+
+User request: "可以,那這邊請幫我整理還有多少需要整理,若沒有在請您把狀態切換輸到目前的notebook 中".
+No blocking state-model choice remains. Keep Baseline, fairness and formal experiments as three later research groups.
+The accepted scenario needs engineering RF/timing and service integration; these are not additional model preference questions.
+Notebook 04 now implements seven states, immutable snapshots, supplied-operation admission, background depletion and passive recovery.
+It shows successful operation, atomic refusal, recharge and explicit reselection. Receive failure retains the complete energy debit.
+Paging/wait inputs are externally supplied. The illustrative 1-ms wait is not an approved CFA offset.
+Guard exact exhaustion returns ENERGY_RECOVERY; positive remaining energy returns SLEEP. No new radio procedure is added.
+Evidence: 62 focused tests; clean RL kernel, 21 code cells, zero errors, two PNGs and shutdown.
+Review repaired one float-underflow boundary and reconciled exact-exhaustion specification wording. Scope debt scan found no marked shortcuts.
+Human acceptance, full Engine/source adapters, extraction and remote delivery remain pending. Influence stays 51.
+No commit, push, remote Issue/PR, merge, archive or Baseline implementation.

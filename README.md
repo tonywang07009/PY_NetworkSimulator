@@ -86,6 +86,8 @@ Run its cells from the beginning:
 
 - [Topology Notebook](notebooks/01_iab_topology.ipynb): examine the settings, Node and Tag tables, and deployment plot. You can change the example settings and run the cells again.
 - [Channel Notebook](notebooks/02_channel_model.ipynb): examine link calculations and packet reception for a topology.
+- [Tag charging Notebook](notebooks/04_tag_energy.ipynb): run the accepted RF/DC, stored-energy and scheduled state traces, including admission and passive recovery. This teaching prototype awaits human acceptance.
+- [Event engine Notebook](notebooks/05_event_engine.ipynb): connect 03 resource events with 04 Tag energy, using supplied operations and visible event traces. This local prototype awaits human acceptance.
 
 For settings, operation, and troubleshooting, use the [IAB topology guide](ReferDoc/Implementation/IABTopology/README.en.md) and the [channel guide in Traditional Chinese](ReferDoc/Implementation/ChannelModel/README.md). The [guide index](ReferDoc/Implementation/README.md) lists the module documents.
 

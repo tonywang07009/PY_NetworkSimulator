@@ -1,0 +1,53 @@
+{
+  "evidence_kind": "scalar design arithmetic, not module or simulator test",
+  "rf_input_w": "0.000001",
+  "omega": "0.11920292202211755594027085869760320479361570137103",
+  "raw_sigmoid_w": "0.0000014185106490048778959427810847095256841256741769962",
+  "dc_output_uw": "0.25713235709597741857199539979978362051280712181458",
+  "global_derivative_bound": "0.56766764161830634594699974748624220170381577295478",
+  "examples": [
+    {
+      "case": "normal_charge",
+      "duration_ns": 400000000,
+      "initial_energy_uj": "0.8",
+      "harvested_energy_uj": "0.10285294283839096742879815991991344820512284872583",
+      "consumed_energy_uj": "0.004",
+      "spilled_energy_uj": "0",
+      "final_energy_uj": "0.89885294283839096742879815991991344820512284872583"
+    },
+    {
+      "case": "capacity_saturation",
+      "duration_ns": 400000000,
+      "initial_energy_uj": "0.95",
+      "harvested_energy_uj": "0.10285294283839096742879815991991344820512284872583",
+      "consumed_energy_uj": "0.004",
+      "spilled_energy_uj": "0.0488529428383909674287981599199134482051228487258",
+      "final_energy_uj": "1.0000000000000000000000000000000000000000000000000"
+    },
+    {
+      "case": "passive_recovery",
+      "duration_ns": 400000000,
+      "initial_energy_uj": "0",
+      "harvested_energy_uj": "0.10285294283839096742879815991991344820512284872583",
+      "consumed_energy_uj": "0.0",
+      "spilled_energy_uj": "0",
+      "final_energy_uj": "0.10285294283839096742879815991991344820512284872583"
+    },
+    {
+      "case": "inter_window_gap",
+      "duration_ns": 400000000,
+      "initial_energy_uj": "0.8",
+      "harvested_energy_uj": "0",
+      "consumed_energy_uj": "0.004",
+      "spilled_energy_uj": "0",
+      "final_energy_uj": "0.796"
+    }
+  ],
+  "depletion_example": {
+    "initial_energy_uj": "0.002",
+    "gap_duration_ns": 400000000,
+    "normal_until_ns": 200000000,
+    "recovery_duration_ns": 200000000,
+    "final_energy_uj": "0"
+  }
+}

@@ -64,3 +64,68 @@ round_end_ns = max(15_000_000_000, 20_000_000_000)
 - 最小測試：共同起點、輪長最大值、Deadline 前 1 ns／當下、服務提前達標不改配置輪長、電量不隨服務結束重置。
 
 以上是待實作情境，不能標記為測試通過。已確認的輪長規則不需再詢問；現在轉入拓撲範圍對齊。
+
+## 2026-11-04 reference-calendar correction
+
+Q-INFLUENCE-47 B selects 600-ms Windows every 1000 ms from t=0, with 400-ms gaps.
+Earlier unselected-spacing text is historical. The illustrative 20-s round has Window starts at 0 through 19 s.
+This calendar arithmetic does not select service defaults or establish a feasible transmission count.
+Q-INFLUENCE-48 final Guard cleanup at evaluation end remains open.
+
+## 2026-11-04 final Guard correction
+
+Q-INFLUENCE-48 B resolves the final Guard boundary.
+The evaluation end remains the latest configured service deadline; all batch D2R ends must precede it.
+An existing full Guard may finish afterward within its outer Window. Reserve its full energy and time during admission.
+At evaluation end, stop service credit and new Policy/Paging. Finish only Guard cleanup, with a separately recorded physical cleanup end.
+The earlier open-Guard statement is historical. Numerical service workload values are still not selected.
+
+## Q-INFLUENCE-50 | Reference service workload [ACCEPTED A]
+
+Date: 2026-11-04. Facet: Influence, total 50; other counts unchanged. Answer: A; accepted on 2026-11-04.
+Purpose: select a complete, inspectable service table for the first small integrated reference run.
+The input method is already settled: explicitly list services in the Notebook. Do not ask about random generation again.
+Keep all services at t=0, ample finite initial Tag data, the accepted calendar/energy/PHY rules and strict exclusive deadlines.
+
+| Service | Required Tag IDs | Minimum valid application data | Exclusive deadline |
+|---|---|---|---|
+| S1 | Tag-001, Tag-002, Tag-003 | 128 bytes = 1024 bits | 15 s = 15000000000 ns |
+| S2 | Tag-003, Tag-004, Tag-005 | 256 bytes = 2048 bits | 20 s = 20000000000 ns |
+
+These are proposed synthetic integration inputs, not measured farm-service requirements or a formal experimental workload.
+The current topology generator creates Tag-001 style IDs. Require all five IDs to exist in the actual topology before using this table.
+Do not relocate Tags, change their Node/zone ownership or assume these IDs represent specific channel classes.
+Retain the full configured topology. Only the listed Tags contribute to these two services under existing eligibility rules.
+This small service subset does not establish coverage of every Node/zone or representative five-Node network load.
+The different demands and deadlines exercise heterogeneous services; Tag-003 exercises shared credit.
+
+Example: while both services are active and have enough remaining demand, one eligible new 30-byte payload from Tag-003 earns 30 bytes for each service.
+Physical new payload is still 30 bytes. After that event, remaining demands are 98 and 226 bytes if no earlier credit exists.
+Apply all existing content eligibility, duplicate suppression, service caps, failure and deadline rules.
+Do not replace the service aggregate minimum with a separate minimum per Tag.
+The derived evaluation horizon is 20 s. Under the accepted calendar, Window starts are 0 through 19 s.
+This counts reference calendar starts, not successful transmissions or demonstrated service completion.
+Any required final Guard may finish after evaluation end only under the accepted cleanup/Window constraints.
+
+A, recommended: adopt this complete two-service table as the first small integration reference.
+B: adjust the table to the user's intended workload before selecting a reference; the user may supply service counts, Tag sets, data amounts or deadlines.
+A keeps the trace small and covers shared credit and heterogeneous requirements.
+B can match a particular use case, but needs the corresponding numerical inputs.
+Both preserve the declared input method and previously accepted semantics.
+Optional notes may adjust individual cells. No answer or new numerical service acceptance is recorded.
+No simulator implementation, performance result, commit, push or publication.
+
+## 2026-11-04 | Q-INFLUENCE-50 A accepted; Tag energy preparation requested
+
+Original instruction:
+> A 這邊可以,這邊的目標是請先確定好目前的組態內容,則baseline的部份我等等會給您算法 因此先不用做,則這邊我確定下可以先實做tag 的電量改變跟我們剛剛討論內容的模組媽 這邊的模組輸出請遵照 $workflow
+
+Accept the complete small reference table: S1 Tag-001/002/003, 128 valid bytes, exclusive deadline 15 s; S2 Tag-003/004/005, 256 valid bytes, deadline 20 s.
+Both start at zero. Retain actual topology ownership, shared credit, ample finite initial data and the accepted max-deadline horizon.
+The user will supply the Baseline algorithm later. Do not design or implement Baseline now.
+Prepare Tag energy update, conversion, operation-energy checks and depletion recovery as an independent first module scope.
+Module output must follow workflow: executable teaching Notebook, behavior checks, architecture and tree-form code trace, human acceptance before source extraction.
+Accepted configuration is sufficient for isolated energy behavior checks using explicit event sequences; no Baseline algorithm is required.
+Implementation scheduling remains subject to the existing merge rule. No local-first exception is inferred from this request.
+ReferDoc/Plan/Tag_Energy_Implementation_Readiness.md records the complete configuration, scope, acceptance cases and the verified workflow gate.
+Influence stays 50; no new model preference question. No new change/specification or implementation started.
