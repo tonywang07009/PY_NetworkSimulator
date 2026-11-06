@@ -1769,3 +1769,20 @@ Evidence: 62 focused tests; clean RL kernel, 21 code cells, zero errors, two PNG
 Review repaired one float-underflow boundary and reconciled exact-exhaustion specification wording. Scope debt scan found no marked shortcuts.
 Human acceptance, full Engine/source adapters, extraction and remote delivery remain pending. Influence stays 51.
 No commit, push, remote Issue/PR, merge, archive or Baseline implementation.
+
+## 93. Completed selected Tags harvest remaining batch CW (2026-11-06) [DECIDED]
+
+This supersedes earlier UE-only harvesting statements in sections 46 and 81-82 for this bounded exception.
+Q-CW-01/02/03/04=A: complete selected TBS first, then harvest until the existing batch CW_OFF.
+Q-CW-03 final A supersedes the interrupted B. Unselected and still-reflecting Tags receive no batch-CW credit.
+CW_OFF equals the final full member D2R completion. Last-finishing members have zero tail; Guard begins at CW_OFF without CW.
+Keep 10-nW normal inactive draw and existing zero-extra-draw depleted recovery. Charging alone creates no state.
+Use serving-DU current-Window CW power, deterministic one-way gain and the existing Sigmoid; retain 1-50 m bounds.
+No CW extension, partial TBS, receive-failure refund or future-energy admission credit is permitted.
+Q-CW-05=A: caller supplies explicit batch identity and CW_OFF. Equal timestamps alone do not define membership.
+The user completed the original Notebook 04 trace and authorized gradual source extraction.
+Source ownership: src/energy/contracts.py and tag_energy.py. Notebook 04 retains teaching; Notebook 05 imports this core.
+The explicit-batch prototype uses one supplied Paging start and prepares all member plans before activation.
+If one member fails admission, refuse that declared batch without activation. Formal batch scheduling remains external.
+Changed CW behavior requires affected tests and human trace. No publication or merge is authorized.
+[Needs Verification] The shared CW conversion/path is a research model, not hardware calibration.

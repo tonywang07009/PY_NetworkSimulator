@@ -1,0 +1,659 @@
+{
+  "source_sha256": "b09ead0886100fd6ebcddce9bf96dafcd8efe0c9cc28931055eae3d6da7a0d4e",
+  "cases": [
+    {
+      "explicit": false,
+      "observations": [
+        {
+          "time_ns": 0,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 0,
+              "energy_j": 8e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 0,
+              "energy_j": 8e-07,
+              "mode": "SLEEP"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 0,
+              "energy_j": 8e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": []
+        },
+        {
+          "time_ns": 450000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 450000000,
+              "energy_j": 9.099524283360938e-07,
+              "mode": "PAGING_RX"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 450000000,
+              "energy_j": 9.099524283360938e-07,
+              "mode": "PAGING_RX"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 450000000,
+              "energy_j": 9.109524283360938e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": []
+        },
+        {
+          "time_ns": 463000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 463000000,
+              "energy_j": 8.979424283360938e-07,
+              "mode": "BACKSCATTER"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 463000000,
+              "energy_j": 8.979424283360938e-07,
+              "mode": "BACKSCATTER"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 463000000,
+              "energy_j": 9.108224283360939e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": []
+        },
+        {
+          "time_ns": 516000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 516000000,
+              "energy_j": 8.449424283360938e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 516000000,
+              "energy_j": 8.449424283360938e-07,
+              "mode": "BACKSCATTER"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 516000000,
+              "energy_j": 9.102924283360939e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "time_ns": 550000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 550000000,
+              "energy_j": 8.446024283360938e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 550000000,
+              "energy_j": 8.109424283360938e-07,
+              "mode": "BACKSCATTER"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 550000000,
+              "energy_j": 9.099524283360939e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "time_ns": 571200000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 571200000,
+              "energy_j": 8.443904283360938e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 571200000,
+              "energy_j": 7.899404283360938e-07,
+              "mode": "SLEEP"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 571200000,
+              "energy_j": 9.09740428336094e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ],
+            [
+              571000000,
+              [
+                {
+                  "tag_id": "B",
+                  "receive_success": true,
+                  "eligible": true
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "time_ns": 600000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 600000000,
+              "energy_j": 8.441024283360938e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 600000000,
+              "energy_j": 7.896524283360938e-07,
+              "mode": "SLEEP"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 600000000,
+              "energy_j": 9.09452428336094e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ],
+            [
+              571000000,
+              [
+                {
+                  "tag_id": "B",
+                  "receive_success": true,
+                  "eligible": true
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "time_ns": 1000000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 1000000000,
+              "energy_j": 8.401024283360938e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 1000000000,
+              "energy_j": 7.856524283360938e-07,
+              "mode": "SLEEP"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 1000000000,
+              "energy_j": 9.05452428336094e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ],
+            [
+              571000000,
+              [
+                {
+                  "tag_id": "B",
+                  "receive_success": true,
+                  "eligible": true
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "time_ns": 1600000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 1600000000,
+              "energy_j": 9.487834596008997e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 1600000000,
+              "energy_j": 8.943334596008997e-07,
+              "mode": "SLEEP"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 1600000000,
+              "energy_j": 9.9846e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ],
+            [
+              571000000,
+              [
+                {
+                  "tag_id": "B",
+                  "receive_success": true,
+                  "eligible": true
+                }
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "explicit": true,
+      "observations": [
+        {
+          "time_ns": 0,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 0,
+              "energy_j": 8e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 0,
+              "energy_j": 8e-07,
+              "mode": "SLEEP"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 0,
+              "energy_j": 8e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": []
+        },
+        {
+          "time_ns": 450000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 450000000,
+              "energy_j": 9.099524283360938e-07,
+              "mode": "PAGING_RX"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 450000000,
+              "energy_j": 9.099524283360938e-07,
+              "mode": "PAGING_RX"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 450000000,
+              "energy_j": 9.109524283360938e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": []
+        },
+        {
+          "time_ns": 463000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 463000000,
+              "energy_j": 8.979424283360938e-07,
+              "mode": "BACKSCATTER"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 463000000,
+              "energy_j": 8.979424283360938e-07,
+              "mode": "BACKSCATTER"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 463000000,
+              "energy_j": 9.108224283360939e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": []
+        },
+        {
+          "time_ns": 516000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 516000000,
+              "energy_j": 8.449424283360938e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 516000000,
+              "energy_j": 8.449424283360938e-07,
+              "mode": "BACKSCATTER"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 516000000,
+              "energy_j": 9.102924283360939e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "time_ns": 550000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 550000000,
+              "energy_j": 8.451563175287163e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 550000000,
+              "energy_j": 8.109424283360938e-07,
+              "mode": "BACKSCATTER"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 550000000,
+              "energy_j": 9.099524283360939e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "time_ns": 571200000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 571200000,
+              "energy_j": 8.452864255594536e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 571200000,
+              "energy_j": 7.899404283360938e-07,
+              "mode": "SLEEP"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 571200000,
+              "energy_j": 9.09740428336094e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ],
+            [
+              571000000,
+              [
+                {
+                  "tag_id": "B",
+                  "receive_success": true,
+                  "eligible": true
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "time_ns": 600000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 600000000,
+              "energy_j": 8.449984255594536e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 600000000,
+              "energy_j": 7.896524283360938e-07,
+              "mode": "SLEEP"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 600000000,
+              "energy_j": 9.09452428336094e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ],
+            [
+              571000000,
+              [
+                {
+                  "tag_id": "B",
+                  "receive_success": true,
+                  "eligible": true
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "time_ns": 1000000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 1000000000,
+              "energy_j": 8.409984255594536e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 1000000000,
+              "energy_j": 7.856524283360938e-07,
+              "mode": "SLEEP"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 1000000000,
+              "energy_j": 9.05452428336094e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ],
+            [
+              571000000,
+              [
+                {
+                  "tag_id": "B",
+                  "receive_success": true,
+                  "eligible": true
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "time_ns": 1600000000,
+          "snapshots": {
+            "A": {
+              "tag_id": "A",
+              "now_ns": 1600000000,
+              "energy_j": 9.496794568242595e-07,
+              "mode": "SLEEP"
+            },
+            "B": {
+              "tag_id": "B",
+              "now_ns": 1600000000,
+              "energy_j": 8.943334596008997e-07,
+              "mode": "SLEEP"
+            },
+            "C": {
+              "tag_id": "C",
+              "now_ns": 1600000000,
+              "energy_j": 9.9846e-07,
+              "mode": "SLEEP"
+            }
+          },
+          "completions": [
+            [
+              516000000,
+              [
+                {
+                  "tag_id": "A",
+                  "receive_success": false,
+                  "eligible": false
+                }
+              ]
+            ],
+            [
+              571000000,
+              [
+                {
+                  "tag_id": "B",
+                  "receive_success": true,
+                  "eligible": true
+                }
+              ]
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

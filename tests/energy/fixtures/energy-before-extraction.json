@@ -1,0 +1,856 @@
+{
+  "source_sha256": "fc0a0575e08a044f0314cac17ee6cfea054c1d56f3860c5125f9418121357cd6",
+  "note": "Captured from human-traced Notebook before source extraction. Cell 30 was executed explicitly because its definitions tag was absent.",
+  "cases": [
+    {
+      "kind": "operation",
+      "initial_j": 8e-07,
+      "mode": "SLEEP",
+      "kwargs": {
+        "tbs_bytes": 8,
+        "paging_ns": 2000000,
+        "wait_ns": 1000000,
+        "window_end_ns": 600000000,
+        "deadline_ns": 1000000000,
+        "receive_success": true
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 38200000,
+          "energy_j": 7.61988e-07,
+          "mode": "SLEEP"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 0,
+            "mode": "WAKING",
+            "phase": "ACTIVATION",
+            "before_j": 8e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.99e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 0,
+            "end_ns": 2000000,
+            "mode": "PAGING_RX",
+            "phase": "PAGING",
+            "before_j": 7.99e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.97e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 2000000,
+            "end_ns": 3000000,
+            "mode": "WAIT_D2R",
+            "phase": "WAIT_D2R",
+            "before_j": 7.97e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-11,
+            "spilled_j": 0.0,
+            "after_j": 7.9699e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 3000000,
+            "end_ns": 38000000,
+            "mode": "BACKSCATTER",
+            "phase": "D2R",
+            "before_j": 7.9699e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 3.5e-08,
+            "spilled_j": 0.0,
+            "after_j": 7.6199e-07,
+            "note": "receive success"
+          },
+          {
+            "start_ns": 38000000,
+            "end_ns": 38200000,
+            "mode": "SLEEP",
+            "phase": "GUARD",
+            "before_j": 7.6199e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-12,
+            "spilled_j": 0.0,
+            "after_j": 7.61988e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": true
+      }
+    },
+    {
+      "kind": "operation",
+      "initial_j": 8e-07,
+      "mode": "SLEEP",
+      "kwargs": {
+        "tbs_bytes": 8,
+        "paging_ns": 2000000,
+        "wait_ns": 1000000,
+        "window_end_ns": 600000000,
+        "deadline_ns": 1000000000,
+        "receive_success": false
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 38200000,
+          "energy_j": 7.61988e-07,
+          "mode": "SLEEP"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 0,
+            "mode": "WAKING",
+            "phase": "ACTIVATION",
+            "before_j": 8e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.99e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 0,
+            "end_ns": 2000000,
+            "mode": "PAGING_RX",
+            "phase": "PAGING",
+            "before_j": 7.99e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.97e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 2000000,
+            "end_ns": 3000000,
+            "mode": "WAIT_D2R",
+            "phase": "WAIT_D2R",
+            "before_j": 7.97e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-11,
+            "spilled_j": 0.0,
+            "after_j": 7.9699e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 3000000,
+            "end_ns": 38000000,
+            "mode": "BACKSCATTER",
+            "phase": "D2R",
+            "before_j": 7.9699e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 3.5e-08,
+            "spilled_j": 0.0,
+            "after_j": 7.6199e-07,
+            "note": "receive failure; no energy refund"
+          },
+          {
+            "start_ns": 38000000,
+            "end_ns": 38200000,
+            "mode": "SLEEP",
+            "phase": "GUARD",
+            "before_j": 7.6199e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-12,
+            "spilled_j": 0.0,
+            "after_j": 7.61988e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": false
+      }
+    },
+    {
+      "kind": "operation",
+      "initial_j": 8e-07,
+      "mode": "SLEEP",
+      "kwargs": {
+        "tbs_bytes": 16,
+        "paging_ns": 2000000,
+        "wait_ns": 1000000,
+        "window_end_ns": 600000000,
+        "deadline_ns": 1000000000,
+        "receive_success": true
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 66200000,
+          "energy_j": 7.33988e-07,
+          "mode": "SLEEP"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 0,
+            "mode": "WAKING",
+            "phase": "ACTIVATION",
+            "before_j": 8e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.99e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 0,
+            "end_ns": 2000000,
+            "mode": "PAGING_RX",
+            "phase": "PAGING",
+            "before_j": 7.99e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.97e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 2000000,
+            "end_ns": 3000000,
+            "mode": "WAIT_D2R",
+            "phase": "WAIT_D2R",
+            "before_j": 7.97e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-11,
+            "spilled_j": 0.0,
+            "after_j": 7.9699e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 3000000,
+            "end_ns": 66000000,
+            "mode": "BACKSCATTER",
+            "phase": "D2R",
+            "before_j": 7.9699e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 6.3e-08,
+            "spilled_j": 0.0,
+            "after_j": 7.3399e-07,
+            "note": "receive success"
+          },
+          {
+            "start_ns": 66000000,
+            "end_ns": 66200000,
+            "mode": "SLEEP",
+            "phase": "GUARD",
+            "before_j": 7.3399e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-12,
+            "spilled_j": 0.0,
+            "after_j": 7.33988e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": true
+      }
+    },
+    {
+      "kind": "operation",
+      "initial_j": 8e-07,
+      "mode": "SLEEP",
+      "kwargs": {
+        "tbs_bytes": 16,
+        "paging_ns": 2000000,
+        "wait_ns": 1000000,
+        "window_end_ns": 600000000,
+        "deadline_ns": 1000000000,
+        "receive_success": false
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 66200000,
+          "energy_j": 7.33988e-07,
+          "mode": "SLEEP"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 0,
+            "mode": "WAKING",
+            "phase": "ACTIVATION",
+            "before_j": 8e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.99e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 0,
+            "end_ns": 2000000,
+            "mode": "PAGING_RX",
+            "phase": "PAGING",
+            "before_j": 7.99e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.97e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 2000000,
+            "end_ns": 3000000,
+            "mode": "WAIT_D2R",
+            "phase": "WAIT_D2R",
+            "before_j": 7.97e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-11,
+            "spilled_j": 0.0,
+            "after_j": 7.9699e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 3000000,
+            "end_ns": 66000000,
+            "mode": "BACKSCATTER",
+            "phase": "D2R",
+            "before_j": 7.9699e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 6.3e-08,
+            "spilled_j": 0.0,
+            "after_j": 7.3399e-07,
+            "note": "receive failure; no energy refund"
+          },
+          {
+            "start_ns": 66000000,
+            "end_ns": 66200000,
+            "mode": "SLEEP",
+            "phase": "GUARD",
+            "before_j": 7.3399e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-12,
+            "spilled_j": 0.0,
+            "after_j": 7.33988e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": false
+      }
+    },
+    {
+      "kind": "operation",
+      "initial_j": 8e-07,
+      "mode": "SLEEP",
+      "kwargs": {
+        "tbs_bytes": 32,
+        "paging_ns": 2000000,
+        "wait_ns": 1000000,
+        "window_end_ns": 600000000,
+        "deadline_ns": 1000000000,
+        "receive_success": true
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 121200000,
+          "energy_j": 6.78988e-07,
+          "mode": "SLEEP"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 0,
+            "mode": "WAKING",
+            "phase": "ACTIVATION",
+            "before_j": 8e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.99e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 0,
+            "end_ns": 2000000,
+            "mode": "PAGING_RX",
+            "phase": "PAGING",
+            "before_j": 7.99e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.97e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 2000000,
+            "end_ns": 3000000,
+            "mode": "WAIT_D2R",
+            "phase": "WAIT_D2R",
+            "before_j": 7.97e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-11,
+            "spilled_j": 0.0,
+            "after_j": 7.9699e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 3000000,
+            "end_ns": 121000000,
+            "mode": "BACKSCATTER",
+            "phase": "D2R",
+            "before_j": 7.9699e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1.18e-07,
+            "spilled_j": 0.0,
+            "after_j": 6.7899e-07,
+            "note": "receive success"
+          },
+          {
+            "start_ns": 121000000,
+            "end_ns": 121200000,
+            "mode": "SLEEP",
+            "phase": "GUARD",
+            "before_j": 6.7899e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-12,
+            "spilled_j": 0.0,
+            "after_j": 6.78988e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": true
+      }
+    },
+    {
+      "kind": "operation",
+      "initial_j": 8e-07,
+      "mode": "SLEEP",
+      "kwargs": {
+        "tbs_bytes": 32,
+        "paging_ns": 2000000,
+        "wait_ns": 1000000,
+        "window_end_ns": 600000000,
+        "deadline_ns": 1000000000,
+        "receive_success": false
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 121200000,
+          "energy_j": 6.78988e-07,
+          "mode": "SLEEP"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 0,
+            "mode": "WAKING",
+            "phase": "ACTIVATION",
+            "before_j": 8e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.99e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 0,
+            "end_ns": 2000000,
+            "mode": "PAGING_RX",
+            "phase": "PAGING",
+            "before_j": 7.99e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.97e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 2000000,
+            "end_ns": 3000000,
+            "mode": "WAIT_D2R",
+            "phase": "WAIT_D2R",
+            "before_j": 7.97e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-11,
+            "spilled_j": 0.0,
+            "after_j": 7.9699e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 3000000,
+            "end_ns": 121000000,
+            "mode": "BACKSCATTER",
+            "phase": "D2R",
+            "before_j": 7.9699e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1.18e-07,
+            "spilled_j": 0.0,
+            "after_j": 6.7899e-07,
+            "note": "receive failure; no energy refund"
+          },
+          {
+            "start_ns": 121000000,
+            "end_ns": 121200000,
+            "mode": "SLEEP",
+            "phase": "GUARD",
+            "before_j": 6.7899e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-12,
+            "spilled_j": 0.0,
+            "after_j": 6.78988e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": false
+      }
+    },
+    {
+      "kind": "operation",
+      "initial_j": 8e-07,
+      "mode": "SLEEP",
+      "kwargs": {
+        "tbs_bytes": 64,
+        "paging_ns": 2000000,
+        "wait_ns": 1000000,
+        "window_end_ns": 600000000,
+        "deadline_ns": 1000000000,
+        "receive_success": true
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 231200000,
+          "energy_j": 5.68988e-07,
+          "mode": "SLEEP"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 0,
+            "mode": "WAKING",
+            "phase": "ACTIVATION",
+            "before_j": 8e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.99e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 0,
+            "end_ns": 2000000,
+            "mode": "PAGING_RX",
+            "phase": "PAGING",
+            "before_j": 7.99e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.97e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 2000000,
+            "end_ns": 3000000,
+            "mode": "WAIT_D2R",
+            "phase": "WAIT_D2R",
+            "before_j": 7.97e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-11,
+            "spilled_j": 0.0,
+            "after_j": 7.9699e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 3000000,
+            "end_ns": 231000000,
+            "mode": "BACKSCATTER",
+            "phase": "D2R",
+            "before_j": 7.9699e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2.28e-07,
+            "spilled_j": 0.0,
+            "after_j": 5.6899e-07,
+            "note": "receive success"
+          },
+          {
+            "start_ns": 231000000,
+            "end_ns": 231200000,
+            "mode": "SLEEP",
+            "phase": "GUARD",
+            "before_j": 5.6899e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-12,
+            "spilled_j": 0.0,
+            "after_j": 5.68988e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": true
+      }
+    },
+    {
+      "kind": "operation",
+      "initial_j": 8e-07,
+      "mode": "SLEEP",
+      "kwargs": {
+        "tbs_bytes": 64,
+        "paging_ns": 2000000,
+        "wait_ns": 1000000,
+        "window_end_ns": 600000000,
+        "deadline_ns": 1000000000,
+        "receive_success": false
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 231200000,
+          "energy_j": 5.68988e-07,
+          "mode": "SLEEP"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 0,
+            "mode": "WAKING",
+            "phase": "ACTIVATION",
+            "before_j": 8e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.99e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 0,
+            "end_ns": 2000000,
+            "mode": "PAGING_RX",
+            "phase": "PAGING",
+            "before_j": 7.99e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.97e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 2000000,
+            "end_ns": 3000000,
+            "mode": "WAIT_D2R",
+            "phase": "WAIT_D2R",
+            "before_j": 7.97e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 1e-11,
+            "spilled_j": 0.0,
+            "after_j": 7.9699e-07,
+            "note": ""
+          },
+          {
+            "start_ns": 3000000,
+            "end_ns": 231000000,
+            "mode": "BACKSCATTER",
+            "phase": "D2R",
+            "before_j": 7.9699e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2.28e-07,
+            "spilled_j": 0.0,
+            "after_j": 5.6899e-07,
+            "note": "receive failure; no energy refund"
+          },
+          {
+            "start_ns": 231000000,
+            "end_ns": 231200000,
+            "mode": "SLEEP",
+            "phase": "GUARD",
+            "before_j": 5.6899e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-12,
+            "spilled_j": 0.0,
+            "after_j": 5.68988e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": false
+      }
+    },
+    {
+      "kind": "background",
+      "initial_j": 8e-07,
+      "mode": "SLEEP",
+      "kwargs": {
+        "duration_ns": 400000000,
+        "phase": "UE_UL",
+        "rf_input_w": 1e-06
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 400000000,
+          "energy_j": 8.988529428383909e-07,
+          "mode": "SLEEP"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 400000000,
+            "mode": "SLEEP",
+            "phase": "UE_UL",
+            "before_j": 8e-07,
+            "harvested_j": 1.0285294283839094e-07,
+            "consumed_j": 4e-09,
+            "spilled_j": 0.0,
+            "after_j": 8.988529428383909e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": null
+      }
+    },
+    {
+      "kind": "background",
+      "initial_j": 9.5e-07,
+      "mode": "STATIC",
+      "kwargs": {
+        "duration_ns": 400000000,
+        "phase": "UE_DL",
+        "rf_input_w": 1e-06
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 400000000,
+          "energy_j": 1e-06,
+          "mode": "STATIC"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 400000000,
+            "mode": "STATIC",
+            "phase": "UE_DL",
+            "before_j": 9.5e-07,
+            "harvested_j": 1.0285294283839094e-07,
+            "consumed_j": 4e-09,
+            "spilled_j": 4.8852942838390944e-08,
+            "after_j": 1e-06,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": null
+      }
+    },
+    {
+      "kind": "background",
+      "initial_j": 0,
+      "mode": "ENERGY_RECOVERY",
+      "kwargs": {
+        "duration_ns": 400000000,
+        "phase": "UE_UL",
+        "rf_input_w": 1e-06
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 400000000,
+          "energy_j": 1.0285294283839094e-07,
+          "mode": "ENERGY_RECOVERY"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 400000000,
+            "mode": "ENERGY_RECOVERY",
+            "phase": "UE_UL",
+            "before_j": 0.0,
+            "harvested_j": 1.0285294283839094e-07,
+            "consumed_j": 0.0,
+            "spilled_j": 0.0,
+            "after_j": 1.0285294283839094e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": null
+      }
+    },
+    {
+      "kind": "background",
+      "initial_j": 2e-09,
+      "mode": "SLEEP",
+      "kwargs": {
+        "duration_ns": 400000000,
+        "phase": "GAP",
+        "rf_input_w": 1e-06
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 400000000,
+          "energy_j": 0.0,
+          "mode": "ENERGY_RECOVERY"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 400000000,
+            "mode": "SLEEP",
+            "phase": "GAP",
+            "before_j": 2e-09,
+            "harvested_j": 0.0,
+            "consumed_j": 2e-09,
+            "spilled_j": 0.0,
+            "after_j": 0.0,
+            "note": "depletion split: offset is diagnostic seconds"
+          }
+        ],
+        "depletion_after_s": 0.2,
+        "receive_success": null
+      }
+    },
+    {
+      "kind": "background",
+      "initial_j": 8e-07,
+      "mode": "SLEEP",
+      "kwargs": {
+        "duration_ns": 400000000,
+        "phase": "D2R",
+        "rf_input_w": 1e-06
+      },
+      "trace": {
+        "snapshot": {
+          "tag_id": "A",
+          "now_ns": 400000000,
+          "energy_j": 7.96e-07,
+          "mode": "SLEEP"
+        },
+        "rows": [
+          {
+            "start_ns": 0,
+            "end_ns": 400000000,
+            "mode": "SLEEP",
+            "phase": "D2R",
+            "before_j": 8e-07,
+            "harvested_j": 0.0,
+            "consumed_j": 4e-09,
+            "spilled_j": 0.0,
+            "after_j": 7.96e-07,
+            "note": ""
+          }
+        ],
+        "depletion_after_s": null,
+        "receive_success": null
+      }
+    }
+  ]
+}

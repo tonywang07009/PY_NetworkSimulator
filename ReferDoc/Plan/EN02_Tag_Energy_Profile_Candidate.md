@@ -72,7 +72,8 @@ Do not label these three parameters as a fit to the WCSP or 915-MHz rectenna mea
 
 ## Event-based energy recursion
 
-Let H_j=1 only in the accepted UE-prefix harvesting interval; otherwise H_j=0.
+Let H_j=1 in the UE prefix, or for completed selected members during [own D2R_END, batch CW_OFF).
+Otherwise H_j=0. The 2026-11-06 correction below supersedes earlier UE-only wording.
 Use the local serving-source RF input P_in,j and actual interval duration Delta_t_j in seconds.
 Split intervals at source, mode, capacity or energy-feasibility events as needed.
 
@@ -157,7 +158,7 @@ Original answer:
 
 When usable stored energy reaches zero outside an admitted operation, enter ideal passive recovery.
 Disable receive, D2R and normal 10-nW quiescent operation. Recovery has zero separately modeled circuit draw and no additional cold-start threshold.
-Keep only UE-prefix-permitted charging through the accepted F(P), with E_next=min(E_max,E+H*F(P)*Delta_t).
+Keep phase-permitted charging, including the accepted post-TBS CW exception, through F(P), with E_next=min(E_max,E+H*F(P)*Delta_t).
 When H=0, recovery-state energy remains unchanged. Preserve accumulated energy and simulator service state; do not reset to full.
 At legal Policy decisions, a recovered Tag is eligible only if stored energy covers a complete currently legal operation, including activation when needed.
 Eligibility alone does not start reception, transmission or activation debit. A valid selected operation triggers the accepted activation and normal mode ledger.
@@ -170,3 +171,12 @@ Example: 400-ms allowed UL charging at 1-uW RF input stores 0.10285294284 uJ fro
 This differs from the normal quiescent net gain of 0.09885294284 uJ because recovery omits the separate 10-nW draw.
 These are research assumptions, not measured cold-start or PMU behavior.
 EN-03 first-version model selection is closed. Access/PHY/data/energy discussion choices are settled; implementation and calibration remain separate work.
+
+## 2026-11-06 | Completed selected Tag CW correction
+
+Q-CW-01 through Q-CW-05 permit post-TBS harvesting until the explicit batch CW_OFF.
+Reuse normal 10-nW draw and existing depleted recovery. No new state or numerical coefficient is introduced.
+Use serving-DU current-Window CW power (-2/10/22 dBm), one-way g0/distance_m**2 and the existing Sigmoid at 1-50 m.
+The last-finishing member has no tail. Guard has no CW. Future energy cannot fund admission.
+See R-01 section 93 and docs/architecture/tag-energy-trace/code-trace.md.
+[Needs Verification] Frequency compatibility and shared coefficients do not prove hardware efficiency.

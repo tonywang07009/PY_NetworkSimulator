@@ -3,15 +3,16 @@
 [English](README.md)
 
 日期：2026-11-04。使用者已同意本地原型先行，並指定先 trace 充電模組。
-Notebook 已實作充電與選定操作的狀態 trace；完整 Tag 引擎與環境介面仍待後續實作。獨立計算腳本保留為數值對照。
+已接受的核心已搬至 `src/energy`；Notebook 04 保留設定、說明、表格、繪圖與獨立斷言。
+Notebook 05 匯入同一份核心，接收明確 batch CW 輸入。完整 Access 排程與服務記帳仍待實作。
 
-先開啟[資料流圖](../../../.archify/dataflow-tag-charging-20261104-151852/tag-charging.html)，再依下列步驟閱讀。[程式與文件追蹤表](code-trace.md)列出既有程式及待建部分。
+先開啟[資料流圖](../../../.archify/dataflow-tag-energy-src-20261106-160000/tag-energy-src.html)，再依下列步驟閱讀。[程式與文件追蹤表](code-trace.md)列出既有程式及待建部分。
 
 ## 1. 從哪裡取得充電輸入
 
 環境需要提供當下的服務 Node、UL／DL 方向、階段、持續時間及 Tag 電量快照。
-UL 使用所屬 UE 的 RF；DL 使用所屬 DU 的 RF。只有 UE 通訊前綴允許採能。
-切頻、Paging、D2R、Guard 與窗間空檔都不採能。
+UL 使用所屬 UE 的 RF；DL 使用所屬 DU 的 RF。UE 通訊前綴允許採能；本批完整 TBS 已完成者，也可在自身 D2R_END 到共同 CW_OFF 之間採能。
+切頻、Paging、仍在反射的 D2R、Guard 與窗間空檔都不採能。
 
 既有時序模組已產生 UL／DL 方向，但 `current_resource()` 的當下快照沒有這個欄位或發射功率。
 之後由環境介面補足當下資訊；不把完整未來時序交給 Policy。
@@ -60,14 +61,14 @@ Sigmoid 的參數是 M=10 μW、s=2×10^5 W^-1、z=10 μW。
 [計算結果](worked-example.json)不是充電模組測試、乾淨 Notebook kernel 或硬體量測結果。
 資料流圖為設計視圖，不表示圖中的充電步驟已有可呼叫程式。
 
-OpenSpec／TDD 契約與 Notebook 原型現已建立，接著進行人工逐段接受。
+原有 Notebook 人工 trace 已完成；新增 CW 行為仍需逐段核對。
 Baseline 等使用者提供算法；硬體轉換效率、模式功耗與理想冷啟動仍保留研究假設的限制。
 
 ## 可執行 Notebook（2026-11-04）
 
 開啟 [notebooks/04_tag_energy.ipynb](../../../notebooks/04_tag_energy.ipynb)，依序執行充電 trace。
 其中包含純量轉換函式、四種電量案例、耗盡分段、表格、已嵌入的 PNG 曲線與檢查。
-完整 Tag 狀態／操作引擎及來源 adapter 仍是後續工作；Notebook 尚待人工接受。
+完整 Access 排程及服務 adapter 仍是後續工作；原有核心在人工 trace 後才搬移。
 [Notebook 資料流圖](../../../.archify/dataflow-tag-charging-notebook-20261104-154316/tag-charging-notebook.html)呈現此本地原型。
 先前的圖保留為實作前設計快照。
 
@@ -85,4 +86,34 @@ Guard 結束時若電量恰好為零，進入 ENERGY_RECOVERY；有剩餘電量�
 62 項測試通過；乾淨 RL kernel 已執行 21 個程式區塊，沒有錯誤，並存入兩張 PNG。
 已檢視狀態／電量圖。這些結果不代表硬體校準或完整模擬器整合完成。
 狀態模型目前沒有阻擋決策；Baseline、公平性與正式實驗還有三組研究工作。
-RF／時序介面與服務記帳仍待工程整合，Notebook 尚待人工接受與後續核心抽取。
+完整 RF／時序介面與服務記帳仍待工程整合；下節記錄本次核心抽取，取代先前待抽取狀態。
+
+## 核心搬移與剩餘 batch CW（2026-11-06）
+
+原本程式藏在 Notebook cells；現在依[程式 trace](code-trace.md)即可找到各個來源檔。
+先看[本次資料流圖](../../../.archify/dataflow-tag-energy-src-20261106-160000/tag-energy-src.html)，再讀 Notebook 04 第 16.1 節。先前圖保留為歷史版本。
+
+| 位置 | 責任 |
+|---|---|
+| src/energy/contracts.py | 七種狀態、不可變快照與收支紀錄。 |
+| src/energy/tag_energy.py | RF/DC、完整操作准入、背景恢復與完成後 CW 採能。 |
+| Notebook 04 | 設定、公式、表格、繪圖與獨立斷言。 |
+| Notebook 05 | 明確 BatchCW 核對、事件排序與當下快照。 |
+
+外層明列 batch 身分、成員與共同 CW_OFF；相同起點本身不決定成員。
+CW_OFF 必須等於最後成員的完整 D2R 結束；Guard 從此時才開始，而且沒有 CW。
+較早完成者採能時仍付 10 nW；若背景耗盡，才套用既有被動恢復規則。
+解碼失敗不退款，也不取消完整反射後的資格。未選中與仍反射的 Tag 沒有這筆 CW 能量。
+最後完成者沒有尾段；未來採能不能支付准入成本。
+
+CW 使用當窗 serving DU 的 -2／10／22 dBm、單程 g0/distance_m**2，再套用原 Sigmoid。
+距離仍為 1～50 m，不加入反射損耗、兩次增益或 Reader fading。
+[獨立 Decimal 算例](worked-cw-example.py)得到 A 在 Guard 後為 0.7343339972233599 μJ。
+A 從 0.8 μJ 開始，選 16 bytes，在 10 dBm、10 m 下有 55 ms 尾段。
+
+05 教學 adapter 一次准入同一個 Paging 起點的明確 batch；先準備所有成員，才扣啟動成本。
+若一員准入失敗，整批拒絕，避免保留被拒成員的 CW 終點。未宣告 batch 的舊呼叫維持原有結果。
+此 adapter 不產生正式批次排程。
+
+13 組搬移前 trace 全數吻合。行為測試與乾淨 kernel 分開記錄於 OpenSpec。
+新增 CW 行為仍待人工 trace；[Needs Verification] CW 路徑與共用係數尚未完成硬體標定。

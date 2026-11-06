@@ -4,9 +4,10 @@
 
 Date: 2026-11-04. This is the accepted charging model traced before implementation.
 The user authorized local-first Tag energy prototyping, then requested charging trace first.
-The executable Notebook now implements charging and scheduled state traces. The complete charging runtime and its adapters remain future work.
+The accepted core now resides in src/energy. Notebook 04 retains teaching, settings, tables, plots and independent assertions.
+Notebook 05 imports the same source and accepts explicit batch CW inputs. Full Access scheduling and service accounting remain future work.
 
-Read the [data-flow diagram](../../../.archify/dataflow-tag-charging-20261104-151852/tag-charging.html), then the worked example below and [source/status trace](code-trace.md).
+Read the [data-flow diagram](../../../.archify/dataflow-tag-energy-src-20261106-160000/tag-energy-src.html), then the worked example below and [source/status trace](code-trace.md).
 The diagram describes the design. It does not assert that the displayed operations are existing runtime calls.
 
 ## Input to stored energy
@@ -14,7 +15,8 @@ The diagram describes the design. It does not assert that the displayed operatio
 1. Obtain the current serving Node, source direction, phase, duration and Tag snapshot.
 2. Select serving UE RF for UL or serving DU RF for DL. Apply the accepted one-way gain.
 3. Convert RF watts to DC watts through the accepted zero-input-corrected Sigmoid.
-4. Permit harvesting only during the UE prefix. Switch, Paging, D2R, Guard and gaps have H=0.
+4. Permit UE-prefix harvesting, plus completed selected members during [own D2R_END, batch CW_OFF).
+   Active D2R, switch, Paging, Guard and gaps have H=0.
 5. Select one total mode power. Normal quiescent power is 10 nW; passive recovery has zero separate draw.
 6. Integrate harvested minus consumed energy. Handle capacity overflow and explicit depletion, then record the new state.
 
@@ -77,15 +79,15 @@ The Decimal calculator checks the accepted DC result, passivity slope bound, cap
 Its [JSON output](worked-example.json) is scalar arithmetic evidence, not simulator or hardware validation.
 The graph delivery receipt records its own automated gates; those do not prove charging runtime behavior.
 
-The Notebook and its OpenSpec/TDD contract now exist; human acceptance is the next module checkpoint.
-Baseline remains deferred to the user's algorithm. No source extraction, commit, push or remote completion is implied.
+The original Notebook human trace is complete. The changed CW behavior remains subject to human trace.
+Baseline remains deferred to the user's algorithm. No commit, push or remote completion is implied.
 Hardware converter response, mode totals and ideal cold start remain research assumptions.
 
 ## Executable Notebook (2026-11-04)
 
 Open [notebooks/04_tag_energy.ipynb](../../../notebooks/04_tag_energy.ipynb) for the executable teaching trace.
 It contains the scalar conversion function, four interval examples, depletion, result tables, an embedded PNG and checks.
-The full Tag state/operation engine and source adapters remain future work. The Notebook awaits human acceptance.
+The full Access schedule and service adapters remain future work. The original core trace was accepted before extraction.
 [Notebook dataflow](../../../.archify/dataflow-tag-charging-notebook-20261104-154316/tag-charging-notebook.html) describes this local prototype.
 The earlier diagram remains the pre-implementation design snapshot.
 
@@ -104,4 +106,34 @@ Exact exhaustion after Guard returns ENERGY_RECOVERY; otherwise the operation re
 62 focused tests pass. A clean RL kernel executes 21 code cells with zero errors and saves two PNG outputs.
 The state/energy PNG was inspected. These checks do not prove hardware accuracy or full simulator integration.
 There are zero blocking state-model choices. Baseline, fairness and formal experiments remain three later research groups.
-RF/timing adapters and service accounting remain engineering work. Human acceptance and source extraction remain pending.
+Full RF/timing adapters and service accounting remain engineering work. The 2026-11-06 extraction below supersedes pending extraction status.
+
+## Source extraction and batch CW (2026-11-06)
+
+The core previously lived in Notebook cells. Follow [the current source trace](code-trace.md) to find its new owners.
+Read [the current flow](../../../.archify/dataflow-tag-energy-src-20261106-160000/tag-energy-src.html) before the Notebook 04 section 16.1 example. Earlier diagrams are historical.
+
+| Owner | Responsibility |
+|---|---|
+| src/energy/contracts.py | Immutable Tag modes, snapshots and ledger results. |
+| src/energy/tag_energy.py | RF/DC, complete admission, background recovery and completed-Tag CW. |
+| Notebook 04 | Settings, explanations, tables, plots and independent assertions. |
+| Notebook 05 | Explicit BatchCW validation, event ordering and current snapshots. |
+
+The caller supplies batch identity, members and shared CW_OFF. Equal timestamps alone never define membership.
+CW_OFF equals the final full member D2R completion. Guard begins there and has no batch CW.
+An early completed member harvests while paying normal 10-nW draw until depletion. Existing passive recovery then applies.
+Decoding failure does not cancel completed-transmission eligibility. Unselected and still-reflecting Tags receive no batch-CW credit.
+The last-finishing member has zero tail. Future harvest never funds admission.
+
+Use current-Window serving-DU CW power (-2/10/22 dBm), g0/distance_m**2 and the existing Sigmoid.
+Distance remains 1-50 m. This is one-way RF, without reflection loss, two-way gain or Reader fading.
+[The independent Decimal example](worked-cw-example.py) gives A=0.7343339972233599 uJ after Guard.
+A starts at 0.8 uJ, uses 16 bytes and harvests for 55 ms at 10 dBm and 10 m.
+
+The Notebook 05 adapter admits one supplied Paging start per explicit batch. It prepares all members before activation.
+If any member fails admission, the whole declared batch is refused. This avoids retaining a refused final member's CW end.
+Separate requests without a batch retain their prior no-tail behavior. This adapter is not a general batch scheduler.
+
+Preserved behavior matches 13 pre-extraction traces. Focused energy/engine tests and clean kernels have separate receipts in OpenSpec.
+The current CW correction awaits human trace. [Needs Verification] Shared CW conversion and path parameters are not hardware calibration.

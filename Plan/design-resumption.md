@@ -1,5 +1,12 @@
 # Simulator design resumption
 
+## Current implementation inventory (2026-11-06)
+
+Read [the current implementation inventory](implementation-status-2026-11-06.md) before using the historical status below.
+Four reusable core areas exist. Seven M1 work packages still have engineering gaps; the closed policy loop is incomplete.
+Current regression: 448 passed, four failed in Notebook 05 batch-geometry validation. Earlier test receipts describe earlier source snapshots.
+This inventory does not authorize implementation, publication or a revised delivery date.
+
 Date: 2026-10-31. Status: Discussion; no new module implementation selected.
 
 ## Source alignment

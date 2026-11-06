@@ -81,8 +81,8 @@ python -m jupyterlab
 
 - [拓撲 Notebook](notebooks/01_iab_topology.ipynb)：查看設定、Node 與 Tag 表格，以及部署圖。您可以修改範例設定，再重新執行各 cell。
 - [通道 Notebook](notebooks/02_channel_model.ipynb)：查看指定拓撲的鏈路計算與封包接收結果。
-- [Tag 充電 Notebook](notebooks/04_tag_energy.ipynb)：執行已確認的 RF／DC、電量與狀態切換 trace，核對操作可行性、容量及被動恢復。此教學原型尚待人工接受。
-- [事件引擎 Notebook](notebooks/05_event_engine.ipynb)：接入 03 資源事件與 04 Tag 電量，使用明列操作展示事件與狀態推進。此本地原型尚待人工接受。
+- [Tag 充電 Notebook](notebooks/04_tag_energy.ipynb)：執行已確認的 RF／DC、電量與狀態切換 trace，核對操作可行性、容量及被動恢復。已接受的核心已移至 `src/energy`；新增的 TBS 完成後 batch CW trace 仍待人工核對。
+- [事件引擎 Notebook](notebooks/05_event_engine.ipynb)：使用既有時序／能量核心，追蹤情境準備、明確狀態寫入、逐窗電量摘要與輪末結果清理。此本地原型尚待人工接受。
 
 設定、操作與問題排解請參考 [IAB 拓撲指南](ReferDoc/Implementation/IABTopology/README.md)與[通道指南](ReferDoc/Implementation/ChannelModel/README.md)。[使用說明索引](ReferDoc/Implementation/README.md)列出各模組文件。
 

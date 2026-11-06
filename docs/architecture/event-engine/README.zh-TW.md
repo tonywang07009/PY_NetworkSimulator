@@ -2,38 +2,63 @@
 
 [English](README.md)
 
-05 將 03 的資源邊界接到 04 已確認的 Tag 狀態／電量定義。
-先開啟 [Notebook](../../../notebooks/05_event_engine.ipynb)，再看[契約圖](../../../.archify/dataflow-event-engine-20261104-190000/event-engine.html)與[程式追蹤](code-trace.md)。
-圖描述目前本地原型，不代表已提交的程式證據。
+原本的 Engine 建構函式同時處理驗證、索引、排程與執行狀態，閱讀時難以分辨資料在哪裡改變。
+Notebook 05 現在分開情境、當下狀態與本輪紀錄，讓計算結果與引擎寫入可以逐步 trace。
+Engine 仍留在 Notebook，等待人工接受；時序與能量核心則直接從 src 匯入。
 
-## 閱讀順序
+## 快速執行
 
-| 節次 | 內容 |
+在既有 RL 環境，從專案根目錄或 notebooks 目錄開啟 [Notebook 05](../../../notebooks/05_event_engine.ipynb)。
+依序執行各 cell；最後應顯示一張 Window 起訖電量圖，並檢查紀錄已清理、即時狀態仍保留。
+乾淨暫存 kernel 的執行指令：
+
+```bash
+python tests/energy/execute_tag_energy_notebook.py /tmp/pynet-event-engine-execution.json notebooks/05_event_engine.ipynb
+```
+
+不需註冊使用者 kernel、安裝套件或自動匯出資料。
+
+## 架構閱讀路徑
+
+先看[目前流程圖](../../../.archify/dataflow-event-engine-modular-notebook-20261106-173444/event-engine-modular.html)，再依[完整程式 trace](code-trace.md)閱讀。
+圖描述尚未提交工作樹的介面契約，不是固定 commit 的來源證據。
+
+| Notebook 節次 | 閱讀內容 |
 |---|---|
-| 1 | 載入 03 核心與 04 的 definitions，不重跑 04 展示 |
-| 2 | 整數 ns 的同時事件批次佇列 |
-| 3 | 當下快照、資源階段、操作檢查及執行中電量 |
-| 4 | 兩個窗口、兩個等 TBS 平行 Tag、不同接收結果、事件表與電量圖 |
-| 5 | 尚待接入的模組與研究限制 |
+| 1-2 | 匯入既有核心、整數 ns 的 EventQueue |
+| 3 | 操作輸入、三組 dataclass 與情境準備 |
+| 4 | 讀舊快照、取得計算結果，再由引擎明確寫入 |
+| 示範 | 觀察 D2R 中途、完成結果、GAP 與下一窗 |
+| 5 | 輪末使用結果、更新同一張圖，成功後才清理 |
+| 6 | 人工接受與尚待整合的範圍 |
 
-在既有 RL 環境，從專案根目錄或 notebooks 目錄執行。
-乾淨 kernel 指令可參考英文導讀；共用 runner 預設仍跑 04，可另外指定 05。
+計算函式回傳值；Engine 方法負責狀態、佇列與紀錄的寫入。
+prepare_scenario 檢查資料關係；建構時呼叫 validate_energy_inputs，全部通過才建立佇列。
+project_tag_operation 保留計畫內的當下投影與數值保護；背景區段沿用 advance_tag_interval。
+run_until 先收集同時完成結果，再更新資源、處理新請求；完整儲能准入維持原規則。
 
-## 已實作規則
+## 資料與保存期限
 
-先用剛結束區段的 phase 更新電量，再處理邊界。只有 UE UL／DL 可採能，UE 結束後保留 1 ms 切頻。
-操作開始前檢查完整成本；操作中的快照只顯示目前時刻電量，不提前套用最終電量。
-同時 D2R 先批次收集，再更新資源與處理新請求。Deadline 保持嚴格小於。
-同一 Tag 的同時衝突請求整組拒絕；不同 Tag 可獨立推進。
-跨窗口、空檔與分段 run 都保留電量；恢復狀態不會自動啟動。
+EngineScenario 保存複製後的唯讀索引；EngineState 保存目前快照、階段與操作計畫。
+EngineRecords 保存當前／最近一窗 trace、尚未結束的窗起點、本輪摘要與完成結果。
+每個已結束 Window 為每個 Tag 增加一筆起訖摘要；重複觀察不增加逐事件電量樣本。
+跨 GAP 仍計算耗能與恢復；清理紀錄不會補回電量。
+
+外層明列輪末並呼叫 finish_round(consume_results)。
+消費函式取得紀錄副本；成功後移除已消費前綴，失敗保留資料供重試。
+尚未結束的窗起點、active、當下時間／電量與事件佇列都不因清理而重設。
+render_round 更新外層提供的同一個顯示區，並在 finally 關閉 figure；多輪執行時沿用該顯示區。
+該區只保留最新圖，不自動寫檔或刪檔。
+端點圖不能還原窗內所有充電／耗盡轉折；單輪記憶體仍隨輸入規模增加。
 
 ## 證據與限制
 
-事件引擎 23 項、電量 62 項測試通過；合併 03 時序檢查，在 RL 環境共 157 項通過。
-乾淨 kernel 執行 05 六個程式區塊，零錯誤，存入 PNG 並正常關閉。已檢視電量圖。
-Spec／Standards 發現的衝突請求與身分型別問題已修正並複查。
+18 個重構前快照／完成結果觀察點全數吻合；既有 RL 環境全測試 463 項通過。
+Notebook 05 的乾淨 RL kernel 執行 13 個 code cells，零錯誤並正常關閉。
+base 環境相關檢查為 134 項通過；缺顯示依賴時跳過兩項繪圖檢查。
+完整命令、review 修正與 kernel 收據保留於對應 OpenSpec 驗證紀錄。
+圖表自動檢查與程式測試不能代替人工可讀性接受。
 
-RF、接收時序、合法 Access 分配與 CW 可用性仍由外部提供。
-示範使用等 TBS 與假設正交的資源；此引擎不配置 CFA／SFS，也尚未驗證完整異質批次。
-`eligible` 僅表示接收／期限資格，不代表服務已認列資料。Baseline、服務記帳與 FBL 抽樣仍待接入。
-Notebook 尚待人工接受，核心尚未抽離。硬體參數仍為研究假設。
+RF、Access 時序、接收結果與明確 batch CW 仍由外部提供。
+未提供完整 CFA/SFS 排程、ServiceManager、Policy／Baseline、FBL 抽樣或硬體標定。
+本輪未抽離 Engine 核心、發布或合併；完整 STE 字典符合性仍為 [Needs Verification]。

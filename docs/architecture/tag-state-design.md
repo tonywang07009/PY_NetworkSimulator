@@ -42,7 +42,8 @@ A failure in D2R changes the receive/data result, not the already-executed state
 ## State and resource phase are separate inputs
 
 Use P_har=H_phase*F(P_RF), with the current state selecting one applicable electrical cost.
-H_phase=1 only in the accepted UE communication prefix; H_phase=0 during switch, Paging, D2R, Guard and inter-Window gaps.
+H_phase=1 in the UE prefix or for a selected completed Tag during [own D2R_END, batch CW_OFF).
+H_phase=0 during switch, Paging, active D2R, Guard and inter-Window gaps.
 A normal sleeping Tag can harvest during an allowed UE prefix and still pay 10 nW.
 A sleeping Tag in the 400-ms gap cannot harvest and still pays 10 nW until depletion.
 An ENERGY_RECOVERY Tag in that gap stays at its current energy, with no separate recovery draw.
@@ -63,7 +64,7 @@ SLEEP/STATIC
   -> SLEEP: retain remaining energy and pay the required normal Guard/waiting costs
 ```
 
-All post-UE phases above have zero harvest. The 16-byte TB has at most 14 valid application bytes.
+Active post-UE phases and Guard have zero harvest. An early completed selected Tag can harvest before batch CW_OFF. The 16-byte TB has at most 14 valid application bytes.
 The example fixes no new Paging, response-offset or synchronization duration.
 A selected 64-byte TBS still needs full timing and energy admission; state adaptation does not make it automatically feasible.
 
@@ -92,3 +93,12 @@ Explain each assumption through its source, selection reason and evidence limit.
 Use the same declared parameter snapshot across compared policies; report scope-specific conclusions.
 EX-01 sensitivity analysis remains future evidence. Do not claim algorithm rankings are robust before those comparisons are performed.
 No numerical parameter, deadline, power profile or state choice is changed by this explanation criterion.
+
+## Accepted post-TBS correction and extraction (2026-11-06)
+
+This section supersedes the earlier implementation boundary. The original Notebook trace is accepted and the core resides in src/energy.
+The new CW behavior still needs human trace. See tag-energy-trace/code-trace.md for source owners and checks.
+Q-CW-01 through Q-CW-05 establish explicit batch membership and CW_OFF, normal background draw, and one-way serving-DU CW input.
+Guard begins at batch CW_OFF, not at each member's completion. Last-finishing members have no remaining CW interval.
+Only complete selected transmissions qualify, including decoding failure. Unselected and still-reflecting Tags receive no CW credit.
+Future harvest grants no admission credit. Charging alone creates no new state.
