@@ -90,14 +90,14 @@ def test_round_cleanup_preserves_an_open_window_active_plan_and_queue(api):
     engine=setup_engine(api,(request,))
     engine.run_until(start+66_000_000)
     before=dict(engine.state.snapshots)
-    next_event=engine.queue.peek_time()
+    next_event=engine.queue.check_time()
     assert engine.state.active and engine.records.completion_batches
     received=[]
     engine.finish_round(received.append)
     assert len(received[0]['completion_batches'])==1
     assert engine.state.snapshots==before and engine.state.active
     assert engine.records.window_starts
-    assert engine.queue.peek_time()==next_event
+    assert engine.queue.check_time()==next_event
     engine.run_until(600_000_000)
     assert len(engine.records.window_summaries)==3
 

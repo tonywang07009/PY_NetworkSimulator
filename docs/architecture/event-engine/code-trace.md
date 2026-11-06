@@ -41,7 +41,7 @@ The modular Notebook is implemented for human trace. Human acceptance and later 
 
 | Actual source | Inputs / output / state owner | Acceptance and evidence |
 |---|---|---|
-| [notebooks/05_event_engine.ipynb](/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/05_event_engine.ipynb) sections 1-2 | Import source; EventQueue schedules/populates integer-ns batches. Queue owns its heap. | Queue invalid/past-time and same-time tests. |
+| [notebooks/05_event_engine.ipynb](/home/tonywang/Net_simluation/PY_NetworkSimulator/notebooks/05_event_engine.ipynb) sections 1-2 | Import source; EventQueue schedules/populates integer-ns batches. Queue owns its heap; check_time reads the next timestamp without consuming it. | Queue invalid/past-time and same-time tests. |
 | Same Notebook, section 3 inputs | OperationRequest and BatchCW use Tag/Node/Window identities and ns; CW source is explicit. | Invalid identity and immutable/malformed geometry refusals. |
 | Same Notebook, section 3.1 data | Scenario holds read-only prepared mappings; State holds current snapshots/plans; Records holds current-Window trace, pending starts and round results. | Independent-run and snapshot-copy tests. Types/key shapes are visible. |
 | Same Notebook, sections 3.2-3.4 preparation | Pure preparation returns indexes; no state, queue or activation writes. Bad geometry raises ValueError. | Existing refusal cases and new preparation tests. |

@@ -35,6 +35,8 @@ def test_queue_returns_same_time_payloads_together_and_rejects_past_time(api):
     queue.schedule(10, 'B', {'tag': 'B'})
     queue.schedule(10, 'A', {'tag': 'A'})
     queue.schedule(20, 'C', {})
+    assert queue.check_time() == 10
+    assert queue.now_ns == 0
     now, events = queue.pop_batch()
     assert now == 10
     assert {event.kind for event in events} == {'A','B'}
@@ -42,6 +44,7 @@ def test_queue_returns_same_time_payloads_together_and_rejects_past_time(api):
         queue.schedule(9, 'PAST', {})
     assert queue.pop_batch()[0] == 20
     assert queue.pop_batch() is None
+    assert queue.check_time() is None
 
 
 @pytest.mark.parametrize('time', [True, -1, 0.5, float('nan'), None])
